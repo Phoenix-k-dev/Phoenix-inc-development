@@ -38,7 +38,7 @@ window.PHOENIX_CONFIG={
     css('dashboard-ticket-studio.css','synapse-ticket-studio');
     css('dashboard-multiserver.css','synapse-multiserver');
     css('dashboard-billing.css','synapse-billing');
-    css('dashboard-depth.css','synapse-dashboard-depth');
+    css('dashboard-recovery.css','synapse-dashboard-recovery');
   }
 
   js('theme-toggle.js','phoenix-theme');
@@ -57,8 +57,7 @@ window.PHOENIX_CONFIG={
     js('dashboard-pro.js','synapse-dashboard-pro');
     js('dashboard-ticket-studio.js','synapse-ticket-studio');
     js('dashboard-multiserver.js','synapse-multiserver');
-    js('dashboard-hub.js','synapse-dashboard-hub');
     js('dashboard-billing.js','synapse-billing');
-    js('dashboard-depth.js','synapse-dashboard-depth');
+    js('dashboard-recovery.js','synapse-dashboard-recovery');
   }
 })();
