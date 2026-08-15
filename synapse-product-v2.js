@@ -9,13 +9,8 @@
   const discord = config.discordUrl || '';
   const logo = './assets/logo-phoenix-ph.png';
 
-  const external = (href, cls, label, attrs='') => href
-    ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener" ${attrs}>${label}</a>`
-    : '';
-  const internal = (href, cls, label, attrs='') => href
-    ? `<a class="${cls}" href="${href}" ${attrs}>${label}</a>`
-    : '';
-
+  const external = (href, cls, label, attrs='') => href ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener" ${attrs}>${label}</a>` : '';
+  const internal = (href, cls, label, attrs='') => href ? `<a class="${cls}" href="${href}" ${attrs}>${label}</a>` : '';
   const dashboardButton = internal(dashboard,'syn-v2-btn syn-v2-btn-ghost','Ouvrir le dashboard ↗','data-dashboard-link');
 
   document.body.innerHTML = `
@@ -37,29 +32,59 @@
           <div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse à mon Discord ↗')}${dashboardButton}</div>
         </article>
 
-        <article class="syn-v2-workflow">
-          <div class="syn-v2-flow-title"><small>DU BUILDER AU DASHBOARD</small><strong>Ce que Synapse crée reste modifiable.</strong></div>
-          <div class="syn-v2-flow-grid">
-            <div class="syn-v2-builder compact">
-              <div class="syn-v2-builder-top"><span>SERVER BUILDER</span><em>READY</em></div>
-              <div class="syn-v2-builder-layout">
-                <aside class="syn-v2-builder-side"><small>TEMPLATE</small><div class="syn-v2-template"><b>COMMUNITY</b><span>Base prête</span></div></aside>
-                <div class="syn-v2-builder-main"><small>STRUCTURE</small><div class="syn-v2-tree"><div><b>▾ ACCUEIL</b><span># bienvenue</span><span># règlement</span></div><div><b>▾ COMMUNAUTÉ</b><span># général</span><span># médias</span></div><div><b>▾ SUPPORT</b><span># tickets</span></div></div></div>
+        <article class="syn-v2-workflow syn-v2-workflow-real">
+          <div class="syn-v2-flow-title"><small>EXEMPLE CONCRET</small><strong>Synapse crée le serveur. Le dashboard garde tout modifiable.</strong></div>
+          <div class="syn-real-flow">
+            <div class="syn-discord-mock">
+              <div class="sdm-servers">
+                <span class="sdm-home">◆</span>
+                <span class="active"><img src="${logo}" alt=""></span>
+                <span>G</span><span>+</span>
               </div>
-              <div class="syn-v2-builder-footer"><b>STRUCTURE CRÉÉE</b><span>salons · rôles · permissions</span></div>
+              <div class="sdm-channels">
+                <div class="sdm-server-title">Community Server <b>⌄</b></div>
+                <div class="sdm-channel-group"><small>ACCUEIL</small><span class="active"># bienvenue</span><span># règlement</span></div>
+                <div class="sdm-channel-group"><small>COMMUNAUTÉ</small><span># général</span><span># médias</span></div>
+                <div class="sdm-channel-group"><small>SUPPORT</small><span># ouvrir-un-ticket</span></div>
+                <div class="sdm-channel-group"><small>VOCAL</small><span>🔊 Général</span></div>
+                <div class="sdm-profile"><i></i><div><b>Phoenix</b><small>En ligne</small></div><span>⚙</span></div>
+              </div>
+              <div class="sdm-chat">
+                <div class="sdm-chat-top"><b># bienvenue</b><span>Bienvenue sur le serveur</span><em>⌕ ☰</em></div>
+                <div class="sdm-messages">
+                  <div class="sdm-welcome-icon">#</div>
+                  <h3>Bienvenue dans # bienvenue !</h3>
+                  <p>C'est le début du salon #bienvenue.</p>
+                  <article><span class="sdm-avatar bot"><img src="${logo}" alt=""></span><div><b>Synapse <em>APP</em></b><small>Aujourd'hui à 12:42</small><p>La structure du serveur est prête. Les salons, rôles et permissions peuvent maintenant être ajustés depuis votre Dashboard Synapse.</p></div></article>
+                </div>
+                <div class="sdm-input">Envoyer un message dans #bienvenue <span>☺</span></div>
+              </div>
+              <div class="sdm-members">
+                <small>EN LIGNE — 3</small>
+                <span><i class="owner"></i><b>Phoenix</b><em>👑</em></span>
+                <span><i class="bot"></i><b>Synapse</b><em>BOT</em></span>
+                <span><i></i><b>Modérateur</b></span>
+                <small>HORS LIGNE — 2</small>
+                <span class="offline"><i></i><b>Membre</b></span>
+              </div>
             </div>
 
-            <div class="syn-v2-flow-arrow">→</div>
+            <div class="syn-real-link"><span>SYNC</span><b>→</b><small>mêmes données</small></div>
 
-            <div class="syn-v2-dashboard-preview">
-              <div class="sdp-top"><span>SYNAPSE / DASHBOARD</span><em>CONNECTED</em></div>
-              <div class="sdp-shell">
-                <aside><b>Overview</b><span class="active">Builder</span><span>Tickets</span><span>Moderation</span><span>Community</span><span>Premium</span></aside>
-                <div class="sdp-main"><small>MON SERVEUR</small><h3>Community Server</h3><div class="sdp-stat-row"><span><b>12</b><small>SALONS</small></span><span><b>8</b><small>RÔLES</small></span><span><b>ON</b><small>TICKETS</small></span></div><div class="sdp-edit"><span>Structure créée par le Builder</span><button>MODIFIER</button></div><div class="sdp-edit"><span>Tickets & formulaires</span><button>GÉRER</button></div><div class="sdp-edit"><span>Permissions & rôles</span><button>ÉDITER</button></div></div>
+            <div class="syn-dashboard-real">
+              <div class="sdr-top"><div><img src="${logo}" alt=""><span><b>SYNAPSE</b><small>Dashboard</small></span></div><em>CONNECTED</em></div>
+              <div class="sdr-body">
+                <aside><b>Overview</b><span class="active">Builder</span><span>Structure</span><span>Tickets</span><span>Moderation</span><span>Community</span><span>Premium</span></aside>
+                <main>
+                  <div class="sdr-heading"><div><small>COMMUNITY SERVER</small><h3>Structure</h3></div><button>Enregistrer</button></div>
+                  <div class="sdr-stats"><span><b>12</b><small>SALONS</small></span><span><b>8</b><small>RÔLES</small></span><span><b>ON</b><small>TICKETS</small></span></div>
+                  <div class="sdr-list"><article><div><i>#</i><span><b>bienvenue</b><small>ACCUEIL</small></span></div><button>Modifier</button></article><article><div><i>#</i><span><b>général</b><small>COMMUNAUTÉ</small></span></div><button>Modifier</button></article><article><div><i>♟</i><span><b>Modérateur</b><small>RÔLE</small></span></div><button>Permissions</button></article><article><div><i>◈</i><span><b>Tickets</b><small>MODULE</small></span></div><button>Gérer</button></article></div>
+                </main>
               </div>
-              <div class="sdp-foot"><b>TOUT RESTE MODIFIABLE</b><span>sans refaire le serveur</span></div>
+              <div class="sdr-footer"><b>Tout ce qui est créé reste modifiable</b><span>Builder · salons · rôles · permissions · modules</span></div>
             </div>
           </div>
+          <div class="syn-real-caption"><span>1. Le Builder génère une vraie structure Discord.</span><span>2. Le dashboard reprend cette structure et permet de la modifier ensuite.</span></div>
         </article>
       </section>
 
