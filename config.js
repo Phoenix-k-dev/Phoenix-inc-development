@@ -6,7 +6,7 @@ window.PHOENIX_CONFIG={
   phBankingTebexUrl:"",
   githubUrl:"https://github.com/Phoenix-k-dev",
   discordApplicationId:"928717186393079839",
-  synapseInviteUrl:"https://discord.com/oauth2/authorize?client_id=928717186393079839&scope=bot%20applications.commands&permissions=805432336&integration_type=0",
+  synapseInviteUrl:"https://discord.com/oauth2/authorize?client_id=928717186393079839&scope=bot%20applications.commands&permissions=1100333837330&integration_type=0",
   synapseDiscordStoreUrl:"https://discord.com/application-directory/928717186393079839/store",
   synapseDashboardUrl:"dashboard.html",
   synapseLoginUrl:"/auth/discord",
