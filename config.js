@@ -28,6 +28,9 @@ window.PHOENIX_CONFIG={
   css('ui-fixes.css','phoenix-ui-fixes');
   css('theme-light.css','phoenix-theme');
 
+  if(document.body.classList.contains('v2-home')){
+    css('home-contact.css?v=20260815-1942','phoenix-home-contact');
+  }
   if(document.body.classList.contains('synapse-saas-page')){
     css('synapse-product-v2.css','synapse-product-v2');
     css('synapse-flow.css','synapse-flow');
@@ -49,6 +52,7 @@ window.PHOENIX_CONFIG={
   js('ui-fixes.js','phoenix-ui-fixes');
   js('brand-nav.js','phoenix-brand-nav');
 
+  if(document.body.classList.contains('v2-home')) js('home-contact.js?v=20260815-1942','phoenix-home-contact');
   if(document.body.classList.contains('v2-scripts')) js('catalog-filters-v2.js','catalog-filters-v2');
   if(document.body.classList.contains('synapse-saas-page')){
     js('synapse-product-v2.js','synapse-product-v2');
