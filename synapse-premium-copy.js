@@ -50,14 +50,13 @@
     }
   };
 
-  let applying = false;
-  function apply() {
-    if (applying) return;
+  let lastLang = '';
+  function apply(force = false) {
     const premium = document.querySelector('.syn-v2-premium');
     if (!premium) return;
-    applying = true;
-
     const lang = localStorage.getItem('phoenix-lang') === 'en' || document.documentElement.lang === 'en' ? 'en' : 'fr';
+    if (!force && lang === lastLang) return;
+    lastLang = lang;
     const t = copy[lang];
     const left = premium.firstElementChild;
     const list = premium.querySelector('.syn-v2-premium-list');
@@ -77,14 +76,14 @@
     const hint = premium.querySelector('.syn-premium-command-hint span');
     if (hint) hint.textContent = t.hint;
     if (list) list.innerHTML = t.benefits.map(item => `<span>${item}</span>`).join('');
-
-    applying = false;
   }
 
-  const observer = new MutationObserver(() => apply());
-  observer.observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['lang'] });
-  document.addEventListener('DOMContentLoaded', apply, { once: true });
-  setTimeout(apply, 0);
-  setTimeout(apply, 250);
-  setTimeout(apply, 900);
+  new MutationObserver(() => apply()).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['lang']
+  });
+  window.addEventListener('storage', event => { if (event.key === 'phoenix-lang') apply(true); });
+  document.addEventListener('DOMContentLoaded', () => apply(true), { once: true });
+  setTimeout(() => apply(true), 0);
+  setTimeout(() => apply(true), 300);
 })();
