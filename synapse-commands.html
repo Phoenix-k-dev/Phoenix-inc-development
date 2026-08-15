@@ -11,14 +11,28 @@
 <body class="v2-command-page">
   <header class="v2-header">
     <a class="v2-brand" href="index.html"><img src="assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
-    <nav class="v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html">Bots</a><a href="synapse-commands.html" class="active">Commandes</a><a href="services.html">Web · Apps · Autres</a></nav>
-    <div class="v2-header-actions"><a class="v2-btn v2-btn-ghost" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a><button class="v2-menu" type="button">☰</button></div>
+    <nav class="v2-nav">
+      <a href="index.html" data-cmd-nav="home">Accueil</a>
+      <a href="scripts.html" data-cmd-nav="scripts">Scripts</a>
+      <a href="bots.html" data-cmd-nav="bots">Bots</a>
+      <a href="synapse-commands.html" class="active" data-cmd-nav="commands">Commandes</a>
+      <a href="services.html" data-cmd-nav="services">Web · Apps · Autres</a>
+    </nav>
+    <div class="v2-header-actions">
+      <button class="cmd-lang-toggle" type="button" data-command-lang aria-label="Switch language"><span>FR</span><i></i><span>EN</span></button>
+      <a class="v2-btn v2-btn-ghost" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a>
+      <button class="v2-menu" type="button">☰</button>
+    </div>
   </header>
 
   <main class="cmd-shell">
     <section class="cmd-hero">
-      <div><span class="v2-kicker">SYNAPSE / COMMANDES</span><h1>Tout Synapse,<br><span>directement dans Discord.</span></h1><p>Retrouvez les commandes disponibles pour analyser un serveur, construire ou remplacer des modules, gérer les tickets, relier plusieurs Discord et administrer Synapse sans Dashboard web.</p></div>
-      <aside><b>/aide_synapse</b><span>Affiche l’aide directement dans Discord.</span><a href="synapse-bot.html">Voir la fiche Synapse →</a></aside>
+      <div>
+        <span class="v2-kicker" data-cmd-text="kicker">SYNAPSE / COMMANDES</span>
+        <h1 data-cmd-html="title">Tout Synapse,<br><span>directement dans Discord.</span></h1>
+        <p data-cmd-text="lead">Retrouvez les commandes disponibles pour analyser un serveur, construire ou remplacer des modules, gérer les tickets, relier plusieurs Discord et administrer Synapse.</p>
+      </div>
+      <aside><b data-cmd-text="helpCommand">/commandes</b><span data-cmd-text="helpText">Affiche l’aide directement dans Discord.</span><a href="synapse-bot.html" data-cmd-text="back">Voir la fiche Synapse →</a></aside>
     </section>
 
     <section class="cmd-toolbar">
@@ -29,8 +43,8 @@
     <section class="cmd-grid" data-command-grid></section>
 
     <section class="cmd-future">
-      <div><span class="v2-kicker">MISE À JOUR FUTURE</span><h2>Dashboard Web Synapse</h2><p>Le Dashboard web complet reste prévu pour une future mise à jour. La V1 est pensée pour fonctionner entièrement depuis Discord afin de simplifier l’hébergement et le déploiement.</p></div>
-      <div class="cmd-future-track"><article><small>BUILDER</small><b>Structure & adaptation</b></article><article><small>TICKETS</small><b>Configuration visuelle</b></article><article><small>SÉCURITÉ</small><b>AutoMod & protections</b></article><article><small>MULTI-SERVEURS</small><b>Gestion centralisée</b></article></div>
+      <div><span class="v2-kicker" data-cmd-text="futureKicker">MISE À JOUR FUTURE</span><h2 data-cmd-text="futureTitle">Dashboard Web Synapse</h2><p data-cmd-text="futureCopy">Un Dashboard Web complet est en développement pour les futures versions de Synapse. Il viendra compléter le pilotage depuis Discord avec une interface visuelle centralisée.</p></div>
+      <div class="cmd-future-track"><article><small>BUILDER</small><b data-cmd-text="futureBuilder">Structure & adaptation</b></article><article><small>TICKETS</small><b>Ticket Studio</b></article><article><small data-cmd-text="security">SÉCURITÉ</small><b data-cmd-text="futureSecurity">AutoMod & protections</b></article><article><small data-cmd-text="multi">MULTI-SERVEURS</small><b data-cmd-text="futureMulti">Gestion centralisée</b></article></div>
     </section>
   </main>
 
