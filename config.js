@@ -57,6 +57,7 @@ window.PHOENIX_CONFIG={
   if(document.body.classList.contains('synapse-saas-page')){
     js('synapse-product-v2.js','synapse-product-v2');
     js('synapse-adaptive.js','synapse-adaptive');
+    js('synapse-product-lang.js','synapse-product-lang');
   }
   if(document.body.classList.contains('v2-dashboard-page')){
     js('dashboard-extras.js','synapse-dashboard-extras');
