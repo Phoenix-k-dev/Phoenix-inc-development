@@ -1,83 +1,20 @@
-/* Layout and interaction fixes for the catalog redesign */
-.v2-bot-hero-card,
-.v2-service-grid{
-  width:min(var(--max),calc(100% - 44px));
-  margin-left:auto!important;
-  margin-right:auto!important;
-}
+/* Layout, carousel and factual-interface fixes */
+.v2-bot-hero-card,.v2-service-grid{width:min(var(--max),calc(100% - 44px));margin-left:auto!important;margin-right:auto!important}
+.v2-faq{align-items:start}.v2-faq details{align-self:start;height:auto}
+.v2-marquee{width:100%;overflow:hidden}.v2-marquee-track{display:flex;gap:0!important;width:max-content;min-width:200vw;padding:0!important;animation:v2MarqueeLoop 26s linear infinite!important;will-change:transform}.v2-marquee-group{flex:0 0 100vw;min-width:100vw;display:flex;align-items:center;justify-content:space-around;gap:26px;padding:16px 24px}@keyframes v2MarqueeLoop{from{transform:translateX(0)}to{transform:translateX(-100vw)}}@media(prefers-reduced-motion:reduce){.v2-marquee-track{animation:none!important}}
+.v2-page-hero,.v2-section-head,.v2-filter-panel,.v2-catalog-meta,.v2-product-grid{box-sizing:border-box}
+.v2-social-card.stripe{border-color:rgba(139,108,255,.26);background:linear-gradient(145deg,rgba(139,108,255,.08),#12151e)}
 
-.v2-faq{
-  align-items:start;
-}
-.v2-faq details{
-  align-self:start;
-  height:auto;
-}
+/* Home hero: replace decorative orbit with useful content */
+.phx-service-board{position:absolute;inset:54px 0 0;padding:24px;display:flex;flex-direction:column}.phx-board-head{padding:0 4px 18px}.phx-board-head small{display:block;color:#727b90;font-size:8px;font-weight:900;letter-spacing:.14em}.phx-board-head strong{display:block;margin-top:7px;font:700 22px/1.1 'Space Grotesk',Inter,sans-serif}.phx-board-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;flex:1}.phx-board-grid a{min-height:130px;padding:16px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.025);text-decoration:none;display:flex;flex-direction:column;transition:.2s}.phx-board-grid a:hover{transform:translateY(-2px);border-color:rgba(255,107,44,.28);background:rgba(255,107,44,.04)}.phx-board-grid span{color:#ff8f5d;font-size:8px;font-weight:900}.phx-board-grid b{margin-top:auto;font-size:14px}.phx-board-grid small{margin-top:5px;color:#798196;font-size:8px}.phx-board-grid em{margin-top:11px;color:#9ca4b6;font-size:7px;font-style:normal;font-weight:900;letter-spacing:.08em}
 
-.v2-marquee{
-  width:100%;
-}
-.v2-marquee-track{
-  display:flex;
-  gap:0!important;
-  width:max-content;
-  min-width:200vw;
-  padding:0!important;
-  animation:v2MarqueeLoop 26s linear infinite!important;
-  will-change:transform;
-}
-.v2-marquee-group{
-  flex:0 0 100vw;
-  min-width:100vw;
-  display:flex;
-  align-items:center;
-  justify-content:space-around;
-  gap:26px;
-  padding:16px 24px;
-}
-@keyframes v2MarqueeLoop{
-  from{transform:translateX(0)}
-  to{transform:translateX(-100vw)}
-}
-@media (prefers-reduced-motion:reduce){
-  .v2-marquee-track{animation:none!important}
-}
+/* Factual Synapse visual on Bots page */
+.v2-bot-visual.phx-synapse-factual{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;padding:22px!important;background:radial-gradient(circle at 80% 0,rgba(139,108,255,.12),transparent 32%),#10131b!important}.phx-syn-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:15px;border-bottom:1px solid rgba(255,255,255,.08)}.phx-syn-head span{font-size:10px;font-weight:900;letter-spacing:.14em}.phx-syn-head em{color:#67e7b4;font-style:normal;font-size:8px;font-weight:900}.phx-syn-step{padding:24px 18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:#121621;margin-top:18px}.phx-syn-step small{display:block;color:#8a72ff;font-size:8px;font-weight:900;letter-spacing:.12em}.phx-syn-step b{display:block;margin-top:9px;font-size:18px}.phx-syn-step span{display:block;margin-top:6px;color:#8c95a8;font-size:10px}.phx-syn-arrow{text-align:center;color:#6f778a;font-size:19px;line-height:1;margin:9px 0 -8px}.phx-syn-foot{display:flex;gap:8px;justify-content:space-between;margin-top:auto;padding-top:18px}.phx-syn-foot span{padding:8px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:#8790a4;font-size:7px;font-weight:900;letter-spacing:.08em}
 
-/* The generic spotlight image rule was also affecting the Synapse logo. */
-.v2-spotlight-media .v2-bot-visual img{
-  position:static!important;
-  inset:auto!important;
-  width:118px!important;
-  height:118px!important;
-  object-fit:contain!important;
-  z-index:3;
-}
-.v2-spotlight-media .v2-bot-visual{
-  min-height:390px;
-}
+/* Factual Synapse carousel card */
+.phx-carousel-synapse{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;background:radial-gradient(circle at 85% 10%,rgba(139,108,255,.13),transparent 30%),linear-gradient(145deg,#111520,#0c0f16)}.pcs-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}.pcs-top b{font-size:15px;letter-spacing:.04em}.pcs-top span{color:#757e92;font-size:8px;font-weight:900;letter-spacing:.12em}.pcs-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;flex:1}.pcs-flow article{padding:18px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:#141824}.pcs-flow small{display:block;color:#8b72ff;font-size:7px;font-weight:900;letter-spacing:.12em}.pcs-flow b{display:block;margin-top:10px;font-size:16px}.pcs-flow span{display:block;margin-top:6px;color:#81899c;font-size:9px;line-height:1.5}.pcs-flow i{font-style:normal;color:#5d6577}.pcs-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:16px;border-top:1px solid rgba(255,255,255,.08)}.pcs-bottom span{color:#67e7b4;font-size:8px;font-weight:900}.pcs-bottom em{color:#737c90;font-style:normal;font-size:8px}
 
-/* Keep the main catalog blocks visually aligned at every desktop width. */
-.v2-page-hero,
-.v2-section-head,
-.v2-filter-panel,
-.v2-catalog-meta,
-.v2-product-grid{
-  box-sizing:border-box;
-}
+/* Catalog filter controls: larger and easier to read */
+.v2-filter-panel{padding:22px!important}.v2-filter-top{grid-template-columns:1fr 250px!important}.v2-search,.v2-select{min-height:48px!important;font-size:13px!important}.v2-filter-row{margin-top:18px!important}.v2-filter-label{flex-basis:105px!important;font-size:9px!important;padding-top:10px!important}.v2-chip{padding:9px 13px!important;font-size:9px!important}.v2-filter-extra{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}.v2-filter-block>small{display:block;margin-bottom:10px;color:#687084;font-size:8px;font-weight:900;letter-spacing:.12em}.v2-price-controls{display:grid;grid-template-columns:1fr 1fr;gap:9px}.v2-price-field{display:grid;gap:6px}.v2-price-field label{color:#8a93a6;font-size:8px;font-weight:800}.v2-price-field input[type=number]{min-height:42px;border:1px solid var(--line);border-radius:11px;background:#0c0f16;color:#fff;padding:0 12px;font:inherit;font-size:11px}.v2-price-summary{margin-top:9px;color:#ff9a68;font-size:9px;font-weight:900}.v2-free-chip.active{border-color:rgba(89,227,173,.34)!important;background:rgba(89,227,173,.08)!important;color:#75e8b7!important}.v2-product-compat{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}.v2-compat{padding:6px 8px;border-radius:999px;border:1px solid rgba(66,216,255,.16);background:rgba(66,216,255,.04);color:#9de9fb;font-size:7px;font-weight:900;letter-spacing:.06em}.v2-lang-badge{border-color:rgba(139,108,255,.18);background:rgba(139,108,255,.05);color:#b9aaff}.v2-free-badge{color:#75e8b7!important;border-color:rgba(89,227,173,.25)!important}.v2-modal-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.v2-modal-meta>div{padding:12px;border:1px solid var(--line);border-radius:10px;background:#0d1017}.v2-modal-meta small{display:block;color:#687084;font-size:7px;font-weight:900;letter-spacing:.1em}.v2-modal-meta span{display:block;margin-top:7px;color:#d8dbe3;font-size:10px;font-weight:800}
 
-/* Stripe card replaces the accidental Tipeee card. */
-.v2-social-card.stripe{
-  border-color:rgba(139,108,255,.26);
-  background:linear-gradient(145deg,rgba(139,108,255,.08),#12151e);
-}
-
-@media(max-width:720px){
-  .v2-bot-hero-card,
-  .v2-service-grid{
-    width:min(100% - 24px,var(--max));
-  }
-  .v2-marquee-group{
-    gap:20px;
-    padding-inline:12px;
-  }
-}
+@media(max-width:720px){.v2-bot-hero-card,.v2-service-grid{width:min(100% - 24px,var(--max))}.v2-marquee-group{gap:20px;padding-inline:12px}.phx-board-grid{grid-template-columns:1fr}.phx-board-grid a:nth-child(n+3){display:none}.v2-filter-top{grid-template-columns:1fr!important}.v2-filter-extra{grid-template-columns:1fr}.v2-filter-label{flex:auto!important;padding-top:0!important}.pcs-flow{grid-template-columns:1fr}.pcs-flow i{transform:rotate(90deg);text-align:center}}
