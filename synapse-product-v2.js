@@ -4,25 +4,26 @@
 
   const config = window.PHOENIX_CONFIG || {};
   const invite = config.synapseInviteUrl || '';
-  const dashboard = config.synapseLoginUrl || config.synapseDashboardUrl || '';
+  const dashboard = config.synapseDashboardUrl || 'dashboard.html';
   const stripe = config.synapseStripeUrl || '';
   const discord = config.discordUrl || '';
   const logo = './assets/logo-phoenix-ph.png';
 
-  const link = (href, cls, label, attrs='') => href
+  const external = (href, cls, label, attrs='') => href
     ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener" ${attrs}>${label}</a>`
     : '';
+  const internal = (href, cls, label, attrs='') => href
+    ? `<a class="${cls}" href="${href}" ${attrs}>${label}</a>`
+    : '';
 
-  const dashboardButton = dashboard
-    ? link(dashboard,'syn-v2-btn syn-v2-btn-ghost','Ouvrir le dashboard ↗','data-dashboard-link')
-    : `<span class="syn-v2-dashboard-note">Dashboard accessible après connexion Discord</span>`;
+  const dashboardButton = internal(dashboard,'syn-v2-btn syn-v2-btn-ghost','Ouvrir le dashboard ↗','data-dashboard-link');
 
   document.body.innerHTML = `
   <div class="syn-v2">
     <header class="syn-v2-header" data-syn-v2-header>
-      <a class="syn-v2-brand" href="index.html"><img src="${logo}" alt=""><span><b>Phoenix Inc.</b><small>Development</small></span></a>
-      <nav class="syn-v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html" class="active">Bots</a><a href="services.html">Web · Apps · Autres</a></nav>
-      <div class="syn-v2-actions">${link(discord,'syn-v2-btn syn-v2-btn-ghost','Discord ↗')}<button class="syn-v2-menu" type="button" data-syn-v2-menu>☰</button></div>
+      <a class="syn-v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="${logo}" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
+      <nav class="syn-v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html" class="active">Bots</a><a href="dashboard.html">Dashboard</a><a href="services.html">Web · Apps · Autres</a></nav>
+      <div class="syn-v2-actions">${external(discord,'syn-v2-btn syn-v2-btn-ghost','Discord ↗')}<button class="syn-v2-menu" type="button" data-syn-v2-menu>☰</button></div>
     </header>
 
     <main>
@@ -30,10 +31,10 @@
         <article class="syn-v2-copy">
           <span class="syn-v2-kicker">DISCORD / SYNAPSE</span>
           <h1>Construisez votre Discord.<br><span class="syn-v2-gradient">Gardez le contrôle ensuite.</span></h1>
-          <p>Synapse construit la base de votre serveur avec le Builder, puis vous laisse tout gérer depuis un dashboard web : salons, rôles, permissions, tickets, modération, communauté et réglages restent modifiables après la création.</p>
+          <p>Synapse construit la base de votre serveur avec le Builder, puis vous laisse tout gérer depuis le dashboard intégré : salons, rôles, permissions, tickets, modération, communauté et réglages restent modifiables après la création.</p>
           <div class="syn-v2-pills"><span class="syn-v2-pill">Builder</span><span class="syn-v2-pill">Dashboard</span><span class="syn-v2-pill">Tickets</span><span class="syn-v2-pill">Modération</span><span class="syn-v2-pill">Communauté</span><span class="syn-v2-pill">Interserver</span></div>
           <div class="syn-v2-free-entry"><b>GRATUIT POUR COMMENCER</b><span>Premium uniquement pour les fonctions avancées.</span></div>
-          <div class="syn-v2-hero-actions">${link(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse à mon Discord ↗')}${dashboardButton}</div>
+          <div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse à mon Discord ↗')}${dashboardButton}</div>
         </article>
 
         <article class="syn-v2-workflow">
@@ -81,15 +82,15 @@
 
       <section class="syn-v2-section syn-v2-shell">
         <div class="syn-v2-premium">
-          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Plus de contrôle.<br>Plus d’automatisation.</h2><p>Commencez gratuitement. Passez Premium quand vous en avez besoin : sécurité avancée, automatisations et modules supplémentaires viennent compléter l’expérience sans bloquer la base gratuite.</p><div class="syn-v2-premium-price"><strong>5 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${link(stripe,'syn-v2-btn syn-v2-btn-primary','Passer Premium avec Stripe ↗')}${dashboard ? link(dashboard,'syn-v2-btn syn-v2-btn-ghost','Gérer mon abonnement ↗') : ''}</div></div>
+          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Plus de contrôle.<br>Plus d’automatisation.</h2><p>Commencez gratuitement. Passez Premium quand vous en avez besoin : sécurité avancée, automatisations et modules supplémentaires viennent compléter l’expérience sans bloquer la base gratuite.</p><div class="syn-v2-premium-price"><strong>5 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${external(stripe,'syn-v2-btn syn-v2-btn-primary','Passer Premium avec Stripe ↗')}${internal('dashboard.html#premium','syn-v2-btn syn-v2-btn-ghost','Gérer mon abonnement ↗')}</div></div>
           <div class="syn-v2-premium-list"><span>AutoMod avancé</span><span>Anti-Raid</span><span>Backups de structure</span><span>Interserver</span><span>Temp Voice</span><span>Levels & XP</span><span>Giveaways</span><span>Commandes personnalisées</span><span>Réglages avancés</span><span>Automatisations supplémentaires</span></div>
         </div>
       </section>
 
-      <section class="syn-v2-shell syn-v2-final"><div><span class="syn-v2-kicker">PRÊT À COMMENCER ?</span><h2>Ajoutez Synapse.<br>Construisez votre serveur.</h2><p>Une fois Synapse autorisé sur votre Discord, le dashboard devient votre espace de gestion pour modifier la structure et les modules.</p></div><div class="syn-v2-hero-actions">${link(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse ↗')}${dashboard ? link(dashboard,'syn-v2-btn syn-v2-btn-ghost','Se connecter au dashboard ↗') : ''}</div></section>
+      <section class="syn-v2-shell syn-v2-final"><div><span class="syn-v2-kicker">PRÊT À COMMENCER ?</span><h2>Ajoutez Synapse.<br>Construisez votre serveur.</h2><p>Une fois Synapse autorisé sur votre Discord, le dashboard intégré devient votre espace de gestion pour modifier la structure et les modules.</p></div><div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse ↗')}${internal(dashboard,'syn-v2-btn syn-v2-btn-ghost','Ouvrir le dashboard ↗')}</div></section>
     </main>
 
-    <footer class="syn-v2-footer"><span>© 2026 Phoenix Inc. Development</span><span>Synapse · Free + Premium · Discord platform</span></footer>
+    <footer class="syn-v2-footer"><span>© 2026 Phoenix Inc | Development</span><span>Synapse · Free + Premium · Discord platform</span></footer>
   </div>`;
 
   document.querySelector('[data-syn-v2-menu]')?.addEventListener('click',()=>document.querySelector('[data-syn-v2-header]')?.classList.toggle('open'));
