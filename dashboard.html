@@ -1,188 +1,49 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#0a0b10">
   <link rel="icon" href="./assets/favicon.ico" sizes="any">
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
-  <meta name="description" content="Dashboard Synapse intégré à Phoenix Inc | Development : Builder, tickets, modération, communauté et abonnement Premium.">
-  <title>Dashboard Synapse — Phoenix Inc | Development</title>
+  <meta name="description" content="Le Dashboard Web Synapse est en développement. La V1 de Synapse se configure directement dans Discord.">
+  <title>Dashboard Synapse — Prochainement — Phoenix Inc | Development</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="catalog.css">
-  <link rel="stylesheet" href="dashboard.css">
+  <style>
+    .future-shell{width:min(1450px,calc(100% - 44px));margin:0 auto;padding:150px 0 90px}.future-hero{padding:50px;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 90% 0,rgba(139,108,255,.18),transparent 36%),linear-gradient(145deg,#121621,#0b0e14)}.future-status{display:inline-flex;align-items:center;gap:9px;padding:9px 12px;border:1px solid rgba(255,202,98,.2);border-radius:999px;background:rgba(255,202,98,.06);color:#ffca62;font-size:9px;font-weight:900;letter-spacing:.12em}.future-status i{width:7px;height:7px;border-radius:50%;background:#ffca62;box-shadow:0 0 12px rgba(255,202,98,.5)}.future-hero h1{margin:22px 0 16px;font-size:clamp(54px,7vw,96px);line-height:.94}.future-hero h1 span{background:linear-gradient(90deg,#ff6b2c,#8b6cff,#42d8ff);-webkit-background-clip:text;background-clip:text;color:transparent}.future-hero p{max-width:850px;color:#929bad;font-size:17px;line-height:1.72}.future-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.future-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:28px}.future-card{min-height:270px;padding:26px;border:1px solid var(--line);border-radius:20px;background:#10141d;display:flex;flex-direction:column;justify-content:flex-end}.future-card:nth-child(1){background:radial-gradient(circle at 85% 10%,rgba(139,108,255,.18),transparent 34%),#10141d}.future-card:nth-child(2){background:radial-gradient(circle at 85% 10%,rgba(255,107,44,.16),transparent 34%),#10141d}.future-card:nth-child(3){background:radial-gradient(circle at 85% 10%,rgba(66,216,255,.16),transparent 34%),#10141d}.future-card:nth-child(4){background:radial-gradient(circle at 85% 10%,rgba(89,227,173,.15),transparent 34%),#10141d}.future-card:nth-child(5){background:radial-gradient(circle at 85% 10%,rgba(255,202,98,.15),transparent 34%),#10141d}.future-card:nth-child(6){background:radial-gradient(circle at 85% 10%,rgba(139,108,255,.14),transparent 34%),#10141d}.future-card small{color:#7e899d;font-size:9px;font-weight:900;letter-spacing:.13em}.future-card h2{margin:11px 0 8px;font-size:26px}.future-card p{margin:0;color:#818b9e;font-size:12px;line-height:1.65}.future-note{margin-top:30px;padding:28px;border:1px solid rgba(89,227,173,.14);border-radius:20px;background:rgba(89,227,173,.04)}.future-note h3{margin:0 0 8px;font-size:22px}.future-note p{margin:0;color:#8993a5;line-height:1.65}:root[data-theme="light"] .future-hero,:root[data-theme="light"] .future-card,:root[data-theme="light"] .future-note{background:#fff!important;color:#171d2a;border-color:rgba(18,24,38,.10)!important}:root[data-theme="light"] .future-hero p,:root[data-theme="light"] .future-card p,:root[data-theme="light"] .future-note p{color:#667087!important}@media(max-width:950px){.future-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:650px){.future-shell{width:min(100% - 24px,1450px);padding-top:120px}.future-hero{padding:30px}.future-grid{grid-template-columns:1fr}.future-hero h1{font-size:54px}}
+  </style>
 </head>
-<body class="v2-page v2-dashboard-page">
-<header class="v2-header" data-site-header>
-  <a class="v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
-  <nav class="v2-nav" aria-label="Navigation principale">
-    <a href="index.html">Accueil</a>
-    <a href="scripts.html">Scripts</a>
-    <a href="bots.html">Bots</a>
-    <a href="dashboard.html" class="active">Dashboard</a>
-    <a href="services.html">Web · Apps · Autres</a>
-  </nav>
-  <div class="v2-header-actions">
-    <a class="v2-icon-link" data-config-link="discordUrl" target="_blank" rel="noopener">Discord ↗</a>
-    <button class="v2-lang" type="button" data-lang-toggle-v2 aria-label="Changer de langue"><span>FR</span><i></i><span>EN</span></button>
-    <button class="v2-menu" type="button" data-menu-toggle aria-label="Menu"><span></span><span></span></button>
-  </div>
-</header>
+<body class="v2-page v2-dashboard-future-page">
+  <header class="v2-header">
+    <a class="v2-brand" href="index.html"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
+    <nav class="v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html">Bots</a><a href="synapse-commands.html">Commandes</a><a href="services.html">Web · Apps · Autres</a></nav>
+    <div class="v2-header-actions"><a class="v2-btn v2-btn-ghost" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a><button class="v2-menu" type="button">☰</button></div>
+  </header>
 
-<main class="syn-dashboard">
-  <section class="syn-dash-hero v2-shell">
-    <div>
-      <span class="v2-kicker">SYNAPSE / DASHBOARD</span>
-      <h1>Votre serveur.<br><span class="v2-gradient">Toujours modifiable.</span></h1>
-      <p>Le Builder crée la base. Ici, vous reprenez la main : structure, salons, rôles, permissions, tickets, modération, communauté, Premium et facturation.</p>
-    </div>
-    <div class="syn-dash-user" data-dash-user>
-      <span class="syn-dot"></span><b>Connexion Discord</b><small>Vérification en cours…</small>
-    </div>
-  </section>
+  <main class="future-shell">
+    <section class="future-hero">
+      <span class="future-status"><i></i> EN DÉVELOPPEMENT</span>
+      <h1>Dashboard Web<br><span>Synapse.</span></h1>
+      <p>Le Dashboard complet arrivera dans une future mise à jour. Pour la V1, Synapse est volontairement pensé pour fonctionner directement dans Discord avec des commandes, formulaires, boutons et menus natifs. Cela permet un déploiement plus simple tout en gardant le contrôle sur le Builder et les modules.</p>
+      <div class="future-actions"><a class="v2-btn v2-btn-primary" href="synapse-commands.html">Voir les commandes →</a><a class="v2-btn v2-btn-ghost" href="synapse-bot.html">Retour à Synapse →</a></div>
+    </section>
 
-  <section class="v2-shell syn-auth-gate" data-auth-gate hidden>
-    <div class="syn-auth-card">
-      <div class="syn-auth-icon"><img src="./assets/logo-phoenix-ph.png" alt=""></div>
-      <span class="v2-kicker">ACCÈS SYNAPSE</span>
-      <h2>Connectez votre compte Discord.</h2>
-      <p>Synapse utilise Discord pour afficher uniquement les serveurs que vous pouvez administrer. Une fois connecté, choisissez votre serveur et gérez tout depuis cette page.</p>
-      <div class="syn-auth-actions">
-        <a class="v2-btn v2-btn-violet" data-discord-login>Se connecter avec Discord ↗</a>
-        <a class="v2-btn v2-btn-ghost" data-config-link="synapseInviteUrl" target="_blank" rel="noopener">Ajouter Synapse à votre serveur ↗</a>
-      </div>
-      <small class="syn-auth-note" data-auth-note></small>
-    </div>
-  </section>
+    <section class="future-grid">
+      <article class="future-card"><small>BUILDER</small><h2>Structure & adaptation</h2><p>Visualiser puis modifier salons, catégories, rôles et permissions depuis le web.</p></article>
+      <article class="future-card"><small>TICKETS</small><h2>Ticket Studio</h2><p>Panels, boutons, formulaires, staff, transcripts, statistiques et workflows.</p></article>
+      <article class="future-card"><small>SÉCURITÉ</small><h2>AutoMod & protections</h2><p>Anti-spam, anti-raid, whitelists, sanctions et historique de sécurité.</p></article>
+      <article class="future-card"><small>MULTI-SERVEURS</small><h2>Centre de contrôle</h2><p>Basculer entre les Discord où Synapse est installé depuis une seule interface.</p></article>
+      <article class="future-card"><small>PREMIUM</small><h2>Abonnement & codes</h2><p>Suivre l’état Premium, les avantages et les codes offerts ou lifetime.</p></article>
+      <article class="future-card"><small>COMMUNAUTÉ</small><h2>Messages & automatisations</h2><p>Bienvenue, embeds, rôles, annonces, suggestions et automatisations visuelles.</p></article>
+    </section>
 
-  <section class="v2-shell syn-guild-picker" data-guild-picker hidden>
-    <div class="syn-picker-head"><div><span class="v2-kicker">MES SERVEURS</span><h2>Choisissez le Discord à gérer.</h2></div><button class="v2-btn v2-btn-ghost" type="button" data-refresh-guilds>Actualiser</button></div>
-    <div class="syn-guild-grid" data-guild-grid></div>
-  </section>
+    <section class="future-note"><h3>La priorité actuelle : une V1 Discord-first.</h3><p>Le Dashboard n’est pas abandonné. Il devient simplement une évolution future afin que Synapse puisse être publié et hébergé plus facilement dès maintenant.</p></section>
+  </main>
 
-  <section class="v2-shell syn-dash-app" data-dashboard-app hidden>
-    <aside class="syn-dash-sidebar">
-      <div class="syn-server-card">
-        <div class="syn-server-avatar" data-server-avatar><img src="./assets/logo-phoenix-ph.png" alt="Synapse"></div>
-        <div><b data-server-name>Serveur</b><small data-server-plan>FREE</small></div>
-      </div>
-      <nav class="syn-dash-tabs" aria-label="Navigation du dashboard">
-        <button class="active" data-tab="overview"><span>01</span>Vue d’ensemble</button>
-        <button data-tab="builder"><span>02</span>Server Builder</button>
-        <button data-tab="structure"><span>03</span>Structure</button>
-        <button data-tab="tickets"><span>04</span>Tickets</button>
-        <button data-tab="moderation"><span>05</span>Modération</button>
-        <button data-tab="community"><span>06</span>Communauté</button>
-        <button data-tab="premium"><span>07</span>Premium & Facturation</button>
-      </nav>
-      <button class="syn-change-server" type="button" data-change-server>Changer de serveur</button>
-    </aside>
-
-    <div class="syn-dash-content">
-      <section class="syn-panel active" data-panel="overview">
-        <div class="syn-panel-head"><div><span class="v2-kicker">OVERVIEW</span><h2>Tout ce qui compte, ici.</h2></div><span class="syn-live"><i></i> SYNAPSE ACTIF</span></div>
-        <div class="syn-overview-stats">
-          <article><small>SALONS</small><strong data-stat-channels>—</strong><span>structure actuelle</span></article>
-          <article><small>RÔLES</small><strong data-stat-roles>—</strong><span>permissions incluses</span></article>
-          <article><small>TICKETS</small><strong data-stat-tickets>—</strong><span>module de support</span></article>
-          <article><small>OFFRE</small><strong data-stat-plan>FREE</strong><span>Premium optionnel</span></article>
-        </div>
-        <div class="syn-overview-grid">
-          <article class="syn-dash-card accent"><small>BUILDER</small><h3>La structure reste modifiable.</h3><p>Ce que le Builder a créé n’est jamais figé. Revenez sur les salons, rôles et permissions puis appliquez vos changements.</p><button class="syn-text-button" type="button" data-go-tab="builder">Ouvrir le Builder →</button></article>
-          <article class="syn-dash-card"><small>GESTION</small><h3>Modules réunis.</h3><p>Tickets, modération et communauté sont configurables depuis la même interface, sans empiler les commandes Discord.</p><button class="syn-text-button" type="button" data-go-tab="tickets">Gérer les modules →</button></article>
-        </div>
-      </section>
-
-      <section class="syn-panel" data-panel="builder">
-        <div class="syn-panel-head"><div><span class="v2-kicker">SERVER BUILDER</span><h2>Construire puis ajuster.</h2></div><span class="syn-save-state" data-builder-state>PRÊT</span></div>
-        <div class="syn-builder-workspace">
-          <aside class="syn-template-list">
-            <small>TEMPLATE</small>
-            <button class="active" type="button" data-template="community"><b>Community</b><span>Communauté polyvalente</span></button>
-            <button type="button" data-template="gaming"><b>Gaming</b><span>Jeu & vocal</span></button>
-            <button type="button" data-template="support"><b>Support</b><span>Tickets & équipe</span></button>
-            <button type="button" data-template="blank"><b>Personnalisé</b><span>Partir de votre structure</span></button>
-          </aside>
-          <div class="syn-builder-editor">
-            <div class="syn-builder-toolbar"><div><small>STRUCTURE</small><b data-builder-title>Community Server</b></div><button class="v2-btn v2-btn-violet" type="button" data-apply-builder>Appliquer les modifications</button></div>
-            <div class="syn-builder-tree" data-builder-tree></div>
-            <div class="syn-builder-hint">Catégories · salons · rôles · permissions · tout reste modifiable après le build.</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="syn-panel" data-panel="structure">
-        <div class="syn-panel-head"><div><span class="v2-kicker">STRUCTURE</span><h2>Modifier ce qui existe déjà.</h2></div><button class="v2-btn v2-btn-ghost" type="button" data-refresh-structure>Actualiser</button></div>
-        <div class="syn-structure-grid">
-          <article class="syn-dash-card"><div class="syn-card-title"><div><small>CATÉGORIES & SALONS</small><h3>Organisation Discord</h3></div><button type="button" data-add-channel>+ Ajouter</button></div><div class="syn-list" data-channel-list><span class="syn-loading">Chargement…</span></div></article>
-          <article class="syn-dash-card"><div class="syn-card-title"><div><small>RÔLES & PERMISSIONS</small><h3>Accès du serveur</h3></div><button type="button" data-add-role>+ Ajouter</button></div><div class="syn-list" data-role-list><span class="syn-loading">Chargement…</span></div></article>
-        </div>
-      </section>
-
-      <section class="syn-panel" data-panel="tickets">
-        <div class="syn-panel-head"><div><span class="v2-kicker">TICKETS</span><h2>Le support, sans commandes.</h2></div><label class="syn-switch"><input type="checkbox" data-ticket-enabled><span></span>Activer</label></div>
-        <div class="syn-settings-grid">
-          <label><span>Nom du panneau</span><input type="text" data-ticket-title placeholder="Support"></label>
-          <label><span>Catégorie des tickets</span><input type="text" data-ticket-category placeholder="SUPPORT"></label>
-          <label><span>Rôle support</span><input type="text" data-ticket-role placeholder="Support"></label>
-          <label><span>Salon de transcripts</span><input type="text" data-ticket-transcripts placeholder="#transcripts"></label>
-          <label class="full"><span>Message du panneau</span><textarea rows="5" data-ticket-message placeholder="Besoin d’aide ? Ouvrez un ticket."></textarea></label>
-        </div>
-        <button class="v2-btn v2-btn-violet" type="button" data-save-module="tickets">Enregistrer les tickets</button>
-      </section>
-
-      <section class="syn-panel" data-panel="moderation">
-        <div class="syn-panel-head"><div><span class="v2-kicker">MODÉRATION</span><h2>Les règles utiles, visuellement.</h2></div></div>
-        <div class="syn-module-cards">
-          <label class="syn-toggle-card"><input type="checkbox" data-mod="logs"><span><b>Logs de modération</b><small>Warn, timeout, kick, ban et clear.</small></span><i></i></label>
-          <label class="syn-toggle-card"><input type="checkbox" data-mod="antiSpam"><span><b>Anti-spam</b><small>Réduit les messages répétés et le flood.</small></span><i></i></label>
-          <label class="syn-toggle-card premium"><input type="checkbox" data-mod="automod"><span><b>AutoMod avancé</b><small>Filtres et règles Premium.</small></span><em>PREMIUM</em></label>
-          <label class="syn-toggle-card premium"><input type="checkbox" data-mod="antiRaid"><span><b>Anti-Raid</b><small>Protection renforcée des arrivées massives.</small></span><em>PREMIUM</em></label>
-        </div>
-        <button class="v2-btn v2-btn-violet" type="button" data-save-module="moderation">Enregistrer la modération</button>
-      </section>
-
-      <section class="syn-panel" data-panel="community">
-        <div class="syn-panel-head"><div><span class="v2-kicker">COMMUNAUTÉ</span><h2>Accueil et vie du serveur.</h2></div></div>
-        <div class="syn-settings-grid">
-          <label><span>Salon de bienvenue</span><input type="text" data-community-welcome-channel placeholder="#bienvenue"></label>
-          <label><span>Rôle automatique</span><input type="text" data-community-role placeholder="Membre"></label>
-          <label class="full"><span>Message de bienvenue</span><textarea rows="4" data-community-welcome-message placeholder="Bienvenue {user} sur {server} !"></textarea></label>
-        </div>
-        <div class="syn-module-cards compact">
-          <label class="syn-toggle-card"><input type="checkbox" data-community="welcome"><span><b>Welcome / Goodbye</b><small>Messages d’arrivée et de départ.</small></span><i></i></label>
-          <label class="syn-toggle-card"><input type="checkbox" data-community="suggestions"><span><b>Suggestions</b><small>Idées et votes communautaires.</small></span><i></i></label>
-          <label class="syn-toggle-card"><input type="checkbox" data-community="roles"><span><b>Rôles</b><small>Attribution et menus de rôles.</small></span><i></i></label>
-        </div>
-        <button class="v2-btn v2-btn-violet" type="button" data-save-module="community">Enregistrer la communauté</button>
-      </section>
-
-      <section class="syn-panel" data-panel="premium" id="premium">
-        <div class="syn-panel-head"><div><span class="v2-kicker">PREMIUM & FACTURATION</span><h2>Gratuit d’abord.<br>Premium si nécessaire.</h2></div><span class="syn-plan-badge" data-plan-badge>FREE</span></div>
-        <div class="syn-billing-grid">
-          <article class="syn-premium-card">
-            <small>SYNAPSE PREMIUM</small><h3>5 € <span>/ mois / serveur</span></h3><p>Sécurité avancée, automatisations et modules supplémentaires. L’essentiel reste disponible gratuitement.</p>
-            <div class="syn-premium-features"><span>AutoMod avancé</span><span>Anti-Raid</span><span>Backups</span><span>Interserver</span><span>Temp Voice</span><span>Levels & XP</span><span>Giveaways</span><span>Commandes personnalisées</span></div>
-            <a class="v2-btn v2-btn-violet" data-premium-upgrade target="_blank" rel="noopener">Passer Premium ↗</a>
-          </article>
-          <article class="syn-billing-card">
-            <small>MON ABONNEMENT</small><h3 data-billing-title>Synapse Free</h3><p data-billing-copy>Aucun abonnement payant actif sur ce serveur.</p>
-            <div class="syn-billing-row"><span>Statut</span><b data-billing-status>FREE</b></div>
-            <div class="syn-billing-row"><span>Renouvellement</span><b data-billing-renewal>—</b></div>
-            <button class="v2-btn v2-btn-ghost" type="button" data-billing-portal>Gérer la facturation avec Stripe ↗</button>
-            <small class="syn-billing-note">Le portail Stripe permet de modifier ou arrêter le renouvellement. L’accès Premium reste actif jusqu’à la fin de la période payée.</small>
-          </article>
-        </div>
-      </section>
-    </div>
-  </section>
-</main>
-
-<footer class="v2-footer"><div class="v2-footer-main"><a class="v2-brand" href="index.html"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a><p>Synapse · Builder · Dashboard · Free + Premium.</p><div class="v2-footer-links"><a href="scripts.html">Scripts</a><a href="bots.html">Bots</a><a href="services.html">Web · Apps · Autres</a><a data-config-link="discordUrl" target="_blank" rel="noopener">Discord</a></div></div><div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span>Synapse Dashboard</span></div></footer>
-
-<script src="config.js"></script>
-<script src="dashboard.js"></script>
+  <footer class="v2-footer"><div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span>Synapse Dashboard · Future update</span></div></footer>
+  <script src="config.js"></script>
 </body>
 </html>
