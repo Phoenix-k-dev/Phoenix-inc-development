@@ -8,7 +8,7 @@ window.PHOENIX_PRODUCTS = [
     popularity: 0,
     recentRank: 2,
     featuredRank: 1,
-    image: "assets/ph-garage-ui.png",
+    image: "assets/ph-garage-showcase.webp",
     tags: ["Vehicles", "Persistent", "Marketplace", "Garage"],
     frameworks: ["Standalone", "ESX", "QBCore"],
     languages: ["FR", "EN", "ES"],
