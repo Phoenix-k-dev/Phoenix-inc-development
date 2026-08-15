@@ -2,13 +2,16 @@
   const commands = [
     {cat:'Builder & adaptation',cmd:'/analyse_serveur',desc:'Analyse la structure, le style visuel, les rôles staff et les modules détectables sans modifier le serveur.',access:'Responsables'},
     {cat:'Builder & adaptation',cmd:'/builder template',desc:'Crée une structure complète depuis un template puis un preset visuel, avec aperçu privé avant validation.',access:'Responsables'},
-    {cat:'Builder & adaptation',cmd:'/builder ajouter_salon',desc:'Ajoute un salon en reprenant en priorité la DA des salons voisins de la catégorie choisie.',access:'Responsables'},
+    {cat:'Builder & adaptation',cmd:'/builder ajouter_salon',desc:'Ajoute un salon en analysant en priorité la DA des salons voisins de la catégorie choisie. Aucune analyse préalable n’est nécessaire.',access:'Responsables'},
     {cat:'Builder & adaptation',cmd:'/builder ajouter_categorie',desc:'Ajoute une catégorie en reprenant automatiquement le style global détecté du serveur.',access:'Responsables'},
 
-    {cat:'Tickets',cmd:'/tickets analyser',desc:'Analyse les salons et catégories liés aux tickets puis recommande un Ticket Studio adapté au type de serveur.',access:'Responsables'},
-    {cat:'Tickets',cmd:'/tickets installer',desc:'Lance le Ticket Studio : détecte l’existant, propose mettre à jour / compléter / remplacer, puis affiche les presets et un aperçu avant installation.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets analyser',desc:'Analyse les salons et catégories liés aux tickets puis recommande un template adapté au type de serveur.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets installer',desc:'Détecte l’existant, propose mettre à jour / compléter / remplacer, puis affiche les templates et un aperçu avant installation.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets voir',desc:'Affiche le template actif, le panel, la catégorie et les identifiants des types de tickets.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets type_ajouter',desc:'Complète le template actif avec un bouton/type de ticket personnalisé et actualise automatiquement le panel.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets type_retirer',desc:'Retire un type de ticket personnalisé et actualise automatiquement le panel.',access:'Responsables'},
     {cat:'Tickets',cmd:'/tickets ouvrir',desc:'Ouvre un ticket privé selon le type de demande configuré sur le serveur.',access:'Tous'},
-    {cat:'Tickets',cmd:'/tickets fermer',desc:'Ferme le ticket Synapse actuel.',access:'Staff'},
+    {cat:'Tickets',cmd:'/tickets fermer',desc:'Ferme le ticket Synapse actuel.',access:'Tous*'},
 
     {cat:'Communauté',cmd:'/annonce',desc:'Ouvre un formulaire pour publier une annonce structurée dans le salon actuel.',access:'Staff'},
     {cat:'Communauté',cmd:'/recherche',desc:'Publie une recherche structurée via un formulaire Synapse.',access:'Staff'},
