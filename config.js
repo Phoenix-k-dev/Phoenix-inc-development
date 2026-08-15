@@ -58,6 +58,7 @@ window.PHOENIX_CONFIG={
   js('payment-links.js','phoenix-payments');
   js('ui-fixes.js','phoenix-ui-fixes');
   js('brand-nav.js','phoenix-brand-nav');
+  js('legal-links.js?v=20260816-0102','phoenix-legal-links');
 
   if(document.body.classList.contains('v2-home')) js('home-contact.js?v=20260815-1942','phoenix-home-contact');
   if(document.body.classList.contains('v2-scripts')) js('catalog-filters-v2.js','catalog-filters-v2');
