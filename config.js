@@ -7,6 +7,7 @@ window.PHOENIX_CONFIG={
   githubUrl:"https://github.com/Phoenix-k-dev",
   discordApplicationId:"1535652568150057011",
   synapseInviteUrl:"https://discord.com/oauth2/authorize?client_id=1535652568150057011&scope=bot%20applications.commands&integration_type=0",
+  synapseDiscordStoreUrl:"https://discord.com/application-directory/1535652568150057011/store",
   synapseDashboardUrl:"dashboard.html",
   synapseLoginUrl:"/auth/discord",
   synapseMeUrl:"/api/me",
