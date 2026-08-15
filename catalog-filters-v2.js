@@ -45,11 +45,12 @@
     const languages = p.languages || [];
     row.innerHTML = `${frameworks.map(x=>`<span class="v2-compat">${x}</span>`).join('')}${languages.map(x=>`<span class="v2-compat v2-lang-badge">${x}</span>`).join('')}`;
     body.querySelector('.v2-product-tags')?.insertAdjacentElement('afterend', row);
-    if (p.price === 0) card.querySelector('.v2-product-badges')?.insertAdjacentHTML('afterbegin','<span class="v2-badge v2-free-badge">FREE</span>');
+    if (p.price === 0 && !card.querySelector('.v2-free-badge')) card.querySelector('.v2-product-badges')?.insertAdjacentHTML('afterbegin','<span class="v2-badge v2-free-badge">FREE</span>');
   };
 
   const apply = () => {
-    if (applying) return; applying = true;
+    if (applying) return;
+    applying = true;
     let visible = 0;
     [...grid.querySelectorAll('.v2-product-card')].forEach(card => {
       addCompatibility(card);
@@ -74,7 +75,9 @@
     apply();
   }));
   extra.querySelector('[data-free-v2]')?.addEventListener('click',e=>{
-    freeOnly = !freeOnly; e.currentTarget.classList.toggle('active',freeOnly); apply();
+    freeOnly = !freeOnly;
+    e.currentTarget.classList.toggle('active',freeOnly);
+    apply();
   });
 
   const min = extra.querySelector('[data-price-min-v2]');
@@ -87,7 +90,8 @@
     summary.textContent = `${minPrice} € — ${maxPrice} €`;
     apply();
   };
-  min.addEventListener('input',updatePrice); max.addEventListener('input',updatePrice);
+  min.addEventListener('input',updatePrice);
+  max.addEventListener('input',updatePrice);
 
   const reset = document.querySelector('[data-reset-filters]');
   reset?.addEventListener('click',()=>{
@@ -103,18 +107,29 @@
 
   const modal = document.querySelector('[data-product-modal]');
   if (modal) {
-    const modalObserver = new MutationObserver(()=>{
+    const hydrateModalMeta = () => {
       if (!modal.classList.contains('open')) return;
       const name = modal.querySelector('[data-modal-title]')?.textContent.trim();
-      const p = products.find(x=>x.name===name); if (!p) return;
+      const p = products.find(x=>x.name===name);
+      if (!p) return;
       let meta = modal.querySelector('.v2-modal-meta');
       if (!meta) {
-        meta = document.createElement('div'); meta.className='v2-modal-meta';
+        meta = document.createElement('div');
+        meta.className='v2-modal-meta';
         modal.querySelector('[data-modal-tags]')?.insertAdjacentElement('afterend',meta);
       }
-      meta.innerHTML = `<div><small>COMPATIBILITÉ</small><span>${(p.frameworks||[]).join(' · ')}</span></div><div><small>LANGUES</small><span>${(p.languages||[]).join(' · ')}</span></div>`;
+      const next = `<div><small>COMPATIBILITÉ</small><span>${(p.frameworks||[]).join(' · ')}</span></div><div><small>LANGUES</small><span>${(p.languages||[]).join(' · ')}</span></div>`;
+      if (meta.innerHTML !== next) meta.innerHTML = next;
+    };
+
+    // Observe uniquement l'ouverture/fermeture de la modale. Ne jamais observer
+    // son subtree : hydrateModalMeta modifie lui-même son contenu.
+    const modalObserver = new MutationObserver(hydrateModalMeta);
+    modalObserver.observe(modal,{attributes:true,attributeFilter:['class']});
+
+    document.addEventListener('click', event => {
+      if (event.target.closest('[data-open-product]')) setTimeout(hydrateModalMeta,0);
     });
-    modalObserver.observe(modal,{attributes:true,attributeFilter:['class'],subtree:true,childList:true});
   }
 
   setTimeout(apply,0);
