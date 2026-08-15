@@ -1,0 +1,83 @@
+/* Layout and interaction fixes for the catalog redesign */
+.v2-bot-hero-card,
+.v2-service-grid{
+  width:min(var(--max),calc(100% - 44px));
+  margin-left:auto!important;
+  margin-right:auto!important;
+}
+
+.v2-faq{
+  align-items:start;
+}
+.v2-faq details{
+  align-self:start;
+  height:auto;
+}
+
+.v2-marquee{
+  width:100%;
+}
+.v2-marquee-track{
+  display:flex;
+  gap:0!important;
+  width:max-content;
+  min-width:200vw;
+  padding:0!important;
+  animation:v2MarqueeLoop 26s linear infinite!important;
+  will-change:transform;
+}
+.v2-marquee-group{
+  flex:0 0 100vw;
+  min-width:100vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:26px;
+  padding:16px 24px;
+}
+@keyframes v2MarqueeLoop{
+  from{transform:translateX(0)}
+  to{transform:translateX(-100vw)}
+}
+@media (prefers-reduced-motion:reduce){
+  .v2-marquee-track{animation:none!important}
+}
+
+/* The generic spotlight image rule was also affecting the Synapse logo. */
+.v2-spotlight-media .v2-bot-visual img{
+  position:static!important;
+  inset:auto!important;
+  width:118px!important;
+  height:118px!important;
+  object-fit:contain!important;
+  z-index:3;
+}
+.v2-spotlight-media .v2-bot-visual{
+  min-height:390px;
+}
+
+/* Keep the main catalog blocks visually aligned at every desktop width. */
+.v2-page-hero,
+.v2-section-head,
+.v2-filter-panel,
+.v2-catalog-meta,
+.v2-product-grid{
+  box-sizing:border-box;
+}
+
+/* Stripe card replaces the accidental Tipeee card. */
+.v2-social-card.stripe{
+  border-color:rgba(139,108,255,.26);
+  background:linear-gradient(145deg,rgba(139,108,255,.08),#12151e);
+}
+
+@media(max-width:720px){
+  .v2-bot-hero-card,
+  .v2-service-grid{
+    width:min(100% - 24px,var(--max));
+  }
+  .v2-marquee-group{
+    gap:20px;
+    padding-inline:12px;
+  }
+}
