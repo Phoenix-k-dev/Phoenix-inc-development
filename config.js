@@ -39,6 +39,7 @@ window.PHOENIX_CONFIG={
     css('dashboard-multiserver.css','synapse-multiserver');
     css('dashboard-billing.css','synapse-billing');
     css('dashboard-recovery.css?v=20260815-1852','synapse-dashboard-recovery');
+    css('dashboard-dock.css?v=20260815-1900','synapse-dashboard-dock');
   }
 
   js('theme-toggle.js','phoenix-theme');
@@ -59,5 +60,6 @@ window.PHOENIX_CONFIG={
     js('dashboard-multiserver.js','synapse-multiserver');
     js('dashboard-billing.js','synapse-billing');
     js('dashboard-recovery.js?v=20260815-1852','synapse-dashboard-recovery');
+    js('dashboard-dock.js?v=20260815-1900','synapse-dashboard-dock');
   }
 })();
