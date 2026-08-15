@@ -7,29 +7,32 @@
 
   const preferredTheme = () => {
     const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === 'light' || stored === 'dark') return stored;
-    return 'dark';
+    return stored === 'light' || stored === 'dark' ? stored : 'dark';
   };
 
   let theme = preferredTheme();
-
-  const setTheme = (next, persist = true) => {
-    theme = next === 'light' ? 'light' : 'dark';
-    root.dataset.theme = theme;
-    if (document.body) document.body.dataset.theme = theme;
-    root.style.colorScheme = theme;
-    if (persist) localStorage.setItem(STORAGE_KEY, theme);
-    updateButtons();
-  };
+  let hydrateQueued = false;
 
   const updateButtons = () => {
     document.querySelectorAll('[data-theme-toggle]').forEach(button => {
       const light = theme === 'light';
-      button.innerHTML = light ? iconMoon : iconSun;
-      button.setAttribute('aria-label', light ? 'Passer au thème sombre' : 'Passer au thème clair');
-      button.setAttribute('title', light ? 'Thème sombre' : 'Thème clair');
+      const icon = light ? iconMoon : iconSun;
+      if (button.innerHTML !== icon) button.innerHTML = icon;
+      const aria = light ? 'Passer au thème sombre' : 'Passer au thème clair';
+      const title = light ? 'Thème sombre' : 'Thème clair';
+      if (button.getAttribute('aria-label') !== aria) button.setAttribute('aria-label', aria);
+      if (button.getAttribute('title') !== title) button.setAttribute('title', title);
       button.dataset.nextTheme = light ? 'dark' : 'light';
     });
+  };
+
+  const setTheme = (next, persist = true) => {
+    theme = next === 'light' ? 'light' : 'dark';
+    if (root.dataset.theme !== theme) root.dataset.theme = theme;
+    if (document.body && document.body.dataset.theme !== theme) document.body.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    if (persist) localStorage.setItem(STORAGE_KEY, theme);
+    updateButtons();
   };
 
   const createButton = () => {
@@ -49,19 +52,20 @@
     if (lang) actions.insertBefore(button, lang);
     else if (menu) actions.insertBefore(button, menu);
     else actions.appendChild(button);
-    updateButtons();
   };
 
   const normalizeBrand = () => {
     document.querySelectorAll('.v2-brand, .syn-v2-brand').forEach(brand => {
       const strong = brand.querySelector('b');
       const small = brand.querySelector('small');
-      if (strong) strong.textContent = 'Phoenix Inc |';
-      if (small) small.textContent = 'Development';
-      brand.setAttribute('aria-label', 'Phoenix Inc | Development');
+      if (strong && strong.textContent !== 'Phoenix Inc |') strong.textContent = 'Phoenix Inc |';
+      if (small && small.textContent !== 'Development') small.textContent = 'Development';
+      if (brand.getAttribute('aria-label') !== 'Phoenix Inc | Development') brand.setAttribute('aria-label', 'Phoenix Inc | Development');
     });
     document.querySelectorAll('.v2-footer-bottom span:first-child, .syn-v2-footer span:first-child').forEach(el => {
-      if (/Phoenix Inc/i.test(el.textContent || '')) el.textContent = '© 2026 Phoenix Inc | Development';
+      if (/Phoenix Inc/i.test(el.textContent || '') && el.textContent !== '© 2026 Phoenix Inc | Development') {
+        el.textContent = '© 2026 Phoenix Inc | Development';
+      }
     });
     if (/Phoenix Inc\. Development|Phoenix Inc Development/.test(document.title)) {
       document.title = document.title.replace(/Phoenix Inc\. Development|Phoenix Inc Development/g, 'Phoenix Inc | Development');
@@ -69,19 +73,25 @@
   };
 
   const hydrate = () => {
-    if (document.body) document.body.dataset.theme = theme;
+    hydrateQueued = false;
+    if (document.body && document.body.dataset.theme !== theme) document.body.dataset.theme = theme;
     document.querySelectorAll('.v2-header-actions, .syn-v2-actions').forEach(insertToggle);
     normalizeBrand();
     updateButtons();
   };
 
-  setTheme(theme, false);
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', hydrate, { once: true });
-  } else {
-    hydrate();
-  }
+  const queueHydrate = () => {
+    if (hydrateQueued) return;
+    hydrateQueued = true;
+    requestAnimationFrame(hydrate);
+  };
 
-  const observer = new MutationObserver(() => hydrate());
+  setTheme(theme, false);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hydrate, { once: true });
+  else hydrate();
+
+  const observer = new MutationObserver(mutations => {
+    if (mutations.some(m => [...m.addedNodes].some(node => node.nodeType === 1))) queueHydrate();
+  });
   observer.observe(document.documentElement, { childList: true, subtree: true });
 })();
