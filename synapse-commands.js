@@ -1,31 +1,42 @@
 (() => {
   const commands = [
-    {cat:'Builder & adaptation',cmd:'/analyse_serveur',desc:'Analyse salons, catégories, rôles, permissions et modules existants sans modifier le serveur.',access:'Admin'},
-    {cat:'Builder & adaptation',cmd:'/setup',desc:'Point d’entrée pour créer, compléter ou optimiser un serveur avec Synapse.',access:'Admin',future:true},
-    {cat:'Builder & adaptation',cmd:'/builder',desc:'Créer ou modifier une structure, un salon, une catégorie, un rôle, un embed ou un module.',access:'Admin',future:true},
-    {cat:'Tickets',cmd:'/tickets analyser',desc:'Détecte le système de tickets déjà présent et les éléments qui lui sont liés.',access:'Admin'},
-    {cat:'Tickets',cmd:'/tickets installer',desc:'Installe le système de tickets Synapse sans supprimer l’existant.',access:'Admin'},
-    {cat:'Tickets',cmd:'/tickets remplacer',desc:'Prépare le remplacement de l’ancien système, affiche ce qui sera retiré puis demande confirmation.',access:'Admin'},
-    {cat:'Tickets',cmd:'/tickets ouvrir',desc:'Ouvre un ticket privé Synapse.',access:'Tous'},
+    {cat:'Builder & adaptation',cmd:'/analyse_serveur',desc:'Analyse la structure, le style visuel, les rôles staff et les modules détectables sans modifier le serveur.',access:'Responsables'},
+    {cat:'Builder & adaptation',cmd:'/builder template',desc:'Crée une structure complète depuis un template puis un preset visuel, avec aperçu privé avant validation.',access:'Responsables'},
+    {cat:'Builder & adaptation',cmd:'/builder ajouter_salon',desc:'Ajoute un salon en reprenant en priorité la DA des salons voisins de la catégorie choisie.',access:'Responsables'},
+    {cat:'Builder & adaptation',cmd:'/builder ajouter_categorie',desc:'Ajoute une catégorie en reprenant automatiquement le style global détecté du serveur.',access:'Responsables'},
+
+    {cat:'Tickets',cmd:'/tickets analyser',desc:'Analyse les salons et catégories liés aux tickets puis recommande un Ticket Studio adapté au type de serveur.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets installer',desc:'Lance le Ticket Studio : détecte l’existant, propose mettre à jour / compléter / remplacer, puis affiche les presets et un aperçu avant installation.',access:'Responsables'},
+    {cat:'Tickets',cmd:'/tickets ouvrir',desc:'Ouvre un ticket privé selon le type de demande configuré sur le serveur.',access:'Tous'},
     {cat:'Tickets',cmd:'/tickets fermer',desc:'Ferme le ticket Synapse actuel.',access:'Staff'},
-    {cat:'Communauté',cmd:'/annonce',desc:'Ouvre un formulaire pour créer une annonce propre dans le salon actuel.',access:'Staff'},
-    {cat:'Communauté',cmd:'/reglement',desc:'Publie ou affiche un règlement propre pouvant ensuite être remplacé par le Builder.',access:'Admin'},
-    {cat:'Communauté',cmd:'/avis',desc:'Laisse une note et un commentaire à un membre.',access:'Tous'},
+
+    {cat:'Communauté',cmd:'/annonce',desc:'Ouvre un formulaire pour publier une annonce structurée dans le salon actuel.',access:'Staff'},
+    {cat:'Communauté',cmd:'/recherche',desc:'Publie une recherche structurée via un formulaire Synapse.',access:'Staff'},
+    {cat:'Communauté',cmd:'/reglement',desc:'Publie un règlement propre dans le salon actuel.',access:'Staff'},
+    {cat:'Communauté',cmd:'/avis',desc:'Laisse une note de 1 à 5 et un commentaire à un membre.',access:'Tous'},
     {cat:'Communauté',cmd:'/reputation',desc:'Affiche la note moyenne et le nombre d’avis d’un membre.',access:'Tous'},
-    {cat:'Interserver',cmd:'/generate_sync_code',desc:'Génère un code temporaire pour rendre un salon disponible à une liaison distante.',access:'Admin'},
-    {cat:'Interserver',cmd:'/link_with_code',desc:'Relie un salon local à un salon d’un autre serveur avec le code de synchronisation.',access:'Admin'},
-    {cat:'Interserver',cmd:'/revoke_sync_code',desc:'Invalide un code de synchronisation avant son expiration.',access:'Admin'},
-    {cat:'Interserver',cmd:'/link_channel',desc:'Lie directement deux salons accessibles par Synapse.',access:'Admin'},
-    {cat:'Interserver',cmd:'/unlink_channel',desc:'Retire une liaison directe entre deux salons.',access:'Admin'},
-    {cat:'Interserver',cmd:'/list_links',desc:'Affiche toutes les liaisons Interserver configurées.',access:'Admin'},
-    {cat:'Interserver',cmd:'/set_alias',desc:'Définit un alias pour cibler facilement un salon lié avec @alias.',access:'Admin'},
-    {cat:'Interserver',cmd:'/reset_alias',desc:'Retire l’alias personnalisé d’un salon.',access:'Admin'},
-    {cat:'Interserver',cmd:'/unlink_alias',desc:'Retire une liaison en ciblant le salon distant via son alias.',access:'Admin'},
-    {cat:'Administration',cmd:'/set_language',desc:'Change la langue de Synapse pour le serveur.',access:'Admin'},
-    {cat:'Administration',cmd:'/aide_synapse',desc:'Affiche directement dans Discord les principales commandes et modules disponibles.',access:'Tous'},
-    {cat:'Premium',cmd:'/premium',desc:'Affiche l’offre Premium, l’état du serveur et les options d’abonnement directement dans Discord.',access:'Admin',future:true},
-    {cat:'Premium',cmd:'/redeem',desc:'Active un code Premium unique, limité dans le temps ou à vie.',access:'Admin',future:true},
-    {cat:'Administration',cmd:'/dashboard',desc:'Prévu pour une future mise à jour : ouvrira directement le Dashboard web du serveur.',access:'Admin',future:true}
+    {cat:'Administration',cmd:'/aide_synapse',desc:'Affiche dans Discord les principales fonctions disponibles.',access:'Tous'},
+
+    {cat:'Accès & permissions',cmd:'/permissions voir',desc:'Affiche les niveaux d’accès Synapse configurés sur le serveur.',access:'Responsables'},
+    {cat:'Accès & permissions',cmd:'/permissions staff_ajouter',desc:'Déclare un rôle comme rôle staff Synapse.',access:'Responsables'},
+    {cat:'Accès & permissions',cmd:'/permissions staff_retirer',desc:'Retire un rôle de la liste staff Synapse.',access:'Responsables'},
+    {cat:'Accès & permissions',cmd:'/permissions niveau',desc:'Définit une commande comme publique, staff ou réservée aux responsables.',access:'Responsables'},
+    {cat:'Accès & permissions',cmd:'/permissions autoriser_role',desc:'Autorise explicitement un rôle à utiliser une commande ou un module.',access:'Responsables'},
+    {cat:'Accès & permissions',cmd:'/permissions retirer_role',desc:'Retire une autorisation de rôle personnalisée.',access:'Responsables'},
+
+    {cat:'Premium',cmd:'/premium',desc:'Affiche le statut Premium du serveur et les options disponibles.',access:'Tous'},
+    {cat:'Premium',cmd:'/redeem',desc:'Active un code Premium Synapse sur le serveur.',access:'Responsables'},
+
+    {cat:'Interserver',cmd:'/generate_sync_code',desc:'Génère un code temporaire pour lier un salon avec un autre serveur.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/link_with_code',desc:'Relie un salon local à un salon distant via un code de synchronisation.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/revoke_sync_code',desc:'Invalide un code de synchronisation avant son expiration.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/link_channel',desc:'Lie directement deux salons accessibles par Synapse.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/unlink_channel',desc:'Retire une liaison directe entre deux salons.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/list_links',desc:'Affiche les liaisons Interserver configurées.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/set_alias',desc:'Définit un alias personnalisé pour un salon lié.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/reset_alias',desc:'Retire l’alias personnalisé d’un salon.',access:'Admin Discord'},
+    {cat:'Interserver',cmd:'/unlink_alias',desc:'Retire une liaison en ciblant le salon distant via son alias.',access:'Admin Discord'},
+    {cat:'Administration',cmd:'/set_language',desc:'Change la langue des réponses historiques Interserver pour le serveur.',access:'Admin Discord'}
   ];
 
   const grid = document.querySelector('[data-command-grid]');
@@ -43,8 +54,8 @@
   };
 
   const render = () => {
-    const list = commands.filter(item => (active==='Toutes'||item.cat===active) && (!query || `${item.cmd} ${item.desc} ${item.cat}`.toLowerCase().includes(query)));
-    grid.innerHTML = list.length ? list.map(item=>`<article class="cmd-card"><div class="cmd-card-top"><span>${item.cat}</span>${item.future?'<em>À VENIR</em>':''}</div><code>${item.cmd}</code><p>${item.desc}</p><footer><span>${item.access}</span><button type="button" data-copy="${item.cmd}">Copier</button></footer></article>`).join('') : '<div class="cmd-empty">Aucune commande ne correspond à votre recherche.</div>';
+    const list = commands.filter(item => (active==='Toutes'||item.cat===active) && (!query || `${item.cmd} ${item.desc} ${item.cat} ${item.access}`.toLowerCase().includes(query)));
+    grid.innerHTML = list.length ? list.map(item=>`<article class="cmd-card"><div class="cmd-card-top"><span>${item.cat}</span></div><code>${item.cmd}</code><p>${item.desc}</p><footer><span>${item.access}</span><button type="button" data-copy="${item.cmd}">Copier</button></footer></article>`).join('') : '<div class="cmd-empty">Aucune commande ne correspond à votre recherche.</div>';
     grid.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.copy||'');const old=btn.textContent;btn.textContent='Copié ✓';setTimeout(()=>btn.textContent=old,1000);}catch{}}));
   };
 
