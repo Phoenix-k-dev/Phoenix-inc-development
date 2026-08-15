@@ -17,23 +17,40 @@ window.PHOENIX_CONFIG={
 };
 
 (()=>{
-  if(!document.querySelector('link[data-phoenix-enhancements]')){const l=document.createElement('link');l.rel='stylesheet';l.href='site-enhancements.css';l.dataset.phoenixEnhancements='true';document.head.appendChild(l)}
-  if(!document.querySelector('link[data-phoenix-ui-fixes]')){const l=document.createElement('link');l.rel='stylesheet';l.href='ui-fixes.css';l.dataset.phoenixUiFixes='true';document.head.appendChild(l)}
-  if(!document.querySelector('link[data-phoenix-theme]')){const l=document.createElement('link');l.rel='stylesheet';l.href='theme-light.css';l.dataset.phoenixTheme='true';document.head.appendChild(l)}
+  const css=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.setAttribute(`data-${key}`,'true');document.head.appendChild(l)};
+  const js=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.async=false;s.setAttribute(`data-${key}`,'true');document.head.appendChild(s)};
+
+  css('site-enhancements.css','phoenix-enhancements');
+  css('ui-fixes.css','phoenix-ui-fixes');
+  css('theme-light.css','phoenix-theme');
+
   if(document.body.classList.contains('synapse-saas-page')){
-    if(!document.querySelector('link[data-synapse-product-v2]')){const l=document.createElement('link');l.rel='stylesheet';l.href='synapse-product-v2.css';l.dataset.synapseProductV2='true';document.head.appendChild(l)}
-    if(!document.querySelector('link[data-synapse-flow]')){const l=document.createElement('link');l.rel='stylesheet';l.href='synapse-flow.css';l.dataset.synapseFlow='true';document.head.appendChild(l)}
+    css('synapse-product-v2.css','synapse-product-v2');
+    css('synapse-flow.css','synapse-flow');
+    css('synapse-adaptive.css','synapse-adaptive');
   }
-  if(document.body.classList.contains('v2-dashboard-page')&&!document.querySelector('link[data-synapse-dashboard-pro]')){const l=document.createElement('link');l.rel='stylesheet';l.href='dashboard-pro.css';l.dataset.synapseDashboardPro='true';document.head.appendChild(l)}
-  if(!document.querySelector('script[data-phoenix-theme]')){const s=document.createElement('script');s.src='theme-toggle.js';s.async=false;s.dataset.phoenixTheme='true';document.head.appendChild(s)}
-  if(!document.querySelector('script[data-phoenix-enhancements]')){const s=document.createElement('script');s.src='site-enhancements.js';s.async=false;s.dataset.phoenixEnhancements='true';document.head.appendChild(s)}
-  if(!document.querySelector('script[data-phoenix-payments]')){const s=document.createElement('script');s.src='payment-links.js';s.async=false;s.dataset.phoenixPayments='true';document.head.appendChild(s)}
-  if(!document.querySelector('script[data-phoenix-ui-fixes]')){const s=document.createElement('script');s.src='ui-fixes.js';s.async=false;s.dataset.phoenixUiFixes='true';document.head.appendChild(s)}
-  if(!document.querySelector('script[data-phoenix-brand-nav]')){const s=document.createElement('script');s.src='brand-nav.js';s.async=false;s.dataset.phoenixBrandNav='true';document.head.appendChild(s)}
-  if(document.body.classList.contains('v2-scripts')&&!document.querySelector('script[data-catalog-filters-v2]')){const s=document.createElement('script');s.src='catalog-filters-v2.js';s.async=false;s.dataset.catalogFiltersV2='true';document.head.appendChild(s)}
-  if(document.body.classList.contains('synapse-saas-page')&&!document.querySelector('script[data-synapse-product-v2]')){const s=document.createElement('script');s.src='synapse-product-v2.js';s.async=false;s.dataset.synapseProductV2='true';document.head.appendChild(s)}
   if(document.body.classList.contains('v2-dashboard-page')){
-    if(!document.querySelector('script[data-synapse-dashboard-extras]')){const s=document.createElement('script');s.src='dashboard-extras.js';s.async=false;s.dataset.synapseDashboardExtras='true';document.head.appendChild(s)}
-    if(!document.querySelector('script[data-synapse-dashboard-pro]')){const s=document.createElement('script');s.src='dashboard-pro.js';s.async=false;s.dataset.synapseDashboardPro='true';document.head.appendChild(s)}
+    css('dashboard-pro.css','synapse-dashboard-pro');
+    css('dashboard-scale.css','synapse-dashboard-scale');
+    css('dashboard-ticket-studio.css','synapse-ticket-studio');
+    css('dashboard-multiserver.css','synapse-multiserver');
+  }
+
+  js('theme-toggle.js','phoenix-theme');
+  js('site-enhancements.js','phoenix-enhancements');
+  js('payment-links.js','phoenix-payments');
+  js('ui-fixes.js','phoenix-ui-fixes');
+  js('brand-nav.js','phoenix-brand-nav');
+
+  if(document.body.classList.contains('v2-scripts')) js('catalog-filters-v2.js','catalog-filters-v2');
+  if(document.body.classList.contains('synapse-saas-page')){
+    js('synapse-product-v2.js','synapse-product-v2');
+    js('synapse-adaptive.js','synapse-adaptive');
+  }
+  if(document.body.classList.contains('v2-dashboard-page')){
+    js('dashboard-extras.js','synapse-dashboard-extras');
+    js('dashboard-pro.js','synapse-dashboard-pro');
+    js('dashboard-ticket-studio.js','synapse-ticket-studio');
+    js('dashboard-multiserver.js','synapse-multiserver');
   }
 })();
