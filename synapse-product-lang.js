@@ -1,9 +1,16 @@
 (()=>{
   if(!document.body.classList.contains('synapse-saas-page'))return;
 
+  if(!document.querySelector('[data-syn-product-lang-style]')){
+    const style=document.createElement('style');
+    style.setAttribute('data-syn-product-lang-style','');
+    style.textContent='.syn-v2-actions .cmd-lang-toggle{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 10px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:#11151e;color:#fff;font:800 10px/1 Inter,sans-serif;cursor:pointer}.syn-v2-actions .cmd-lang-toggle i{position:relative;width:28px;height:16px;border-radius:999px;background:#2a3040}.syn-v2-actions .cmd-lang-toggle i:after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#8b6cff;transition:.2s}.syn-v2-actions .cmd-lang-toggle.en i:after{transform:translateX(12px);background:#42d8ff}';
+    document.head.appendChild(style);
+  }
+
   const labels={
-    fr:{home:'Accueil',scripts:'Scripts',bots:'Bots',commands:'Commandes',services:'Web · Apps · Autres',add:'Ajouter Synapse à votre serveur ↗',all:'Voir toutes les commandes →',explore:'Explorer toutes les commandes →',view:'Voir les commandes →'},
-    en:{home:'Home',scripts:'Scripts',bots:'Bots',commands:'Commands',services:'Web · Apps · More',add:'Add Synapse to your server ↗',all:'View all commands →',explore:'Explore all commands →',view:'View commands →'}
+    fr:{home:'Accueil',scripts:'Scripts',bots:'Bots',commands:'Commandes',services:'Web · Apps · Autres',all:'Voir toutes les commandes →',explore:'Explorer toutes les commandes →',view:'Voir les commandes →'},
+    en:{home:'Home',scripts:'Scripts',bots:'Bots',commands:'Commands',services:'Web · Apps · More',all:'View all commands →',explore:'Explore all commands →',view:'View commands →'}
   };
 
   let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr';
