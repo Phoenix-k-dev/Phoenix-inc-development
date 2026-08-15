@@ -23,6 +23,13 @@ window.PHOENIX_CONFIG={
 (()=>{
   const css=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.setAttribute(`data-${key}`,'true');document.head.appendChild(l)};
   const js=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.async=false;s.setAttribute(`data-${key}`,'true');document.head.appendChild(s)};
+  const forceSynapseInvite=()=>{
+    const invite=window.PHOENIX_CONFIG?.synapseInviteUrl;
+    if(!invite)return;
+    document.querySelectorAll('[data-config-link="synapseInviteUrl"],a[href*="discord.com/oauth2/authorize"][href*="client_id="]').forEach((link)=>{
+      if(link instanceof HTMLAnchorElement)link.href=invite;
+    });
+  };
 
   css('site-enhancements.css','phoenix-enhancements');
   css('ui-fixes.css','phoenix-ui-fixes');
@@ -68,4 +75,9 @@ window.PHOENIX_CONFIG={
     js('dashboard-recovery.js?v=20260815-1908','synapse-dashboard-recovery');
     js('dashboard-dock.js?v=20260815-1908','synapse-dashboard-dock');
   }
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',forceSynapseInvite,{once:true});
+  else forceSynapseInvite();
+  setTimeout(forceSynapseInvite,250);
+  setTimeout(forceSynapseInvite,1000);
 })();
