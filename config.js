@@ -31,4 +31,5 @@ window.PHOENIX_CONFIG={
   if(!document.querySelector('script[data-phoenix-brand-nav]')){const s=document.createElement('script');s.src='brand-nav.js';s.async=false;s.dataset.phoenixBrandNav='true';document.head.appendChild(s)}
   if(document.body.classList.contains('v2-scripts')&&!document.querySelector('script[data-catalog-filters-v2]')){const s=document.createElement('script');s.src='catalog-filters-v2.js';s.async=false;s.dataset.catalogFiltersV2='true';document.head.appendChild(s)}
   if(document.body.classList.contains('synapse-saas-page')&&!document.querySelector('script[data-synapse-product-v2]')){const s=document.createElement('script');s.src='synapse-product-v2.js';s.async=false;s.dataset.synapseProductV2='true';document.head.appendChild(s)}
+  if(document.body.classList.contains('v2-dashboard-page')&&!document.querySelector('script[data-synapse-dashboard-extras]')){const s=document.createElement('script');s.src='dashboard-extras.js';s.async=false;s.dataset.synapseDashboardExtras='true';document.head.appendChild(s)}
 })();
