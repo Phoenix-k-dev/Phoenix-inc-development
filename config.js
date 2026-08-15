@@ -6,7 +6,7 @@ window.PHOENIX_CONFIG={
   phBankingTebexUrl:"",
   githubUrl:"https://github.com/Phoenix-k-dev",
   discordApplicationId:"928717186393079839",
-  synapseInviteUrl:"https://discord.com/oauth2/authorize?client_id=928717186393079839&scope=bot%20applications.commands&integration_type=0",
+  synapseInviteUrl:"https://discord.com/oauth2/authorize?client_id=928717186393079839&scope=bot%20applications.commands&permissions=805432336&integration_type=0",
   synapseDiscordStoreUrl:"https://discord.com/application-directory/928717186393079839/store",
   synapseDashboardUrl:"dashboard.html",
   synapseLoginUrl:"/auth/discord",
@@ -51,7 +51,6 @@ window.PHOENIX_CONFIG={
   js('payment-links.js','phoenix-payments');
   js('ui-fixes.js','phoenix-ui-fixes');
   js('brand-nav.js','phoenix-brand-nav');
-  js('legal-links.js?v=20260815-2225','phoenix-legal-links');
 
   if(document.body.classList.contains('v2-home')) js('home-contact.js?v=20260815-1942','phoenix-home-contact');
   if(document.body.classList.contains('v2-scripts')) js('catalog-filters-v2.js','catalog-filters-v2');
