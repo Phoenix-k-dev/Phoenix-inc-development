@@ -19,10 +19,12 @@ window.PHOENIX_CONFIG={
 (()=>{
   if(!document.querySelector('link[data-phoenix-enhancements]')){const l=document.createElement('link');l.rel='stylesheet';l.href='site-enhancements.css';l.dataset.phoenixEnhancements='true';document.head.appendChild(l)}
   if(!document.querySelector('link[data-phoenix-ui-fixes]')){const l=document.createElement('link');l.rel='stylesheet';l.href='ui-fixes.css';l.dataset.phoenixUiFixes='true';document.head.appendChild(l)}
+  if(!document.querySelector('link[data-phoenix-theme]')){const l=document.createElement('link');l.rel='stylesheet';l.href='theme-light.css';l.dataset.phoenixTheme='true';document.head.appendChild(l)}
   if(document.body.classList.contains('synapse-saas-page')){
     if(!document.querySelector('link[data-synapse-product-v2]')){const l=document.createElement('link');l.rel='stylesheet';l.href='synapse-product-v2.css';l.dataset.synapseProductV2='true';document.head.appendChild(l)}
     if(!document.querySelector('link[data-synapse-flow]')){const l=document.createElement('link');l.rel='stylesheet';l.href='synapse-flow.css';l.dataset.synapseFlow='true';document.head.appendChild(l)}
   }
+  if(!document.querySelector('script[data-phoenix-theme]')){const s=document.createElement('script');s.src='theme-toggle.js';s.async=false;s.dataset.phoenixTheme='true';document.head.appendChild(s)}
   if(!document.querySelector('script[data-phoenix-enhancements]')){const s=document.createElement('script');s.src='site-enhancements.js';s.async=false;s.dataset.phoenixEnhancements='true';document.head.appendChild(s)}
   if(!document.querySelector('script[data-phoenix-payments]')){const s=document.createElement('script');s.src='payment-links.js';s.async=false;s.dataset.phoenixPayments='true';document.head.appendChild(s)}
   if(!document.querySelector('script[data-phoenix-ui-fixes]')){const s=document.createElement('script');s.src='ui-fixes.js';s.async=false;s.dataset.phoenixUiFixes='true';document.head.appendChild(s)}
