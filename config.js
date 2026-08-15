@@ -12,6 +12,9 @@ window.PHOENIX_CONFIG={
   synapseMeUrl:"/api/me",
   synapseGuildsUrl:"/api/guilds",
   synapseStripeUrl:"https://donate.stripe.com/8x228r3h710HehY1CT6AM00",
+  synapseCheckoutEndpoint:"/api/billing/checkout-session",
+  synapseBillingPortalEndpoint:"/api/billing/portal",
+  stripePublishableKey:"",
   phGaragePrice:"34,99 €",
   phBankingPrice:"39,99 €"
 };
@@ -34,7 +37,7 @@ window.PHOENIX_CONFIG={
     css('dashboard-scale.css','synapse-dashboard-scale');
     css('dashboard-ticket-studio.css','synapse-ticket-studio');
     css('dashboard-multiserver.css','synapse-multiserver');
-    css('dashboard-hub.css','synapse-dashboard-hub');
+    css('dashboard-billing.css','synapse-billing');
   }
 
   js('theme-toggle.js','phoenix-theme');
@@ -54,5 +57,6 @@ window.PHOENIX_CONFIG={
     js('dashboard-ticket-studio.js','synapse-ticket-studio');
     js('dashboard-multiserver.js','synapse-multiserver');
     js('dashboard-hub.js','synapse-dashboard-hub');
+    js('dashboard-billing.js','synapse-billing');
   }
 })();
