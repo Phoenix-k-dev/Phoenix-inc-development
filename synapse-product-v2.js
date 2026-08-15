@@ -5,11 +5,30 @@
   const config = window.PHOENIX_CONFIG || {};
   const invite = config.synapseInviteUrl || '';
   const discord = config.discordUrl || '';
+  const premiumStore = config.synapseDiscordStoreUrl || `https://discord.com/application-directory/${config.discordApplicationId || '1535652568150057011'}/store`;
   const logo = './assets/logo-phoenix-ph.png';
   const commands = 'synapse-commands.html';
 
   const external = (href, cls, label) => href ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener">${label}</a>` : '';
   const internal = (href, cls, label) => `<a class="${cls}" href="${href}">${label}</a>`;
+
+  const dashboardPreview = (kicker,title,desc,type) => `
+    <article class="syn-future-preview-slide">
+      <div class="syn-future-dashboard-shot ${type}">
+        <aside class="syn-shot-servers"><i></i><i></i><i class="active"></i><i></i><i></i></aside>
+        <nav class="syn-shot-nav">
+          <div><img src="${logo}" alt=""><b>SYNAPSE</b></div>
+          <small>${kicker}</small>
+          <span class="active">Vue d’ensemble</span><span>Configuration</span><span>Modules</span><span>Automatisations</span><span>Logs</span>
+        </nav>
+        <main class="syn-shot-main">
+          <header><div><small>${kicker}</small><strong>${title}</strong></div><em>CONNECTED</em></header>
+          <div class="syn-shot-stat-row"><span></span><span></span><span></span></div>
+          <section class="syn-shot-panel"><div></div><div></div><div></div><div></div></section>
+        </main>
+      </div>
+      <div class="syn-future-preview-copy"><small>${kicker}</small><h3>${title}</h3><p>${desc}</p></div>
+    </article>`;
 
   document.body.innerHTML = `
   <div class="syn-v2">
@@ -54,7 +73,7 @@
       </section>
 
       <section class="syn-v2-section syn-v2-shell syn-command-showcase">
-        <div class="syn-v2-head"><div><span class="syn-v2-kicker">PILOTAGE DANS DISCORD</span><h2>Pas besoin d’un Dashboard<br>pour administrer la V1.</h2></div><p>La V1 est pensée pour être simple à héberger : Synapse se pilote avec des commandes et interfaces natives Discord. Une page dédiée récapitule toutes les commandes disponibles.</p></div>
+        <div class="syn-v2-head"><div><span class="syn-v2-kicker">PILOTAGE DANS DISCORD</span><h2>Pilotez Synapse<br>directement dans Discord.</h2></div><p>Commandes slash, boutons, sélecteurs et formulaires natifs permettent de configurer rapidement Synapse sans quitter votre serveur.</p></div>
         <div class="syn-command-preview">
           <article><code>/analyse_serveur</code><p>Analyse sans modifier.</p></article>
           <article><code>/tickets remplacer</code><p>Remplace un ancien système après confirmation.</p></article>
@@ -66,22 +85,21 @@
       </section>
 
       <section class="syn-v2-section syn-v2-shell syn-dashboard-future">
-        <div class="syn-v2-head"><div><span class="syn-v2-kicker">MISE À JOUR FUTURE</span><h2>Dashboard Web Synapse</h2></div><p>Le Dashboard complet n’est plus nécessaire pour lancer Synapse. Il reste en développement et arrivera plus tard comme interface web complémentaire pour centraliser la gestion de plusieurs serveurs.</p></div>
-        <div class="syn-future-carousel" data-future-carousel>
-          <div class="syn-future-track" data-future-track>
-            <article><small>BUILDER</small><h3>Structure & adaptation</h3><p>Gestion visuelle des salons, catégories, rôles et permissions.</p></article>
-            <article><small>TICKETS</small><h3>Ticket Studio</h3><p>Panels, boutons, formulaires, staff, transcripts et statistiques.</p></article>
-            <article><small>SÉCURITÉ</small><h3>Modération & AutoMod</h3><p>Protections, logs, sanctions, whitelists et historique.</p></article>
-            <article><small>MULTI-SERVEURS</small><h3>Centre de contrôle</h3><p>Basculer entre les serveurs où Synapse est installé depuis une seule interface.</p></article>
-            <article><small>PREMIUM</small><h3>Abonnement & codes</h3><p>Gestion du statut Premium et des codes offerts depuis une interface dédiée.</p></article>
+        <div class="syn-v2-head"><div><span class="syn-v2-kicker">MISE À JOUR FUTURE</span><h2>Dashboard Web Synapse</h2></div><p>Un Dashboard Web complet est en développement pour une future mise à jour de Synapse. Il permettra de retrouver les réglages du bot dans une interface visuelle centralisée.</p></div>
+        <div class="syn-future-preview" data-future-preview>
+          <div class="syn-future-preview-track" data-future-track>
+            ${dashboardPreview('BUILDER','Structure & adaptation','Salons, catégories, rôles, permissions et analyse de l’existant.','builder')}
+            ${dashboardPreview('TICKETS','Ticket Studio','Panels, boutons, formulaires, rôles staff, transcripts et statistiques.','tickets')}
+            ${dashboardPreview('SÉCURITÉ','Modération & AutoMod','Protections, sanctions, logs, rôles sécurisés et règles automatiques.','security')}
+            ${dashboardPreview('MULTI-SERVEURS','Centre de contrôle','Passez rapidement d’un serveur à l’autre depuis une seule interface.','servers')}
           </div>
-          <div class="syn-future-controls"><button type="button" data-future-prev>←</button><span>PROCHAINEMENT</span><button type="button" data-future-next>→</button></div>
+          <div class="syn-future-preview-footer"><span>APERÇU DU DASHBOARD EN DÉVELOPPEMENT</span><div data-future-dots></div></div>
         </div>
       </section>
 
       <section class="syn-v2-section syn-v2-shell">
         <div class="syn-v2-premium">
-          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Premium,<br>directement dans Discord.</h2><p>Le paiement et l’état Premium seront intégrés à Discord pour garder un parcours simple. Les fonctions gratuites restent utilisables sans abonnement ; Premium débloque les automatismes et protections avancées.</p><div class="syn-v2-premium-price"><strong>5 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse pour commencer ↗')}<span class="syn-premium-note">Commande <code>/premium</code> prévue dans la V1</span></div></div>
+          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Premium,<br>directement dans Discord.</h2><p>Le paiement et l’état Premium sont pensés pour rester dans l’écosystème Discord. Les fonctions gratuites restent utilisables sans abonnement ; Premium débloque les automatismes et protections avancées.</p><div class="syn-v2-premium-price"><strong>5 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${external(premiumStore,'syn-v2-btn syn-v2-btn-primary','Passer Premium sur Discord ↗')}</div><div class="syn-premium-command-hint"><span>Ou depuis votre serveur :</span><code>/premium</code></div></div>
           <div class="syn-v2-premium-list"><span>AutoMod avancé</span><span>Anti-Raid</span><span>Backups de structure</span><span>Interserver avancé</span><span>Temp Voice</span><span>Levels & XP</span><span>Giveaways</span><span>Commandes personnalisées</span><span>Automatisations supplémentaires</span><span>Codes Premium / lifetime</span></div>
         </div>
       </section>
@@ -94,13 +112,31 @@
 
   document.querySelector('[data-syn-v2-menu]')?.addEventListener('click',()=>document.querySelector('[data-syn-v2-header]')?.classList.toggle('open'));
 
-  const track=document.querySelector('[data-future-track]');
-  if(track){
+  const future = document.querySelector('[data-future-preview]');
+  const track = future?.querySelector('[data-future-track]');
+  const slides = track ? [...track.children] : [];
+  const dots = future?.querySelector('[data-future-dots]');
+  if(track && slides.length && dots){
     let index=0;
-    const cards=[...track.children];
-    const move=()=>{ const card=cards[0]; if(!card) return; const gap=14; track.style.transform=`translateX(-${index*(card.getBoundingClientRect().width+gap)}px)`; };
-    document.querySelector('[data-future-next]')?.addEventListener('click',()=>{index=Math.min(index+1,Math.max(0,cards.length-2));move();});
-    document.querySelector('[data-future-prev]')?.addEventListener('click',()=>{index=Math.max(index-1,0);move();});
-    window.addEventListener('resize',move);
+    let timer;
+    slides.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.setAttribute('aria-label',`Aperçu ${i+1}`);
+      dot.addEventListener('click',()=>{index=i;render();restart();});
+      dots.appendChild(dot);
+    });
+    const render=()=>{
+      track.style.transform=`translateX(-${index*100}%)`;
+      [...dots.children].forEach((dot,i)=>dot.classList.toggle('active',i===index));
+    };
+    const restart=()=>{
+      clearInterval(timer);
+      timer=setInterval(()=>{index=(index+1)%slides.length;render();},4200);
+    };
+    future.addEventListener('mouseenter',()=>clearInterval(timer));
+    future.addEventListener('mouseleave',restart);
+    render();
+    restart();
   }
 })();
