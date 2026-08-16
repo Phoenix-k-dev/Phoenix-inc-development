@@ -1,0 +1,19 @@
+/* The commands page must use the exact Phoenix global footer palette. */
+.v2-command-page .v2-footer{color:var(--text)!important}
+.v2-command-page .v2-footer .v2-brand b{color:var(--text)!important}
+.v2-command-page .v2-footer .v2-brand small{color:var(--orange)!important}
+.v2-command-page .v2-footer-main>p{color:#737b8e!important}
+.v2-command-page .v2-footer-links a{color:#8991a3!important;opacity:1!important}
+.v2-command-page .v2-footer-bottom{color:#9d8aff!important}
+.v2-command-page .v2-footer-bottom [data-legal-links],
+.v2-command-page .v2-footer-bottom [data-legal-links] a,
+.v2-command-page .v2-footer [data-legal-links],
+.v2-command-page .v2-footer [data-legal-links] a{color:#9d8aff!important;opacity:1!important}
+
+:root[data-theme="light"] .v2-command-page .v2-footer{color:#171d2a!important}
+:root[data-theme="light"] .v2-command-page .v2-footer .v2-brand b{color:#171d2a!important}
+:root[data-theme="light"] .v2-command-page .v2-footer-main>p{color:#687286!important}
+:root[data-theme="light"] .v2-command-page .v2-footer-links a{color:#626d83!important}
+:root[data-theme="light"] .v2-command-page .v2-footer-bottom,
+:root[data-theme="light"] .v2-command-page .v2-footer-bottom [data-legal-links],
+:root[data-theme="light"] .v2-command-page .v2-footer-bottom [data-legal-links] a{color:#795df5!important}
