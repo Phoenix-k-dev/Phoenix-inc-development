@@ -1,0 +1,22 @@
+/* Synapse product page uses the exact Phoenix Inc global shell. */
+.synapse-saas-page .syn-v2-header.v2-header{left:50%;transform:translateX(-50%);width:min(1400px,calc(100% - 32px));top:18px;border-radius:24px}
+.synapse-saas-page .syn-v2-header .syn-v2-brand{margin:0}
+.synapse-saas-page .syn-v2-header .syn-v2-actions{gap:8px}
+.synapse-saas-page .syn-v2-header .v2-icon-link{color:#147a9a!important;background:rgba(66,216,255,.08)!important;border-color:rgba(66,216,255,.25)!important}
+.synapse-saas-page .syn-v2-header .v2-btn-primary{background:#ff6b2c!important;color:#101114!important;border-color:#ff6b2c!important}
+.synapse-saas-page .syn-v2-header .cmd-lang-toggle{height:38px;background:transparent;color:inherit;border-color:var(--line)}
+.synapse-saas-page .syn-v2-header .phx-theme-toggle{height:38px;width:38px}
+
+.synapse-saas-page .v2-footer.syn-v2-footer{width:min(1400px,calc(100% - 32px));margin:42px auto 24px!important;padding:0!important;display:block!important;background:#10131b!important;border:1px solid rgba(139,108,255,.2)!important;border-radius:20px!important;color:#9d8aff!important;overflow:hidden}
+.synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-main{padding:28px 26px!important}
+.synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-bottom{padding:16px 26px!important;border-top:1px solid rgba(139,108,255,.14)!important;color:#9d8aff!important}
+.synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-links a,.synapse-saas-page .v2-footer.syn-v2-footer [data-legal-links] a{color:#9d8aff!important}
+.synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-main p{color:#8790a5!important}
+
+:root[data-theme="light"] .synapse-saas-page .syn-v2-header.v2-header{background:rgba(255,255,255,.94)!important;border-color:rgba(18,24,38,.1)!important;box-shadow:0 14px 40px rgba(50,55,80,.08)!important}
+:root[data-theme="light"] .synapse-saas-page .v2-footer.syn-v2-footer{background:#fff!important;border-color:rgba(139,108,255,.2)!important;color:#795df5!important}
+:root[data-theme="light"] .synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-bottom{border-color:rgba(139,108,255,.14)!important;color:#795df5!important}
+:root[data-theme="light"] .synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-links a,:root[data-theme="light"] .synapse-saas-page .v2-footer.syn-v2-footer [data-legal-links] a{color:#795df5!important}
+:root[data-theme="light"] .synapse-saas-page .v2-footer.syn-v2-footer .v2-footer-main p{color:#667087!important}
+
+@media(max-width:900px){.synapse-saas-page .syn-v2-header.v2-header{width:calc(100% - 20px);top:10px}.synapse-saas-page .syn-v2-header .v2-btn-primary{display:none}}
