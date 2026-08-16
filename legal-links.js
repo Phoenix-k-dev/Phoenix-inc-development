@@ -5,11 +5,15 @@
     document.querySelectorAll('.v2-footer, .syn-v2-footer, body > footer').forEach(footer => {
       if (footer.closest('.cmd-card')) return;
 
+      footer.style.setProperty('color', document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff', 'important');
+
+      const bottom = footer.querySelector('.v2-footer-bottom') || footer;
+      bottom.style.setProperty('color', document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff', 'important');
+
       let wrap = footer.querySelector(':scope > [data-legal-links], :scope .v2-footer-bottom > [data-legal-links]');
       if (!wrap) {
         wrap = document.createElement('nav');
         wrap.dataset.legalLinks = '';
-        const bottom = footer.querySelector('.v2-footer-bottom') || footer;
         bottom.appendChild(wrap);
       }
 
@@ -21,8 +25,7 @@
         'align-items:center',
         'font-size:11px',
         'margin-top:10px',
-        'color:#9d8aff',
-        'opacity:1'
+        `color:${document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff'}`
       ].join(';');
 
       const links = [
@@ -31,15 +34,8 @@
       ];
 
       wrap.innerHTML = links
-        .map(([href, label]) => `<a href="${href}" style="color:#9d8aff;text-decoration:none">${label}</a>`)
+        .map(([href, label]) => `<a href="${href}" style="color:inherit;text-decoration:none;font-weight:700">${label}</a>`)
         .join('');
-
-      footer.querySelectorAll(':scope > span, .v2-footer-bottom > span, .v2-footer-main + * span').forEach(el => {
-        if (/2026|Phoenix Inc|Discord-first/i.test(el.textContent || '')) {
-          el.style.color = '#9d8aff';
-          el.style.opacity = '1';
-        }
-      });
     });
   };
 
@@ -47,7 +43,10 @@
   else render();
 
   window.addEventListener('storage', event => {
-    if (event.key === 'phoenix-lang') render();
+    if (event.key === 'phoenix-lang' || event.key === 'phoenix-theme') render();
   });
   window.addEventListener('phoenix:langchange', render);
+  document.addEventListener('click', event => {
+    if (event.target.closest?.('[data-theme-toggle]')) setTimeout(render, 0);
+  });
 })();
