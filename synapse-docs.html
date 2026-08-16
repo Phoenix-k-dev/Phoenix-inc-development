@@ -20,13 +20,12 @@
 <header class="docs-header">
   <a class="docs-brand" href="index.html"><img src="./assets/logo-phoenix-ph.png" alt=""><span>Phoenix Inc | Development</span></a>
   <nav class="docs-nav">
-    <a href="synapse-bot.html"><span class="fr-only">Synapse</span><span class="en-only">Synapse</span></a>
+    <a href="synapse-bot.html">Synapse</a>
     <a href="synapse-commands.html"><span class="fr-only">Commandes</span><span class="en-only">Commands</span></a>
     <a href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a>
     <button class="docs-lang" type="button" data-lang>FR / EN</button>
   </nav>
 </header>
-
 <main class="docs-shell">
   <section class="docs-hero">
     <div>
@@ -35,94 +34,19 @@
       <p class="fr-only">Cette documentation publique présente le fonctionnement du bot, son installation, ses modules et ses commandes. Le code source de production reste privé.</p>
       <p class="en-only">This public documentation explains how the bot works, how to install it, its modules and commands. The production source code remains private.</p>
       <div class="docs-actions">
-        <a class="docs-btn primary" href="https://discord.com/oauth2/authorize?client_id=1535652568150057011&scope=bot%20applications.commands&permissions=1100333837330&integration_type=0" target="_blank" rel="noopener"><span class="fr-only">Ajouter Synapse ↗</span><span class="en-only">Add Synapse ↗</span></a>
+        <a class="docs-btn primary" href="https://discord.com/oauth2/authorize?client_id=928717186393079839&scope=bot%20applications.commands&permissions=1100333837330&integration_type=0" target="_blank" rel="noopener"><span class="fr-only">Ajouter Synapse ↗</span><span class="en-only">Add Synapse ↗</span></a>
         <a class="docs-btn ghost" href="synapse-commands.html"><span class="fr-only">Voir les commandes</span><span class="en-only">View commands</span></a>
       </div>
     </div>
-    <aside class="docs-card">
-      <span class="docs-kicker">QUICK START</span>
-      <code>/scan</code>
-      <code>/builder setup</code>
-      <code>/ticket setup</code>
-      <code>/commandes</code>
-    </aside>
+    <aside class="docs-card"><span class="docs-kicker">QUICK START</span><code>/scan</code><code>/builder setup</code><code>/ticket setup</code><code>/commandes</code></aside>
   </section>
-
-  <section class="docs-grid">
-    <article class="docs-section">
-      <h2 class="fr-only">1. Installation</h2><h2 class="en-only">1. Installation</h2>
-      <p class="fr-only">Ajoutez Synapse via le bouton d’installation officiel. Accordez uniquement les permissions nécessaires aux fonctions que vous utilisez. Synapse s’appuie sur les commandes slash Discord.</p>
-      <p class="en-only">Add Synapse through the official install button. Grant only the permissions required by the features you use. Synapse is driven through Discord slash commands.</p>
-      <div><span class="docs-tag">Discord-first</span><span class="docs-tag">FR / EN</span><span class="docs-tag">Builder Free</span></div>
-    </article>
-    <article class="docs-section">
-      <h2>2. Adaptive Builder</h2>
-      <p class="fr-only">Le Builder est le cœur de Synapse. Il peut créer un serveur complet depuis un template ou analyser une structure existante pour compléter uniquement ce qui manque.</p>
-      <p class="en-only">The Builder is Synapse’s core. It can create a complete server from a template or analyse an existing structure and only add what is missing.</p>
-      <ul class="fr-only"><li>Templates complets</li><li>Catégories, salons et rôles</li><li>Analyse de la DA existante</li><li>Ajouts ciblés sans doublons inutiles</li><li>Rollback et reset contrôlé</li></ul>
-      <ul class="en-only"><li>Complete templates</li><li>Categories, channels and roles</li><li>Existing style analysis</li><li>Targeted additions without unnecessary duplicates</li><li>Rollback and controlled reset</li></ul>
-    </article>
-  </section>
-
-  <section class="docs-section">
-    <h2>3. Ticket Studio</h2>
-    <p class="fr-only">Ticket Studio analyse les tickets existants avant installation. Il peut conserver un panel existant, remplacer proprement une configuration et gérer des panels FR/EN réellement présents sans créer artificiellement un second salon.</p>
-    <p class="en-only">Ticket Studio analyses existing tickets before installation. It can preserve an existing panel, replace a setup cleanly and manage real FR/EN panels without artificially creating a second channel.</p>
-    <div><span class="docs-tag">/ticket scan</span><span class="docs-tag">/ticket setup</span><span class="docs-tag">/ticket creer</span><span class="docs-tag">/ticket couleur</span><span class="docs-tag">Multi staff roles</span></div>
-  </section>
-
-  <section class="docs-grid">
-    <article class="docs-section">
-      <h2>4. Permissions</h2>
-      <p class="fr-only">Synapse distingue les commandes publiques, staff, responsables et administrateur Discord. Les permissions peuvent être ajustées par rôle.</p>
-      <p class="en-only">Synapse separates public, staff, manager and Discord administrator commands. Access can be adjusted by role.</p>
-      <div class="docs-note fr-only">Les opérations destructives demandent une confirmation et respectent les protections Discord.</div>
-      <div class="docs-note en-only">Destructive operations require confirmation and respect Discord protections.</div>
-    </article>
-    <article class="docs-section">
-      <h2>5. Interserver</h2>
-      <p class="fr-only">Interserver relie des salons entre plusieurs Discord grâce à des codes temporaires, des alias et un relais sécurisé par webhook.</p>
-      <p class="en-only">Interserver links channels across several Discord servers using temporary codes, aliases and secure webhook relay.</p>
-      <div><span class="docs-tag">/interserver code</span><span class="docs-tag">/interserver link</span><span class="docs-tag">/interserver alias</span></div>
-    </article>
-  </section>
-
-  <section class="docs-section">
-    <h2>6. Synapse Premium</h2>
-    <p class="fr-only">Premium est activé au niveau du serveur. Il ajoute les outils avancés tout en laissant le Builder principal disponible gratuitement.</p>
-    <p class="en-only">Premium is enabled at server level. It adds advanced tools while the main Builder remains available for free.</p>
-    <table class="docs-table">
-      <thead><tr><th>Module</th><th>Free</th><th>Premium</th></tr></thead>
-      <tbody>
-        <tr><td>Adaptive Builder</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Ticket Studio</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Interserver</td><td>✓</td><td>✓</td></tr>
-        <tr><td>Backups / restore</td><td>—</td><td>✓</td></tr>
-        <tr><td>AutoMod / Anti-Raid</td><td>—</td><td>✓</td></tr>
-        <tr><td>Levels / XP / Temp Voice</td><td>—</td><td>✓</td></tr>
-        <tr><td>Giveaways / custom commands / automations</td><td>—</td><td>✓</td></tr>
-      </tbody>
-    </table>
-    <p class="fr-only"><strong>Tarif affiché par Synapse :</strong> 3,99 € / mois / serveur.</p>
-    <p class="en-only"><strong>Synapse displayed price:</strong> €3.99 / month / server.</p>
-  </section>
-
-  <section class="docs-section">
-    <h2 class="fr-only">7. Commandes</h2><h2 class="en-only">7. Commands</h2>
-    <p class="fr-only">Le catalogue complet et actualisé est maintenu sur une page dédiée. Les commandes internes réservées au propriétaire de Synapse ne sont volontairement pas documentées publiquement.</p>
-    <p class="en-only">The complete up-to-date catalogue is maintained on a dedicated page. Internal commands reserved for the Synapse owner are intentionally not publicly documented.</p>
-    <a class="docs-btn primary" href="synapse-commands.html"><span class="fr-only">Ouvrir le catalogue →</span><span class="en-only">Open catalogue →</span></a>
-  </section>
-
-  <section class="docs-section">
-    <h2 class="fr-only">8. Support & sécurité</h2><h2 class="en-only">8. Support & security</h2>
-    <p class="fr-only">Les tokens, secrets, données serveur et code source de production ne font pas partie de la documentation publique. Pour le support, utilisez le Discord Phoenix Inc | Development.</p>
-    <p class="en-only">Tokens, secrets, server data and production source code are not part of the public documentation. For support, use the Phoenix Inc | Development Discord.</p>
-  </section>
+  <section class="docs-grid"><article class="docs-section"><h2>1. Installation</h2><p class="fr-only">Ajoutez Synapse via le bouton d’installation officiel. Accordez uniquement les permissions nécessaires aux fonctions que vous utilisez. Synapse s’appuie sur les commandes slash Discord.</p><p class="en-only">Add Synapse through the official install button. Grant only the permissions required by the features you use. Synapse is driven through Discord slash commands.</p><div><span class="docs-tag">Discord-first</span><span class="docs-tag">FR / EN</span><span class="docs-tag">Builder Free</span></div></article><article class="docs-section"><h2>2. Adaptive Builder</h2><p class="fr-only">Le Builder est le cœur de Synapse. Il peut créer un serveur complet depuis un template ou analyser une structure existante pour compléter uniquement ce qui manque.</p><p class="en-only">The Builder is Synapse’s core. It can create a complete server from a template or analyse an existing structure and only add what is missing.</p><ul class="fr-only"><li>Templates complets</li><li>Catégories, salons et rôles</li><li>Analyse de la DA existante</li><li>Ajouts ciblés sans doublons inutiles</li><li>Rollback et reset contrôlé</li></ul><ul class="en-only"><li>Complete templates</li><li>Categories, channels and roles</li><li>Existing style analysis</li><li>Targeted additions without unnecessary duplicates</li><li>Rollback and controlled reset</li></ul></article></section>
+  <section class="docs-section"><h2>3. Ticket Studio</h2><p class="fr-only">Ticket Studio analyse les tickets existants avant installation. Il peut conserver un panel existant, remplacer proprement une configuration et gérer des panels FR/EN réellement présents sans créer artificiellement un second salon.</p><p class="en-only">Ticket Studio analyses existing tickets before installation. It can preserve an existing panel, replace a setup cleanly and manage real FR/EN panels without artificially creating a second channel.</p><div><span class="docs-tag">/ticket scan</span><span class="docs-tag">/ticket setup</span><span class="docs-tag">/ticket creer</span><span class="docs-tag">/ticket couleur</span><span class="docs-tag">Multi staff roles</span></div></section>
+  <section class="docs-grid"><article class="docs-section"><h2>4. Permissions</h2><p class="fr-only">Synapse distingue les commandes publiques, staff, responsables et administrateur Discord. Les permissions peuvent être ajustées par rôle.</p><p class="en-only">Synapse separates public, staff, manager and Discord administrator commands. Access can be adjusted by role.</p></article><article class="docs-section"><h2>5. Interserver</h2><p class="fr-only">Interserver relie des salons entre plusieurs Discord grâce à des codes temporaires, des alias et un relais sécurisé par webhook.</p><p class="en-only">Interserver links channels across several Discord servers using temporary codes, aliases and secure webhook relay.</p><div><span class="docs-tag">/interserver code</span><span class="docs-tag">/interserver link</span><span class="docs-tag">/interserver alias</span></div></article></section>
+  <section class="docs-section"><h2>6. Synapse Premium</h2><p class="fr-only">Premium est activé au niveau du serveur. Il ajoute les outils avancés tout en laissant le Builder principal disponible gratuitement.</p><p class="en-only">Premium is enabled at server level. It adds advanced tools while the main Builder remains available for free.</p><table class="docs-table"><thead><tr><th>Module</th><th>Free</th><th>Premium</th></tr></thead><tbody><tr><td>Adaptive Builder</td><td>✓</td><td>✓</td></tr><tr><td>Ticket Studio</td><td>✓</td><td>✓</td></tr><tr><td>Interserver</td><td>✓</td><td>✓</td></tr><tr><td>Backups / restore</td><td>—</td><td>✓</td></tr><tr><td>AutoMod / Anti-Raid</td><td>—</td><td>✓</td></tr><tr><td>Levels / XP / Temp Voice</td><td>—</td><td>✓</td></tr><tr><td>Giveaways / custom commands / automations</td><td>—</td><td>✓</td></tr></tbody></table><p class="fr-only"><strong>Tarif affiché par Synapse :</strong> 3,99 € / mois / serveur.</p><p class="en-only"><strong>Synapse displayed price:</strong> €3.99 / month / server.</p></section>
+  <section class="docs-section"><h2 class="fr-only">7. Commandes</h2><h2 class="en-only">7. Commands</h2><p class="fr-only">Le catalogue complet et actualisé est maintenu sur une page dédiée. Les commandes internes réservées au propriétaire de Synapse ne sont volontairement pas documentées publiquement.</p><p class="en-only">The complete up-to-date catalogue is maintained on a dedicated page. Internal commands reserved for the Synapse owner are intentionally not publicly documented.</p><a class="docs-btn primary" href="synapse-commands.html"><span class="fr-only">Ouvrir le catalogue →</span><span class="en-only">Open catalogue →</span></a></section>
 </main>
 <footer class="docs-footer">© 2026 Phoenix Inc | Development · Synapse</footer>
-<script>
-(()=>{const b=document.querySelector('[data-lang]');let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr';const apply=()=>{document.documentElement.lang=lang;localStorage.setItem('phoenix-lang',lang)};b?.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';apply()});apply()})();
-</script>
+<script>(()=>{const b=document.querySelector('[data-lang]');let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr';const apply=()=>{document.documentElement.lang=lang;localStorage.setItem('phoenix-lang',lang)};b?.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';apply()});apply()})();</script>
 </body>
 </html>
