@@ -23,7 +23,7 @@ window.PHOENIX_CONFIG={
 };
 
 (()=>{
-  const v='20260816-1415';
+  const v='20260816-1425';
   const css=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.setAttribute(`data-${key}`,'true');document.head.appendChild(l)};
   const js=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.async=false;s.setAttribute(`data-${key}`,'true');document.head.appendChild(s)};
   const forceSynapseInvite=()=>{const invite=window.PHOENIX_CONFIG?.synapseInviteUrl;if(!invite)return;document.querySelectorAll('[data-config-link="synapseInviteUrl"],a[href*="discord.com/oauth2/authorize"][href*="client_id="]').forEach(link=>{if(link instanceof HTMLAnchorElement)link.href=invite;});};
@@ -33,6 +33,7 @@ window.PHOENIX_CONFIG={
   css(`theme-light.css?v=${v}`,'phoenix-theme');
   css(`global-socials.css?v=${v}`,'phoenix-global-socials');
   css(`phoenix-premium-skin.css?v=${v}`,'phoenix-premium-skin');
+  css(`final-layout-polish.css?v=${v}`,'phoenix-final-polish');
   if(document.body.classList.contains('v2-home'))css(`home-contact.css?v=${v}`,'phoenix-home-contact');
   if(document.body.classList.contains('v2-command-page'))css(`commands-control-center.css?v=${v}`,'phoenix-command-center');
   if(document.body.classList.contains('synapse-saas-page')){css(`synapse-product-v2.css?v=${v}`,'synapse-product-v2');css(`synapse-flow.css?v=${v}`,'synapse-flow');css(`synapse-adaptive.css?v=${v}`,'synapse-adaptive');}
