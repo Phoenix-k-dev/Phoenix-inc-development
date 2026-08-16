@@ -1,19 +1,35 @@
-/* The commands page must use the exact Phoenix global footer palette. */
-.v2-command-page .v2-footer{color:var(--text)!important}
-.v2-command-page .v2-footer .v2-brand b{color:var(--text)!important}
-.v2-command-page .v2-footer .v2-brand small{color:var(--orange)!important}
-.v2-command-page .v2-footer-main>p{color:#737b8e!important}
-.v2-command-page .v2-footer-links a{color:#8991a3!important;opacity:1!important}
-.v2-command-page .v2-footer-bottom{color:#9d8aff!important}
-.v2-command-page .v2-footer-bottom [data-legal-links],
-.v2-command-page .v2-footer-bottom [data-legal-links] a,
-.v2-command-page .v2-footer [data-legal-links],
-.v2-command-page .v2-footer [data-legal-links] a{color:#9d8aff!important;opacity:1!important}
+/* Commands uses the exact Phoenix global footer palette.
+   Only the bottom legal/copyright row is violet. */
+.v2-command-page footer.v2-footer{color:var(--text)!important}
+.v2-command-page footer.v2-footer .v2-footer-main{color:var(--text)!important}
+.v2-command-page footer.v2-footer .v2-brand,
+.v2-command-page footer.v2-footer .v2-brand:link,
+.v2-command-page footer.v2-footer .v2-brand:visited{color:var(--text)!important}
+.v2-command-page footer.v2-footer .v2-brand b{color:var(--text)!important}
+.v2-command-page footer.v2-footer .v2-brand small{color:var(--orange)!important}
+.v2-command-page footer.v2-footer .v2-footer-main>p{color:#737b8e!important}
+.v2-command-page footer.v2-footer .v2-footer-links,
+.v2-command-page footer.v2-footer .v2-footer-links a,
+.v2-command-page footer.v2-footer .v2-footer-links a:link,
+.v2-command-page footer.v2-footer .v2-footer-links a:visited{color:#8991a3!important;opacity:1!important}
+.v2-command-page footer.v2-footer .phx-footer-socials,
+.v2-command-page footer.v2-footer .phx-footer-socials a{color:#8991a3!important}
+.v2-command-page footer.v2-footer .v2-footer-bottom{color:#9d8aff!important}
+.v2-command-page footer.v2-footer .v2-footer-bottom [data-legal-links],
+.v2-command-page footer.v2-footer .v2-footer-bottom [data-legal-links] a,
+.v2-command-page footer.v2-footer [data-legal-links],
+.v2-command-page footer.v2-footer [data-legal-links] a{color:#9d8aff!important;opacity:1!important}
 
-:root[data-theme="light"] .v2-command-page .v2-footer{color:#171d2a!important}
-:root[data-theme="light"] .v2-command-page .v2-footer .v2-brand b{color:#171d2a!important}
-:root[data-theme="light"] .v2-command-page .v2-footer-main>p{color:#687286!important}
-:root[data-theme="light"] .v2-command-page .v2-footer-links a{color:#626d83!important}
-:root[data-theme="light"] .v2-command-page .v2-footer-bottom,
-:root[data-theme="light"] .v2-command-page .v2-footer-bottom [data-legal-links],
-:root[data-theme="light"] .v2-command-page .v2-footer-bottom [data-legal-links] a{color:#795df5!important}
+:root[data-theme="light"] .v2-command-page footer.v2-footer,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-main,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-brand,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-brand b{color:#171d2a!important}
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-brand small{color:var(--orange)!important}
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-main>p{color:#687286!important}
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-links,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-links a,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .phx-footer-socials,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .phx-footer-socials a{color:#626d83!important}
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-bottom,
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-bottom [data-legal-links],
+:root[data-theme="light"] .v2-command-page footer.v2-footer .v2-footer-bottom [data-legal-links] a{color:#795df5!important}
