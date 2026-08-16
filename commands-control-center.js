@@ -2,8 +2,8 @@
   if (!document.body.classList.contains('v2-command-page')) return;
 
   const copy={
-    fr:{kicker:'COMMANDES SYNAPSE',title:'Toutes <span>les commandes,</span><br>au même endroit.',lead:'Gérez votre serveur avec Synapse grâce à un ensemble de commandes puissantes et intuitives. Builder, tickets, permissions, communauté, Premium et Interserver : tout est là.',tip:'Astuce',tipText:'Utilisez /commandes dans Discord pour obtenir cette liste directement.',all:'Toutes',back:'← Toutes les catégories',help:'Besoin d’aide ?',helpText:'Utilisez /commandes dans Discord ou revenez à la fiche Synapse.',docs:'Voir la fiche Synapse →'},
-    en:{kicker:'SYNAPSE COMMANDS',title:'Every <span>command,</span><br>in one place.',lead:'Manage your server with Synapse through a clear set of powerful commands. Builder, tickets, permissions, community, Premium and Interserver: everything is here.',tip:'Tip',tipText:'Use /commandes in Discord to open this list directly.',all:'All',back:'← All categories',help:'Need help?',helpText:'Use /commandes in Discord or return to the Synapse page.',docs:'View Synapse →'}
+    fr:{kicker:'COMMANDES SYNAPSE',title:'Toutes <span>les commandes,</span><br>au même endroit.',lead:'Gérez votre serveur avec Synapse grâce à un ensemble de commandes puissantes et intuitives. Builder, tickets, permissions, communauté, Premium et Interserver : tout est là.',all:'Toutes',back:'← Toutes les catégories',help:'Besoin d’aide ?',helpText:'Utilisez /commandes dans Discord pour obtenir cette liste directement.',docs:'Voir la fiche Synapse →'},
+    en:{kicker:'SYNAPSE COMMANDS',title:'Every <span>command,</span><br>in one place.',lead:'Manage your server with Synapse through a clear set of powerful commands. Builder, tickets, permissions, community, Premium and Interserver: everything is here.',all:'All',back:'← All categories',help:'Need help?',helpText:'Use /commandes in Discord to open this list directly.',docs:'View Synapse →'}
   };
   const categoryCopy={
     fr:{builder:['Builder','Créez et structurez votre serveur en quelques commandes.','/builder setup','◆'],tickets:['Tickets','Un système de tickets complet et personnalisable.','/ticket setup','▣'],community:['Communauté','Animez votre serveur et vos interactions communautaires.','/annonce','●'],access:['Permissions','Gérez simplement les rôles et les accès Synapse.','/permissions voir','◆'],premium:['Premium','Sauvegardes, AutoMod, niveaux, automatisations et plus.','/premium','★'],interserver:['Interserver','Reliez plusieurs serveurs et salons entre eux.','/interserver link','∞']},
@@ -29,7 +29,7 @@
 
     const center=document.createElement('section');center.className='cmd-control-center';
     const intro=document.createElement('aside');intro.className='cmd-control-intro';
-    intro.innerHTML='<div class="cmd-control-intro-copy"><small data-cc-kicker></small><h1 data-cc-title></h1><p data-cc-lead></p></div><div class="cmd-control-tip"><small data-cc-tip></small><p data-cc-tip-text></p></div>';
+    intro.innerHTML='<div class="cmd-control-intro-copy"><small data-cc-kicker></small><h1 data-cc-title></h1><p data-cc-lead></p></div>';
     const nav=document.createElement('aside');nav.className='cmd-control-sidebar';nav.innerHTML='<div class="cmd-control-brand"><small>SYNAPSE</small><strong>Commandes<br>Synapse</strong></div><div class="cmd-control-nav" data-control-nav></div>';
     const main=document.createElement('div');main.className='cmd-control-main';
     const top=document.createElement('div');top.className='cmd-control-top';top.innerHTML='<button type="button" data-cc-back hidden></button>';
@@ -46,7 +46,6 @@
   }
 
   function filtersList(){return [...document.querySelectorAll('[data-command-filters] button')];}
-
   function activeFilter(filters){return filters.find(b=>b.classList.contains('active'))||filters[0];}
 
   function renderNav(filters){
@@ -76,7 +75,7 @@
     const t=copy[lang()];
 
     const set=(sel,val,html=false)=>{const el=document.querySelector(sel);if(el)html?el.innerHTML=val:el.textContent=val};
-    set('[data-cc-kicker]',t.kicker);set('[data-cc-title]',t.title,true);set('[data-cc-lead]',t.lead);set('[data-cc-tip]',t.tip);set('[data-cc-tip-text]',t.tipText);set('[data-cc-help]',t.help);set('[data-cc-help-text]',t.helpText);set('[data-cc-docs]',t.docs);
+    set('[data-cc-kicker]',t.kicker);set('[data-cc-title]',t.title,true);set('[data-cc-lead]',t.lead);set('[data-cc-help]',t.help);set('[data-cc-help-text]',t.helpText);set('[data-cc-docs]',t.docs);
     if(back){back.textContent=t.back;back.hidden=isAll&&!hasSearch;back.onclick=()=>{filters.find(f=>f.dataset.cat==='all')?.click();if(search){search.value='';search.dispatchEvent(new Event('input',{bubbles:true}))}setTimeout(sync,0)}}
 
     renderNav(filters);renderOverview(filters);
