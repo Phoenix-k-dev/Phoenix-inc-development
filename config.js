@@ -2,7 +2,6 @@ window.PHOENIX_CONFIG={
   contactEmail:"phoenixinc.dev@gmail.com",
   discordUrl:"https://discord.gg/xfWVss2KCv",
   tebexUrl:"",
-  instagramUrl:"",
   youtubeUrl:"",
   phGarageTebexUrl:"",
   phBankingTebexUrl:"",
@@ -23,7 +22,7 @@ window.PHOENIX_CONFIG={
 };
 
 (()=>{
-  const v='20260816-1240';
+  const v='20260816-1305';
   const css=(href,key)=>{if(document.querySelector(`link[data-${key}]`))return;const l=document.createElement('link');l.rel='stylesheet';l.href=href;l.setAttribute(`data-${key}`,'true');document.head.appendChild(l)};
   const js=(src,key)=>{if(document.querySelector(`script[data-${key}]`))return;const s=document.createElement('script');s.src=src;s.async=false;s.setAttribute(`data-${key}`,'true');document.head.appendChild(s)};
   const forceSynapseInvite=()=>{const invite=window.PHOENIX_CONFIG?.synapseInviteUrl;if(!invite)return;document.querySelectorAll('[data-config-link="synapseInviteUrl"],a[href*="discord.com/oauth2/authorize"][href*="client_id="]').forEach(link=>{if(link instanceof HTMLAnchorElement)link.href=invite;});};
