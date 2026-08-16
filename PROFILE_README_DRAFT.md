@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/logo-phoenix-ph.png" width="170" alt="Phoenix Inc | Development" />
+<img src="https://raw.githubusercontent.com/Phoenix-k-dev/Phoenix-inc-development/main/assets/logo-phoenix-ph.png" width="170" alt="Phoenix Inc | Development" />
 
 # Phoenix Inc | Development
 
