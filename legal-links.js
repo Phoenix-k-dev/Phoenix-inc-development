@@ -2,8 +2,6 @@
   const render = () => {
     const en = localStorage.getItem('phoenix-lang') === 'en' || document.documentElement.lang === 'en';
 
-    // Only target actual page footers. Never inject legal links inside
-    // component-level <footer> elements such as Synapse command cards.
     document.querySelectorAll('.v2-footer, .syn-v2-footer, body > footer').forEach(footer => {
       if (footer.closest('.cmd-card')) return;
 
@@ -22,7 +20,9 @@
         'flex-wrap:wrap',
         'align-items:center',
         'font-size:11px',
-        'margin-top:10px'
+        'margin-top:10px',
+        'color:#9d8aff',
+        'opacity:1'
       ].join(';');
 
       const links = [
@@ -31,8 +31,15 @@
       ];
 
       wrap.innerHTML = links
-        .map(([href, label]) => `<a href="${href}" style="color:inherit;text-decoration:none">${label}</a>`)
+        .map(([href, label]) => `<a href="${href}" style="color:#9d8aff;text-decoration:none">${label}</a>`)
         .join('');
+
+      footer.querySelectorAll(':scope > span, .v2-footer-bottom > span, .v2-footer-main + * span').forEach(el => {
+        if (/2026|Phoenix Inc|Discord-first/i.test(el.textContent || '')) {
+          el.style.color = '#9d8aff';
+          el.style.opacity = '1';
+        }
+      });
     });
   };
 
