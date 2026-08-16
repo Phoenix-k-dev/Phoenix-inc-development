@@ -2,10 +2,9 @@
   if (!document.body.classList.contains('v2-command-page')) return;
 
   const labels = {
-    fr:{title:'Commandes Synapse',all:'Toutes'},
-    en:{title:'Synapse Commands',all:'All'}
+    fr:{title:'Commandes Synapse'},
+    en:{title:'Synapse Commands'}
   };
-
   const lang=()=>document.documentElement.lang==='en'?'en':'fr';
 
   function build(){
@@ -35,24 +34,23 @@
     if(!nav||!filters.length)return;
     if(title)title.textContent=labels[lang()].title;
     nav.innerHTML='';
-    filters.forEach((source,index)=>{
+    filters.forEach(source=>{
       const btn=document.createElement('button');
       btn.type='button';
       btn.classList.toggle('active',source.classList.contains('active'));
       const label=document.createElement('span');
       label.textContent=source.textContent;
-      const count=document.createElement('span');
-      const cat=source.dataset.cat;
-      count.textContent=cat==='all'?document.querySelectorAll('.cmd-card').length:[...document.querySelectorAll('.cmd-card')].filter(card=>card.querySelector('.cmd-card-top span')?.textContent?.trim()===source.textContent.trim()).length;
-      btn.append(label,count);
+      const arrow=document.createElement('span');
+      arrow.textContent='›';
+      btn.append(label,arrow);
       btn.addEventListener('click',()=>{source.click();setTimeout(sync,0);});
       nav.appendChild(btn);
     });
   }
 
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(build,0),{once:true});else setTimeout(build,0);
+  const init=()=>{build();setTimeout(build,80);setTimeout(sync,160);};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
   window.addEventListener('phoenix:langchange',()=>setTimeout(sync,0));
+  window.addEventListener('storage',e=>{if(e.key==='phoenix-lang')setTimeout(sync,0);});
   document.addEventListener('click',e=>{if(e.target.closest?.('[data-command-filters] button'))setTimeout(sync,0);});
-  const observer=new MutationObserver(()=>{if(!document.querySelector('.cmd-control-center'))build();else sync();});
-  if(document.body)observer.observe(document.body,{childList:true,subtree:true});
 })();
