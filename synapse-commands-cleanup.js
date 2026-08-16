@@ -18,6 +18,8 @@
   };
 
   function lang(){return document.documentElement.lang==='en'?'en':'fr';}
+  function setText(el,value){if(el&&el.textContent!==value)el.textContent=value;}
+  function setAttr(el,name,value){if(el&&el.getAttribute(name)!==value)el.setAttribute(name,value);}
   function accessLabel(kind){
     const en=lang()==='en';
     if(kind==='everyone')return en?'Everyone':'Tous';
@@ -38,21 +40,17 @@
 
     if(value==='/reinitialiser_salons'||value==='/reset_channels')value='/reset';
     if(realNames[value])value=realNames[value];
-    if(code.textContent!==value)code.textContent=value;
-    const copy=card.querySelector('[data-copy]');
-    if(copy)copy.setAttribute('data-copy',value);
+    setText(code,value);
+    setAttr(card.querySelector('[data-copy]'),'data-copy',value);
 
     if(value==='/reset'){
-      const p=card.querySelector('p');
-      if(p)p.textContent=lang()==='en'
+      const text=lang()==='en'
         ?'Safely resets the Discord server while keeping one command channel.'
         :'Réinitialise proprement le Discord tout en conservant un salon pour les commandes.';
+      setText(card.querySelector('p'),text);
     }
 
-    if(value==='/pro status'){
-      const footer=card.querySelector('footer span');
-      if(footer)footer.textContent=accessLabel('everyone');
-    }
+    if(value==='/pro status')setText(card.querySelector('footer span'),accessLabel('everyone'));
   }
 
   function shouldShowTicketColor(){
@@ -73,12 +71,14 @@
     const en=lang()==='en';
     const card=document.createElement('article');
     card.className='cmd-card';
+    card.dataset.synapseInjected='ticket-couleur';
     card.innerHTML=`<div class="cmd-card-top"><span>${en?'Tickets':'Ticket Studio'}</span></div><code>/ticket couleur</code><p>${en?'Changes the color of an existing Ticket Studio button.':'Change la couleur d’un bouton Ticket Studio existant.'}</p><footer><span>${accessLabel('managers')}</span><button type="button" data-copy="/ticket couleur">${en?'Copy':'Copier'}</button></footer>`;
     card.querySelector('[data-copy]')?.addEventListener('click',async e=>{
       try{
         await navigator.clipboard.writeText('/ticket couleur');
-        const btn=e.currentTarget;btn.textContent=en?'Copied ✓':'Copié ✓';
-        setTimeout(()=>btn.textContent=en?'Copy':'Copier',1000);
+        const btn=e.currentTarget;
+        setText(btn,en?'Copied ✓':'Copié ✓');
+        setTimeout(()=>setText(btn,en?'Copy':'Copier'),1000);
       }catch{}
     });
     grid.appendChild(card);
@@ -89,16 +89,21 @@
     ensureTicketColor();
   }
 
-  let running=false;
-  const observer=new MutationObserver(()=>{
-    if(running)return;
-    running=true;
-    queueMicrotask(()=>{clean();running=false;});
+  let scheduled=false;
+  function scheduleClean(){
+    if(scheduled)return;
+    scheduled=true;
+    requestAnimationFrame(()=>{scheduled=false;clean();});
+  }
+
+  const observer=new MutationObserver(mutations=>{
+    if(mutations.some(m=>m.addedNodes.length||m.removedNodes.length))scheduleClean();
   });
   observer.observe(document.documentElement,{subtree:true,childList:true});
-  document.addEventListener('DOMContentLoaded',clean,{once:true});
-  window.addEventListener('phoenix:langchange',()=>setTimeout(clean,0));
-  document.addEventListener('input',e=>{if(e.target?.matches?.('[data-command-search]'))setTimeout(clean,0)});
-  document.addEventListener('click',e=>{if(e.target?.closest?.('[data-command-filters] button'))setTimeout(clean,0)});
-  setTimeout(clean,0);setTimeout(clean,250);
+
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',clean,{once:true});
+  else clean();
+  window.addEventListener('phoenix:langchange',scheduleClean);
+  document.addEventListener('input',e=>{if(e.target?.matches?.('[data-command-search]'))scheduleClean();});
+  document.addEventListener('click',e=>{if(e.target?.closest?.('[data-command-filters] button'))scheduleClean();});
 })();
