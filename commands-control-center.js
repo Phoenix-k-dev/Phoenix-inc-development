@@ -1,29 +1,24 @@
 (() => {
   if (!document.body.classList.contains('v2-command-page')) return;
 
-  const labels={
-    fr:{title:'Commandes Synapse',tip:'Astuce',tipText:'Utilisez /commandes dans Discord pour retrouver cette liste directement.',overview:'Vue d’ensemble',back:'← Toutes les catégories',help:'Besoin d’aide ?',helpText:'Utilisez /commandes dans Discord pour obtenir cette liste directement.',docs:'Voir la fiche Synapse →'},
-    en:{title:'Synapse Commands',tip:'Tip',tipText:'Use /commandes in Discord to open this list directly.',overview:'Overview',back:'← All categories',help:'Need help?',helpText:'Use /commandes in Discord to get this list directly.',docs:'View Synapse →'}
+  const copy={
+    fr:{kicker:'COMMANDES SYNAPSE',title:'Toutes <span>les commandes,</span><br>au même endroit.',lead:'Gérez votre serveur avec Synapse grâce à un ensemble de commandes puissantes et intuitives. Builder, tickets, permissions, communauté, Premium et Interserver : tout est là.',tip:'Astuce',tipText:'Utilisez /commandes dans Discord pour obtenir cette liste directement.',all:'Toutes',back:'← Toutes les catégories',help:'Besoin d’aide ?',helpText:'Utilisez /commandes dans Discord ou revenez à la fiche Synapse.',docs:'Voir la fiche Synapse →'},
+    en:{kicker:'SYNAPSE COMMANDS',title:'Every <span>command,</span><br>in one place.',lead:'Manage your server with Synapse through a clear set of powerful commands. Builder, tickets, permissions, community, Premium and Interserver: everything is here.',tip:'Tip',tipText:'Use /commandes in Discord to open this list directly.',all:'All',back:'← All categories',help:'Need help?',helpText:'Use /commandes in Discord or return to the Synapse page.',docs:'View Synapse →'}
   };
   const categoryCopy={
-    fr:{
-      builder:{title:'Builder',desc:'Créez et structurez votre serveur en quelques commandes.',example:'/builder setup',icon:'◆'},
-      tickets:{title:'Tickets',desc:'Un système de tickets complet et personnalisable.',example:'/ticket setup',icon:'▣'},
-      community:{title:'Communauté',desc:'Animez votre serveur et vos interactions communautaires.',example:'/annonce',icon:'●'},
-      access:{title:'Permissions',desc:'Gérez les rôles et les accès Synapse simplement.',example:'/permissions voir',icon:'◆'},
-      premium:{title:'Premium',desc:'Sauvegardes, AutoMod, niveaux, automatisations et plus.',example:'/premium',icon:'★'},
-      interserver:{title:'Interserver',desc:'Reliez plusieurs serveurs et salons entre eux.',example:'/interserver link',icon:'∞'}
-    },
-    en:{
-      builder:{title:'Builder',desc:'Create and structure your server in just a few commands.',example:'/builder setup',icon:'◆'},
-      tickets:{title:'Tickets',desc:'A complete and customizable ticket system.',example:'/ticket setup',icon:'▣'},
-      community:{title:'Community',desc:'Engage your server and community interactions.',example:'/annonce',icon:'●'},
-      access:{title:'Permissions',desc:'Manage Synapse roles and access easily.',example:'/permissions voir',icon:'◆'},
-      premium:{title:'Premium',desc:'Backups, AutoMod, levels, automations and more.',example:'/premium',icon:'★'},
-      interserver:{title:'Interserver',desc:'Connect multiple servers and channels together.',example:'/interserver link',icon:'∞'}
-    }
+    fr:{builder:['Builder','Créez et structurez votre serveur en quelques commandes.','/builder setup','◆'],tickets:['Tickets','Un système de tickets complet et personnalisable.','/ticket setup','▣'],community:['Communauté','Animez votre serveur et vos interactions communautaires.','/annonce','●'],access:['Permissions','Gérez simplement les rôles et les accès Synapse.','/permissions voir','◆'],premium:['Premium','Sauvegardes, AutoMod, niveaux, automatisations et plus.','/premium','★'],interserver:['Interserver','Reliez plusieurs serveurs et salons entre eux.','/interserver link','∞']},
+    en:{builder:['Builder','Create and structure your server in just a few commands.','/builder setup','◆'],tickets:['Tickets','A complete and customizable ticket system.','/ticket setup','▣'],community:['Community','Engage your server and community interactions.','/annonce','●'],access:['Permissions','Manage Synapse roles and access easily.','/permissions voir','◆'],premium:['Premium','Backups, AutoMod, levels, automations and more.','/premium','★'],interserver:['Interserver','Connect multiple servers and channels together.','/interserver link','∞']}
   };
   const lang=()=>document.documentElement.lang==='en'?'en':'fr';
+
+  function countCards(cat){
+    return [...document.querySelectorAll('.cmd-grid .cmd-card')].filter(card=>{
+      const label=(card.querySelector('.cmd-card-top span')?.textContent||'').toLowerCase();
+      if(cat==='access')return label.includes('permission')||label.includes('accès')||label.includes('access');
+      if(cat==='community')return label.includes('commun');
+      return label.includes(cat);
+    }).length;
+  }
 
   function build(){
     const hero=document.querySelector('.cmd-hero');
@@ -34,77 +29,64 @@
 
     const center=document.createElement('section');center.className='cmd-control-center';
     const intro=document.createElement('aside');intro.className='cmd-control-intro';
-    const nav=document.createElement('aside');nav.className='cmd-control-sidebar';nav.innerHTML='<div class="cmd-control-brand"><small>SYNAPSE</small><strong data-control-title></strong></div><div class="cmd-control-nav" data-control-nav></div><div class="cmd-control-tip"><small data-control-tip></small><p data-control-tip-text></p></div>';
+    intro.innerHTML='<div class="cmd-control-intro-copy"><small data-cc-kicker></small><h1 data-cc-title></h1><p data-cc-lead></p></div><div class="cmd-control-tip"><small data-cc-tip></small><p data-cc-tip-text></p></div>';
+    const nav=document.createElement('aside');nav.className='cmd-control-sidebar';nav.innerHTML='<div class="cmd-control-brand"><small>SYNAPSE</small><strong>Commandes<br>Synapse</strong></div><div class="cmd-control-nav" data-control-nav></div>';
     const main=document.createElement('div');main.className='cmd-control-main';
+    const top=document.createElement('div');top.className='cmd-control-top';top.innerHTML='<button type="button" data-cc-back hidden></button>';
     const overview=document.createElement('section');overview.className='cmd-category-overview';overview.dataset.categoryOverview='';
-    const help=document.createElement('div');help.className='cmd-control-help';help.innerHTML='<div><strong data-control-help></strong><span data-control-help-text></span></div><a href="synapse-bot.html" data-control-docs></a>';
+    const help=document.createElement('div');help.className='cmd-control-help';help.innerHTML='<div><strong data-cc-help></strong><span data-cc-help-text></span></div><a href="synapse-bot.html" data-cc-docs></a>';
 
-    hero.parentNode.insertBefore(center,hero);
+    hero.insertAdjacentElement('beforebegin',center);
+    hero.remove();
     center.append(intro,nav,main);
-    intro.appendChild(hero);
-    main.append(toolbar,overview,grid,help);
+    main.append(top,toolbar,overview,grid,help);
+
+    document.querySelector('[data-command-search]')?.addEventListener('input',()=>setTimeout(sync,0));
     sync();
   }
 
-  function countFor(cat,label){
-    const cards=[...document.querySelectorAll('.cmd-grid .cmd-card')];
-    if(!cards.length)return '';
-    return cards.filter(card=>{
-      const top=card.querySelector('.cmd-card-top span')?.textContent?.trim().toLowerCase()||'';
-      return top===label.toLowerCase() || top.includes(cat==='access'?'permission':cat==='community'?'commun':cat);
-    }).length || '';
+  function filtersList(){return [...document.querySelectorAll('[data-command-filters] button')];}
+
+  function activeFilter(filters){return filters.find(b=>b.classList.contains('active'))||filters[0];}
+
+  function renderNav(filters){
+    const nav=document.querySelector('[data-control-nav]');if(!nav)return;
+    nav.innerHTML='';
+    filters.forEach(source=>{
+      const btn=document.createElement('button');btn.type='button';btn.className=source.classList.contains('active')?'active':'';btn.dataset.navCat=source.dataset.cat||'';
+      const label=document.createElement('span');label.textContent=source.textContent;
+      const mark=document.createElement('span');mark.textContent=source.dataset.cat==='all'?'⌂':'›';
+      btn.append(label,mark);btn.addEventListener('click',()=>{source.click();setTimeout(sync,0)});nav.appendChild(btn);
+    });
   }
 
   function renderOverview(filters){
-    const overview=document.querySelector('[data-category-overview]');
-    const grid=document.querySelector('.cmd-grid');
-    const toolbar=document.querySelector('.cmd-toolbar');
-    if(!overview||!grid||!toolbar)return;
-    const allButton=filters.find(b=>b.dataset.cat==='all')||filters[0];
-    const allActive=!!allButton?.classList.contains('active');
-    overview.hidden=!allActive;
-    grid.hidden=allActive;
-    toolbar.classList.toggle('cmd-toolbar-overview',allActive);
-    if(!allActive)return;
-
+    const overview=document.querySelector('[data-category-overview]');if(!overview)return;
     const t=categoryCopy[lang()];
-    const cats=filters.filter(b=>b.dataset.cat&&b.dataset.cat!=='all');
-    overview.innerHTML=cats.map(source=>{
-      const cat=source.dataset.cat;
-      const c=t[cat]||{title:source.textContent,desc:'',example:'',icon:'◆'};
-      const count=countFor(cat,source.textContent.trim());
-      return `<button type="button" class="cmd-category-card cmd-category-${cat}" data-open-cat="${cat}"><span class="cmd-category-icon">${c.icon}</span><span class="cmd-category-count">${count||'+'}</span><strong>${c.title}</strong><p>${c.desc}</p><code>${c.example}</code></button>`;
-    }).join('');
-    overview.querySelectorAll('[data-open-cat]').forEach(btn=>btn.addEventListener('click',()=>{
-      const source=filters.find(f=>f.dataset.cat===btn.dataset.openCat);
-      source?.click();
-      setTimeout(sync,0);
-    }));
+    const cats=filters.filter(f=>f.dataset.cat&&f.dataset.cat!=='all');
+    overview.innerHTML=cats.map(source=>{const cat=source.dataset.cat;const [title,desc,example,icon]=t[cat]||[source.textContent,'','', '◆'];const count=countCards(cat);return `<button type="button" class="cmd-category-card cmd-category-${cat}" data-open-cat="${cat}"><span class="cmd-category-icon">${icon}</span><span class="cmd-category-count">${count||''}</span><strong>${title}</strong><p>${desc}</p><code>${example}</code></button>`}).join('');
+    overview.querySelectorAll('[data-open-cat]').forEach(btn=>btn.addEventListener('click',()=>{filters.find(f=>f.dataset.cat===btn.dataset.openCat)?.click();setTimeout(sync,0)}));
   }
 
   function sync(){
-    const filters=[...document.querySelectorAll('[data-command-filters] button')];
-    const nav=document.querySelector('[data-control-nav]');
-    const title=document.querySelector('[data-control-title]');
-    const tip=document.querySelector('[data-control-tip]');
-    const tipText=document.querySelector('[data-control-tip-text]');
-    const help=document.querySelector('[data-control-help]');
-    const helpText=document.querySelector('[data-control-help-text]');
-    const docs=document.querySelector('[data-control-docs]');
-    if(!nav||!filters.length)return;
-    const t=labels[lang()];
-    if(title)title.textContent=t.title;if(tip)tip.textContent=t.tip;if(tipText)tipText.textContent=t.tipText;if(help)help.textContent=t.help;if(helpText)helpText.textContent=t.helpText;if(docs)docs.textContent=t.docs;
-    nav.innerHTML='';
-    filters.forEach(source=>{
-      const btn=document.createElement('button');btn.type='button';btn.classList.toggle('active',source.classList.contains('active'));btn.dataset.navCat=source.dataset.cat||'';
-      const label=document.createElement('span');label.textContent=source.textContent;
-      const arrow=document.createElement('span');arrow.textContent=source.dataset.cat==='all'?'⌂':'›';
-      btn.append(label,arrow);btn.addEventListener('click',()=>{source.click();setTimeout(sync,0);});nav.appendChild(btn);
-    });
-    renderOverview(filters);
+    const filters=filtersList();if(!filters.length)return;
+    const active=activeFilter(filters);const isAll=(active.dataset.cat||'all')==='all';
+    const search=document.querySelector('[data-command-search]');const hasSearch=!!search?.value.trim();
+    const overview=document.querySelector('[data-category-overview]');const grid=document.querySelector('.cmd-grid');const back=document.querySelector('[data-cc-back]');
+    const t=copy[lang()];
+
+    const set=(sel,val,html=false)=>{const el=document.querySelector(sel);if(el)html?el.innerHTML=val:el.textContent=val};
+    set('[data-cc-kicker]',t.kicker);set('[data-cc-title]',t.title,true);set('[data-cc-lead]',t.lead);set('[data-cc-tip]',t.tip);set('[data-cc-tip-text]',t.tipText);set('[data-cc-help]',t.help);set('[data-cc-help-text]',t.helpText);set('[data-cc-docs]',t.docs);
+    if(back){back.textContent=t.back;back.hidden=isAll&&!hasSearch;back.onclick=()=>{filters.find(f=>f.dataset.cat==='all')?.click();if(search){search.value='';search.dispatchEvent(new Event('input',{bubbles:true}))}setTimeout(sync,0)}}
+
+    renderNav(filters);renderOverview(filters);
+    const showOverview=isAll&&!hasSearch;
+    if(overview){overview.hidden=!showOverview;overview.style.display=showOverview?'grid':'none'}
+    if(grid){grid.hidden=showOverview;grid.style.display=showOverview?'none':'grid'}
+    document.querySelector('.cmd-control-center')?.classList.toggle('showing-overview',showOverview);
   }
 
-  const init=()=>{build();setTimeout(build,80);setTimeout(sync,160);setTimeout(sync,350)};
+  const init=()=>{build();setTimeout(sync,80);setTimeout(sync,240)};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
   window.addEventListener('phoenix:langchange',()=>setTimeout(sync,0));
   window.addEventListener('storage',e=>{if(e.key==='phoenix-lang')setTimeout(sync,0)});
