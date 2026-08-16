@@ -46,6 +46,7 @@
     if (event.key === 'phoenix-lang' || event.key === 'phoenix-theme') render();
   });
   window.addEventListener('phoenix:langchange', render);
+  window.addEventListener('phoenix:footerready', render);
   document.addEventListener('click', event => {
     if (event.target.closest?.('[data-theme-toggle]')) setTimeout(render, 0);
   });
