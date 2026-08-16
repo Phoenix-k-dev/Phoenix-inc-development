@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#05070b">
+  <title>Documentation Synapse — Phoenix Inc | Development</title>
+  <meta name="description" content="Documentation publique de Synapse : installation, Builder, Ticket Studio, Premium, Interserver, permissions et commandes.">
+  <link rel="icon" href="./assets/favicon.ico" sizes="any">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalog.css?v=20260816-docs1">
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}html,body{margin:0;background:#05070b;color:#eef2ff;font-family:Inter,Arial,sans-serif}body{min-height:100vh}.docs-shell{width:min(1180px,calc(100% - 32px));margin:auto}.docs-header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px max(16px,calc((100vw - 1180px)/2));background:rgba(5,7,11,.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}.docs-brand{display:flex;align-items:center;gap:10px;color:white;text-decoration:none;font-family:'Space Grotesk',sans-serif}.docs-brand img{width:34px;height:34px}.docs-nav{display:flex;gap:10px;flex-wrap:wrap}.docs-nav a,.docs-lang{color:#c9d2e7;text-decoration:none;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);padding:10px 14px;border-radius:10px;font:inherit;cursor:pointer}.docs-nav a:hover,.docs-lang:hover{color:#fff;border-color:rgba(139,108,255,.55)}.docs-hero{padding:88px 0 48px;display:grid;grid-template-columns:1.35fr .65fr;gap:28px}.docs-kicker{font-size:12px;font-weight:800;letter-spacing:.16em;color:#9f8cff}.docs-hero h1{font:700 clamp(46px,7vw,84px)/.96 'Space Grotesk',sans-serif;margin:14px 0 20px}.docs-hero h1 span{background:linear-gradient(90deg,#8b6cff,#50d8ff);-webkit-background-clip:text;color:transparent}.docs-hero p{max-width:780px;color:#aeb8cc;font-size:18px;line-height:1.7}.docs-card,.docs-section{border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.02));border-radius:18px}.docs-card{padding:24px;align-self:end}.docs-card code{display:block;margin:10px 0;padding:12px;border-radius:10px;background:#0d111a;color:#e9e4ff}.docs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.docs-section{padding:30px;margin:18px 0}.docs-section h2{font:700 30px 'Space Grotesk',sans-serif;margin:0 0 14px}.docs-section h3{font:650 20px 'Space Grotesk',sans-serif;margin:24px 0 10px}.docs-section p,.docs-section li{color:#b9c3d6;line-height:1.7}.docs-section ul{padding-left:20px}.docs-tag{display:inline-flex;margin:5px 5px 0 0;padding:7px 10px;border-radius:999px;background:rgba(139,108,255,.12);border:1px solid rgba(139,108,255,.25);color:#d8d0ff;font-size:13px}.docs-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.docs-btn{display:inline-flex;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:800}.docs-btn.primary{background:linear-gradient(90deg,#775cff,#46cfff);color:white}.docs-btn.ghost{border:1px solid rgba(255,255,255,.12);color:#eef2ff}.docs-note{padding:14px 16px;border-left:3px solid #8b6cff;background:rgba(139,108,255,.08);border-radius:8px;color:#cdd4e4}.docs-table{width:100%;border-collapse:collapse;margin-top:16px}.docs-table th,.docs-table td{padding:13px 12px;text-align:left;border-bottom:1px solid rgba(255,255,255,.07);color:#bdc7d8}.docs-table th{color:#fff}.docs-footer{padding:46px 0 64px;color:#778198;text-align:center}.en-only{display:none}html[lang="en"] .fr-only{display:none}html[lang="en"] .en-only{display:initial}@media(max-width:800px){.docs-hero,.docs-grid{grid-template-columns:1fr}.docs-header{align-items:flex-start;flex-direction:column}.docs-hero{padding-top:54px}}
+  </style>
+</head>
+<body>
+<header class="docs-header">
+  <a class="docs-brand" href="index.html"><img src="./assets/logo-phoenix-ph.png" alt=""><span>Phoenix Inc | Development</span></a>
+  <nav class="docs-nav">
+    <a href="synapse-bot.html"><span class="fr-only">Synapse</span><span class="en-only">Synapse</span></a>
+    <a href="synapse-commands.html"><span class="fr-only">Commandes</span><span class="en-only">Commands</span></a>
+    <a href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a>
+    <button class="docs-lang" type="button" data-lang>FR / EN</button>
+  </nav>
+</header>
+
+<main class="docs-shell">
+  <section class="docs-hero">
+    <div>
+      <span class="docs-kicker">SYNAPSE / DOCUMENTATION</span>
+      <h1><span class="fr-only">Comprendre Synapse.<br><span>Sans exposer son code.</span></span><span class="en-only">Understand Synapse.<br><span>Without exposing its source.</span></span></h1>
+      <p class="fr-only">Cette documentation publique présente le fonctionnement du bot, son installation, ses modules et ses commandes. Le code source de production reste privé.</p>
+      <p class="en-only">This public documentation explains how the bot works, how to install it, its modules and commands. The production source code remains private.</p>
+      <div class="docs-actions">
+        <a class="docs-btn primary" href="https://discord.com/oauth2/authorize?client_id=1535652568150057011&scope=bot%20applications.commands&permissions=1100333837330&integration_type=0" target="_blank" rel="noopener"><span class="fr-only">Ajouter Synapse ↗</span><span class="en-only">Add Synapse ↗</span></a>
+        <a class="docs-btn ghost" href="synapse-commands.html"><span class="fr-only">Voir les commandes</span><span class="en-only">View commands</span></a>
+      </div>
+    </div>
+    <aside class="docs-card">
+      <span class="docs-kicker">QUICK START</span>
+      <code>/scan</code>
+      <code>/builder setup</code>
+      <code>/ticket setup</code>
+      <code>/commandes</code>
+    </aside>
+  </section>
+
+  <section class="docs-grid">
+    <article class="docs-section">
+      <h2 class="fr-only">1. Installation</h2><h2 class="en-only">1. Installation</h2>
+      <p class="fr-only">Ajoutez Synapse via le bouton d’installation officiel. Accordez uniquement les permissions nécessaires aux fonctions que vous utilisez. Synapse s’appuie sur les commandes slash Discord.</p>
+      <p class="en-only">Add Synapse through the official install button. Grant only the permissions required by the features you use. Synapse is driven through Discord slash commands.</p>
+      <div><span class="docs-tag">Discord-first</span><span class="docs-tag">FR / EN</span><span class="docs-tag">Builder Free</span></div>
+    </article>
+    <article class="docs-section">
+      <h2>2. Adaptive Builder</h2>
+      <p class="fr-only">Le Builder est le cœur de Synapse. Il peut créer un serveur complet depuis un template ou analyser une structure existante pour compléter uniquement ce qui manque.</p>
+      <p class="en-only">The Builder is Synapse’s core. It can create a complete server from a template or analyse an existing structure and only add what is missing.</p>
+      <ul class="fr-only"><li>Templates complets</li><li>Catégories, salons et rôles</li><li>Analyse de la DA existante</li><li>Ajouts ciblés sans doublons inutiles</li><li>Rollback et reset contrôlé</li></ul>
+      <ul class="en-only"><li>Complete templates</li><li>Categories, channels and roles</li><li>Existing style analysis</li><li>Targeted additions without unnecessary duplicates</li><li>Rollback and controlled reset</li></ul>
+    </article>
+  </section>
+
+  <section class="docs-section">
+    <h2>3. Ticket Studio</h2>
+    <p class="fr-only">Ticket Studio analyse les tickets existants avant installation. Il peut conserver un panel existant, remplacer proprement une configuration et gérer des panels FR/EN réellement présents sans créer artificiellement un second salon.</p>
+    <p class="en-only">Ticket Studio analyses existing tickets before installation. It can preserve an existing panel, replace a setup cleanly and manage real FR/EN panels without artificially creating a second channel.</p>
+    <div><span class="docs-tag">/ticket scan</span><span class="docs-tag">/ticket setup</span><span class="docs-tag">/ticket creer</span><span class="docs-tag">/ticket couleur</span><span class="docs-tag">Multi staff roles</span></div>
+  </section>
+
+  <section class="docs-grid">
+    <article class="docs-section">
+      <h2>4. Permissions</h2>
+      <p class="fr-only">Synapse distingue les commandes publiques, staff, responsables et administrateur Discord. Les permissions peuvent être ajustées par rôle.</p>
+      <p class="en-only">Synapse separates public, staff, manager and Discord administrator commands. Access can be adjusted by role.</p>
+      <div class="docs-note fr-only">Les opérations destructives demandent une confirmation et respectent les protections Discord.</div>
+      <div class="docs-note en-only">Destructive operations require confirmation and respect Discord protections.</div>
+    </article>
+    <article class="docs-section">
+      <h2>5. Interserver</h2>
+      <p class="fr-only">Interserver relie des salons entre plusieurs Discord grâce à des codes temporaires, des alias et un relais sécurisé par webhook.</p>
+      <p class="en-only">Interserver links channels across several Discord servers using temporary codes, aliases and secure webhook relay.</p>
+      <div><span class="docs-tag">/interserver code</span><span class="docs-tag">/interserver link</span><span class="docs-tag">/interserver alias</span></div>
+    </article>
+  </section>
+
+  <section class="docs-section">
+    <h2>6. Synapse Premium</h2>
+    <p class="fr-only">Premium est activé au niveau du serveur. Il ajoute les outils avancés tout en laissant le Builder principal disponible gratuitement.</p>
+    <p class="en-only">Premium is enabled at server level. It adds advanced tools while the main Builder remains available for free.</p>
+    <table class="docs-table">
+      <thead><tr><th>Module</th><th>Free</th><th>Premium</th></tr></thead>
+      <tbody>
+        <tr><td>Adaptive Builder</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Ticket Studio</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Interserver</td><td>✓</td><td>✓</td></tr>
+        <tr><td>Backups / restore</td><td>—</td><td>✓</td></tr>
+        <tr><td>AutoMod / Anti-Raid</td><td>—</td><td>✓</td></tr>
+        <tr><td>Levels / XP / Temp Voice</td><td>—</td><td>✓</td></tr>
+        <tr><td>Giveaways / custom commands / automations</td><td>—</td><td>✓</td></tr>
+      </tbody>
+    </table>
+    <p class="fr-only"><strong>Tarif affiché par Synapse :</strong> 3,99 € / mois / serveur.</p>
+    <p class="en-only"><strong>Synapse displayed price:</strong> €3.99 / month / server.</p>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="fr-only">7. Commandes</h2><h2 class="en-only">7. Commands</h2>
+    <p class="fr-only">Le catalogue complet et actualisé est maintenu sur une page dédiée. Les commandes internes réservées au propriétaire de Synapse ne sont volontairement pas documentées publiquement.</p>
+    <p class="en-only">The complete up-to-date catalogue is maintained on a dedicated page. Internal commands reserved for the Synapse owner are intentionally not publicly documented.</p>
+    <a class="docs-btn primary" href="synapse-commands.html"><span class="fr-only">Ouvrir le catalogue →</span><span class="en-only">Open catalogue →</span></a>
+  </section>
+
+  <section class="docs-section">
+    <h2 class="fr-only">8. Support & sécurité</h2><h2 class="en-only">8. Support & security</h2>
+    <p class="fr-only">Les tokens, secrets, données serveur et code source de production ne font pas partie de la documentation publique. Pour le support, utilisez le Discord Phoenix Inc | Development.</p>
+    <p class="en-only">Tokens, secrets, server data and production source code are not part of the public documentation. For support, use the Phoenix Inc | Development Discord.</p>
+  </section>
+</main>
+<footer class="docs-footer">© 2026 Phoenix Inc | Development · Synapse</footer>
+<script>
+(()=>{const b=document.querySelector('[data-lang]');let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr';const apply=()=>{document.documentElement.lang=lang;localStorage.setItem('phoenix-lang',lang)};b?.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';apply()});apply()})();
+</script>
+</body>
+</html>
