@@ -1,0 +1,67 @@
+/* Final layout polish: keep page shells transparent and panels rounded. */
+
+/* Synapse sections are layout wrappers, not cards. */
+.synapse-saas-page .syn-v2-section,
+.synapse-saas-page .syn-command-showcase,
+.synapse-saas-page .syn-dashboard-future{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+  border-radius:0!important;
+}
+
+:root[data-theme="light"] .synapse-saas-page .syn-v2-section,
+:root[data-theme="light"] .synapse-saas-page .syn-command-showcase,
+:root[data-theme="light"] .synapse-saas-page .syn-dashboard-future{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* Keep only the actual content panels white and rounded in light mode. */
+:root[data-theme="light"] .synapse-saas-page .syn-v2-module,
+:root[data-theme="light"] .synapse-saas-page .syn-command-preview article,
+:root[data-theme="light"] .synapse-saas-page .syn-future-preview,
+:root[data-theme="light"] .synapse-saas-page .syn-premium-compare,
+:root[data-theme="light"] .synapse-saas-page .syn-v2-final{
+  background:#fff!important;
+  border:1px solid rgba(18,24,38,.10)!important;
+  border-radius:18px!important;
+  box-shadow:0 16px 42px rgba(27,35,55,.055)!important;
+}
+
+/* Command center: cleaner proportions after removing the duplicate tip. */
+.v2-command-page .cmd-control-center{
+  min-height:620px;
+  align-items:stretch;
+}
+.v2-command-page .cmd-control-intro{
+  min-height:620px!important;
+  justify-content:flex-start!important;
+  padding:42px 34px 34px!important;
+}
+.v2-command-page .cmd-control-intro-copy h1{
+  max-width:270px!important;
+  margin-bottom:24px!important;
+}
+.v2-command-page .cmd-control-sidebar{
+  min-height:620px!important;
+}
+.v2-command-page .cmd-control-main{
+  min-height:620px;
+  overflow:visible;
+}
+.v2-command-page .cmd-category-overview{
+  align-content:start;
+}
+.v2-command-page .cmd-control-help{
+  margin-top:18px!important;
+}
+
+@media(max-width:900px){
+  .v2-command-page .cmd-control-center,
+  .v2-command-page .cmd-control-intro,
+  .v2-command-page .cmd-control-sidebar,
+  .v2-command-page .cmd-control-main{min-height:0!important}
+  .v2-command-page .cmd-control-intro-copy h1{max-width:none!important}
+}
