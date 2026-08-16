@@ -8,6 +8,7 @@
   const premiumStore = config.synapseDiscordStoreUrl || `https://discord.com/application-directory/${config.discordApplicationId || '1535652568150057011'}/store`;
   const logo = './assets/logo-phoenix-ph.png';
   const commands = 'synapse-commands.html';
+  const docs = config.synapseDocsUrl || 'synapse-docs.html';
 
   const external = (href, cls, label) => href ? `<a class="${cls}" href="${href}" target="_blank" rel="noopener">${label}</a>` : '';
   const internal = (href, cls, label) => `<a class="${cls}" href="${href}">${label}</a>`;
@@ -34,7 +35,7 @@
   <div class="syn-v2">
     <header class="syn-v2-header" data-syn-v2-header>
       <a class="syn-v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="${logo}" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
-      <nav class="syn-v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html" class="active">Bots</a><a href="${commands}">Commandes</a><a href="services.html">Web · Apps · Autres</a></nav>
+      <nav class="syn-v2-nav"><a href="index.html">Accueil</a><a href="scripts.html">Scripts</a><a href="bots.html" class="active">Bots</a><a href="${commands}">Commandes</a><a href="${docs}">Documentation</a><a href="services.html">Web · Apps · Autres</a></nav>
       <div class="syn-v2-actions">${external(discord,'syn-v2-btn syn-v2-btn-ghost','Discord ↗')}<button class="syn-v2-menu" type="button" data-syn-v2-menu>☰</button></div>
     </header>
 
@@ -46,7 +47,7 @@
           <p>Synapse peut créer une structure complète, analyser un serveur déjà existant et compléter ou remplacer uniquement ce dont vous avez besoin. Tickets, messages, règlement, communauté et Interserver se configurent directement depuis Discord.</p>
           <div class="syn-v2-pills"><span class="syn-v2-pill">Adaptive Builder</span><span class="syn-v2-pill">Tickets</span><span class="syn-v2-pill">Messages</span><span class="syn-v2-pill">Communauté</span><span class="syn-v2-pill">Interserver</span><span class="syn-v2-pill">Premium Discord</span></div>
           <div class="syn-v2-free-entry"><b>GRATUIT POUR COMMENCER</b><span>Le Premium ajoute les fonctions avancées directement dans Discord.</span></div>
-          <div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse à votre serveur ↗')}${internal(commands,'syn-v2-btn syn-v2-btn-ghost','Voir toutes les commandes →')}</div>
+          <div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse à votre serveur ↗')}${internal(commands,'syn-v2-btn syn-v2-btn-ghost','Voir toutes les commandes →')}${internal(docs,'syn-v2-btn syn-v2-btn-ghost','Lire la documentation →')}</div>
         </article>
 
         <article class="syn-v2-workflow syn-v2-adaptive-hero">
@@ -56,7 +57,7 @@
             <article><span>02</span><small>PROPOSER</small><h3>Choisir quoi améliorer</h3><p>Créer un serveur complet, compléter la structure ou remplacer seulement un module précis.</p></article>
             <article><span>03</span><small>APPLIQUER</small><h3>Modifier proprement</h3><p>Synapse demande confirmation avant toute suppression et évite de créer des doublons inutiles.</p></article>
           </div>
-          <div class="syn-adapt-command"><code>/analyse_serveur</code><span>→ Synapse inspecte et propose un plan d’intégration.</span></div>
+          <div class="syn-adapt-command"><code>/scan</code><span>→ Synapse inspecte et propose un plan d’intégration.</span></div>
         </article>
       </section>
 
@@ -75,13 +76,13 @@
       <section class="syn-v2-section syn-v2-shell syn-command-showcase">
         <div class="syn-v2-head"><div><span class="syn-v2-kicker">PILOTAGE DANS DISCORD</span><h2>Pilotez Synapse<br>directement dans Discord.</h2></div><p>Commandes slash, boutons, sélecteurs et formulaires natifs permettent de configurer rapidement Synapse sans quitter votre serveur.</p></div>
         <div class="syn-command-preview">
-          <article><code>/analyse_serveur</code><p>Analyse sans modifier.</p></article>
-          <article><code>/tickets remplacer</code><p>Remplace un ancien système après confirmation.</p></article>
-          <article><code>/annonce</code><p>Ouvre un formulaire de création.</p></article>
-          <article><code>/generate_sync_code</code><p>Relie plusieurs Discord.</p></article>
-          <article><code>/aide_synapse</code><p>Affiche l’aide directement dans Discord.</p></article>
+          <article><code>/scan</code><p>Analyse sans modifier.</p></article>
+          <article><code>/builder setup</code><p>Crée ou adapte une structure complète.</p></article>
+          <article><code>/ticket setup</code><p>Installe ou améliore Ticket Studio.</p></article>
+          <article><code>/interserver code</code><p>Relie plusieurs Discord.</p></article>
+          <article><code>/commandes</code><p>Affiche l’aide directement dans Discord.</p></article>
         </div>
-        <div class="syn-v2-hero-actions">${internal(commands,'syn-v2-btn syn-v2-btn-primary','Explorer toutes les commandes →')}</div>
+        <div class="syn-v2-hero-actions">${internal(commands,'syn-v2-btn syn-v2-btn-primary','Explorer toutes les commandes →')}${internal(docs,'syn-v2-btn syn-v2-btn-ghost','Documentation publique →')}</div>
       </section>
 
       <section class="syn-v2-section syn-v2-shell syn-dashboard-future">
@@ -99,15 +100,15 @@
 
       <section class="syn-v2-section syn-v2-shell">
         <div class="syn-v2-premium">
-          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Premium,<br>directement dans Discord.</h2><p>Le paiement et l’état Premium sont pensés pour rester dans l’écosystème Discord. Les fonctions gratuites restent utilisables sans abonnement ; Premium débloque les automatismes et protections avancées.</p><div class="syn-v2-premium-price"><strong>5 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${external(premiumStore,'syn-v2-btn syn-v2-btn-primary','Passer Premium sur Discord ↗')}</div><div class="syn-premium-command-hint"><span>Ou depuis votre serveur :</span><code>/premium</code></div></div>
-          <div class="syn-v2-premium-list"><span>AutoMod avancé</span><span>Anti-Raid</span><span>Backups de structure</span><span>Interserver avancé</span><span>Temp Voice</span><span>Levels & XP</span><span>Giveaways</span><span>Commandes personnalisées</span><span>Automatisations supplémentaires</span><span>Codes Premium / lifetime</span></div>
+          <div><span class="syn-v2-kicker">SYNAPSE PREMIUM</span><h2>Premium,<br>directement dans Discord.</h2><p>Le paiement et l’état Premium sont pensés pour rester dans l’écosystème Discord. Les fonctions gratuites restent utilisables sans abonnement ; Premium débloque les automatismes et protections avancées.</p><div class="syn-v2-premium-price"><strong>3,99 €</strong><span>/ mois · / serveur · sans engagement</span></div><div class="syn-v2-hero-actions">${external(premiumStore,'syn-v2-btn syn-v2-btn-primary','Passer Premium sur Discord ↗')}</div><div class="syn-premium-command-hint"><span>Ou depuis votre serveur :</span><code>/premium</code></div></div>
+          <div class="syn-v2-premium-list"><span>AutoMod avancé</span><span>Anti-Raid</span><span>Backups de structure</span><span>Interserver avancé</span><span>Temp Voice</span><span>Levels & XP</span><span>Giveaways</span><span>Commandes personnalisées</span><span>Automatisations supplémentaires</span></div>
         </div>
       </section>
 
-      <section class="syn-v2-shell syn-v2-final"><div><span class="syn-v2-kicker">PRÊT À COMMENCER ?</span><h2>Ajoutez Synapse.<br>Laissez-le comprendre votre serveur.</h2><p>Créez une nouvelle structure ou analysez votre Discord actuel, puis choisissez exactement ce que Synapse doit améliorer.</p></div><div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse ↗')}${internal(commands,'syn-v2-btn syn-v2-btn-ghost','Voir les commandes →')}</div></section>
+      <section class="syn-v2-shell syn-v2-final"><div><span class="syn-v2-kicker">PRÊT À COMMENCER ?</span><h2>Ajoutez Synapse.<br>Laissez-le comprendre votre serveur.</h2><p>Créez une nouvelle structure ou analysez votre Discord actuel, puis choisissez exactement ce que Synapse doit améliorer.</p></div><div class="syn-v2-hero-actions">${external(invite,'syn-v2-btn syn-v2-btn-primary','Ajouter Synapse ↗')}${internal(commands,'syn-v2-btn syn-v2-btn-ghost','Voir les commandes →')}${internal(docs,'syn-v2-btn syn-v2-btn-ghost','Documentation →')}</div></section>
     </main>
 
-    <footer class="syn-v2-footer"><span>© 2026 Phoenix Inc | Development</span><span>Synapse · Discord-first · Dashboard futur</span></footer>
+    <footer class="syn-v2-footer"><span>© 2026 Phoenix Inc | Development</span><span>Synapse · Discord-first · Source privée</span></footer>
   </div>`;
 
   document.querySelector('[data-syn-v2-menu]')?.addEventListener('click',()=>document.querySelector('[data-syn-v2-header]')?.classList.toggle('open'));
