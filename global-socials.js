@@ -8,33 +8,22 @@
   };
   const makeLink=(kind,url,label)=>`<a class="phx-social phx-social-${kind}" ${url?`href="${url}" target="_blank" rel="noopener"`:'aria-disabled="true"'} aria-label="${label}" title="${url?label:label+' — bientôt'}">${kind==='tebex'?'<span>T</span>':svg[kind]}</a>`;
   const lang=()=>document.documentElement.lang==='en'?'en':'fr';
-  const copy={
-    fr:{desc:'Scripts FiveM, bots Discord, web, applications et développement sur mesure.',services:'Web · Apps · Autres',support:'Soutenir Phoenix Inc',supportText:'Si nos outils vous aident, vous pouvez soutenir leur développement.',donate:'Faire un don sur Ko-fi',note:'Conçu pour évoluer avec les projets.'},
-    en:{desc:'FiveM scripts, Discord bots, web, applications and custom development.',services:'Web · Apps · More',support:'Support Phoenix Inc',supportText:'If our tools help you, you can support their development.',donate:'Support us on Ko-fi',note:'Built to evolve with every project.'}
-  };
+  const copy={fr:{desc:'Scripts FiveM, bots Discord, web, applications et développement sur mesure.',services:'Web · Apps · Autres',support:'Soutenir Phoenix Inc',supportText:'Si nos outils vous aident, vous pouvez soutenir leur développement.',donate:'Faire un don sur Ko-fi',note:'Conçu pour évoluer avec les projets.'},en:{desc:'FiveM scripts, Discord bots, web, applications and custom development.',services:'Web · Apps · More',support:'Support Phoenix Inc',supportText:'If our tools help you, you can support their development.',donate:'Support us on Ko-fi',note:'Built to evolve with every project.'}};
 
-  function header(){document.querySelectorAll('.v2-header-actions').forEach(actions=>{if(actions.querySelector('[data-global-tebex]'))return;const discord=actions.querySelector('.v2-icon-link[href*="discord"],a[data-config-link="discordUrl"]');const a=document.createElement('a');a.className='phx-header-tebex';a.dataset.globalTebex='';a.textContent='Tebex ↗';if(cfg.tebexUrl){a.href=cfg.tebexUrl;a.target='_blank';a.rel='noopener';}else{a.setAttribute('aria-disabled','true');a.title='Tebex — bientôt';}if(discord)discord.insertAdjacentElement('afterend',a);else actions.prepend(a);});}
+  function header(){document.querySelectorAll('.v2-header-actions').forEach(actions=>{
+    const discord=actions.querySelector('.v2-icon-link[href*="discord"],a[data-config-link="discordUrl"]');
+    if(discord){discord.classList.add('phx-header-discord');discord.innerHTML=`${svg.discord}<span>Discord</span>`;discord.setAttribute('aria-label','Discord');}
+    let tebex=actions.querySelector('[data-global-tebex]');
+    if(!tebex){tebex=document.createElement('a');tebex.className='phx-header-tebex';tebex.dataset.globalTebex='';if(discord)discord.insertAdjacentElement('afterend',tebex);else actions.prepend(tebex);}
+    tebex.innerHTML='<span class="phx-tebex-mark">T</span><span>Tebex</span>';
+    if(cfg.tebexUrl){tebex.href=cfg.tebexUrl;tebex.target='_blank';tebex.rel='noopener';tebex.removeAttribute('aria-disabled');}else{tebex.removeAttribute('href');tebex.setAttribute('aria-disabled','true');tebex.title='Tebex — bientôt';}
+  });}
 
-  function footer(){
-    const t=copy[lang()];
-    document.querySelectorAll('.v2-footer').forEach(footer=>{
-      footer.innerHTML=`
-        <div class="v2-footer-main phx-footer-layout">
-          <div class="phx-footer-brandcol">
-            <a class="v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
-            <p>${t.desc}</p>
-          </div>
-          <div class="phx-footer-navcol">
-            <div class="v2-footer-links"><a href="scripts.html">Scripts</a><a href="bots.html">Bots</a><a href="services.html">${t.services}</a><a href="${cfg.discordUrl||'#'}" target="_blank" rel="noopener">Discord</a><a href="${cfg.githubUrl||'#'}" target="_blank" rel="noopener">GitHub</a><a ${cfg.tebexUrl?`href="${cfg.tebexUrl}" target="_blank" rel="noopener"`:'aria-disabled="true"'}>Tebex</a></div>
-            <div class="phx-footer-socials" data-global-socials>${makeLink('discord',cfg.discordUrl,'Discord')}${makeLink('youtube',cfg.youtubeUrl,'YouTube')}${makeLink('tebex',cfg.tebexUrl,'Tebex')}${makeLink('kofi',kofi,'Ko-fi')}</div>
-          </div>
-          <div class="phx-support-card" data-kofi-support><strong>${t.support}</strong><span>${t.supportText}</span><a href="${kofi}" target="_blank" rel="noopener">${t.donate} ↗</a></div>
-        </div>
-        <div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span>${t.note}</span></div>`;
-      window.dispatchEvent(new CustomEvent('phoenix:footerready'));
-    });
-  }
+  function footer(){const t=copy[lang()];document.querySelectorAll('.v2-footer').forEach(footer=>{
+    footer.innerHTML=`<div class="v2-footer-main phx-footer-layout"><div class="phx-footer-brandcol"><a class="v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a><p>${t.desc}</p></div><div class="phx-footer-navcol"><div class="v2-footer-links"><a href="scripts.html">Scripts</a><a href="bots.html">Bots</a><a href="services.html">${t.services}</a><a href="${cfg.discordUrl||'#'}" target="_blank" rel="noopener">Discord</a><a href="${cfg.githubUrl||'#'}" target="_blank" rel="noopener">GitHub</a></div><div class="phx-footer-socials" data-global-socials>${makeLink('discord',cfg.discordUrl,'Discord')}${makeLink('youtube',cfg.youtubeUrl,'YouTube')}${makeLink('tebex',cfg.tebexUrl,'Tebex')}${makeLink('kofi',kofi,'Ko-fi')}</div></div><div class="phx-support-card" data-kofi-support><strong>${t.support}</strong><span>${t.supportText}</span><a href="${kofi}" target="_blank" rel="noopener">${t.donate} ↗</a></div></div><div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span>${t.note}</span></div>`;
+    window.dispatchEvent(new CustomEvent('phoenix:footerready'));
+  });}
   function render(){header();footer();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',render,{once:true});else render();
-  window.addEventListener('phoenix:langchange',footer);
+  window.addEventListener('phoenix:langchange',()=>{header();footer();});
 })();
