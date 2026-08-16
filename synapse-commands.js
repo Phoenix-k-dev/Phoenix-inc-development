@@ -13,6 +13,7 @@
     {cat:'tickets',fr:'/ticket info',en:'/ticket info',frDesc:'Affiche la configuration Ticket Studio active.',enDesc:'Shows the active Ticket Studio configuration.',access:'managers'},
     {cat:'tickets',fr:'/ticket creer',en:'/ticket creer',frDesc:'Crée un type de ticket personnalisé.',enDesc:'Creates a custom ticket type.',access:'managers'},
     {cat:'tickets',fr:'/ticket retirer',en:'/ticket retirer',frDesc:'Retire un type de ticket personnalisé.',enDesc:'Removes a custom ticket type.',access:'managers'},
+    {cat:'tickets',fr:'/ticket couleur',en:'/ticket couleur',frDesc:'Change la couleur d’un bouton Ticket Studio existant.',enDesc:'Changes the color of an existing Ticket Studio button.',access:'managers'},
     {cat:'tickets',fr:'/ticket ouvrir',en:'/ticket ouvrir',frDesc:'Ouvre un ticket privé.',enDesc:'Opens a private ticket.',access:'everyone'},
     {cat:'tickets',fr:'/ticket fermer',en:'/ticket fermer',frDesc:'Ferme le ticket Synapse actuel.',enDesc:'Closes the current Synapse ticket.',access:'everyone'},
 
@@ -32,28 +33,28 @@
 
     {cat:'premium',fr:'/premium',en:'/premium',frDesc:'Affiche le statut, le prix et les avantages Premium.',enDesc:'Shows Premium status, price and benefits.',access:'everyone'},
     {cat:'premium',fr:'/redeem',en:'/redeem',frDesc:'Active un code cadeau Premium sur le serveur.',enDesc:'Redeems a Premium gift code on the server.',access:'managers'},
-    {cat:'premium',fr:'/pro status',en:'/pro status',frDesc:'Affiche l’état des modules Premium.',enDesc:'Shows Premium module status.',access:'managers'},
-    {cat:'premium',fr:'/pro backup_creer',en:'/pro backup_create',frDesc:'Crée une sauvegarde complète de la structure.',enDesc:'Creates a complete structure backup.',access:'managers'},
-    {cat:'premium',fr:'/pro backup_liste',en:'/pro backup_list',frDesc:'Liste les sauvegardes disponibles.',enDesc:'Lists available backups.',access:'managers'},
-    {cat:'premium',fr:'/pro backup_restaurer',en:'/pro backup_restore',frDesc:'Restaure les éléments manquants depuis une sauvegarde.',enDesc:'Restores missing elements from a backup.',access:'managers'},
-    {cat:'premium',fr:'/pro template_sauver',en:'/pro template_save',frDesc:'Enregistre la structure comme template personnel.',enDesc:'Saves the current structure as a personal template.',access:'managers'},
-    {cat:'premium',fr:'/pro template_liste',en:'/pro template_list',frDesc:'Liste les templates personnels.',enDesc:'Lists personal templates.',access:'managers'},
-    {cat:'premium',fr:'/pro template_appliquer',en:'/pro template_apply',frDesc:'Applique un template personnel au serveur.',enDesc:'Applies a personal template to the server.',access:'managers'},
+    {cat:'premium',fr:'/pro status',en:'/pro status',frDesc:'Affiche l’état des modules Premium.',enDesc:'Shows Premium module status.',access:'everyone'},
+    {cat:'premium',fr:'/pro backup_creer',en:'/pro backup_creer',frDesc:'Crée une sauvegarde complète de la structure.',enDesc:'Creates a complete structure backup.',access:'managers'},
+    {cat:'premium',fr:'/pro backup_liste',en:'/pro backup_liste',frDesc:'Liste les sauvegardes disponibles.',enDesc:'Lists available backups.',access:'managers'},
+    {cat:'premium',fr:'/pro backup_restaurer',en:'/pro backup_restaurer',frDesc:'Restaure les éléments manquants depuis une sauvegarde.',enDesc:'Restores missing elements from a backup.',access:'managers'},
+    {cat:'premium',fr:'/pro template_sauver',en:'/pro template_sauver',frDesc:'Enregistre la structure comme template personnel.',enDesc:'Saves the current structure as a personal template.',access:'managers'},
+    {cat:'premium',fr:'/pro template_liste',en:'/pro template_liste',frDesc:'Liste les templates personnels.',enDesc:'Lists personal templates.',access:'managers'},
+    {cat:'premium',fr:'/pro template_appliquer',en:'/pro template_appliquer',frDesc:'Applique un template personnel au serveur.',enDesc:'Applies a personal template to the server.',access:'managers'},
     {cat:'premium',fr:'/pro automod',en:'/pro automod',frDesc:'Configure AutoMod : spam, liens et mentions.',enDesc:'Configures AutoMod: spam, links and mentions.',access:'managers'},
-    {cat:'premium',fr:'/pro mot_bloque_ajouter',en:'/pro blocked_word_add',frDesc:'Ajoute un mot ou une expression au filtre AutoMod.',enDesc:'Adds a word or expression to the AutoMod filter.',access:'managers'},
-    {cat:'premium',fr:'/pro mot_bloque_retirer',en:'/pro blocked_word_remove',frDesc:'Retire un mot ou une expression du filtre AutoMod.',enDesc:'Removes a word or expression from the AutoMod filter.',access:'managers'},
+    {cat:'premium',fr:'/pro mot_bloque_ajouter',en:'/pro mot_bloque_ajouter',frDesc:'Ajoute un mot ou une expression au filtre AutoMod.',enDesc:'Adds a word or expression to the AutoMod filter.',access:'managers'},
+    {cat:'premium',fr:'/pro mot_bloque_retirer',en:'/pro mot_bloque_retirer',frDesc:'Retire un mot ou une expression du filtre AutoMod.',enDesc:'Removes a word or expression from the AutoMod filter.',access:'managers'},
     {cat:'premium',fr:'/pro antiraid',en:'/pro antiraid',frDesc:'Configure la protection Anti-Raid.',enDesc:'Configures Anti-Raid protection.',access:'managers'},
     {cat:'premium',fr:'/pro levels',en:'/pro levels',frDesc:'Configure le système Levels & XP.',enDesc:'Configures Levels & XP.',access:'managers'},
     {cat:'premium',fr:'/pro rank',en:'/pro rank',frDesc:'Affiche le niveau et le rang d’un membre.',enDesc:'Shows a member level and rank.',access:'everyone'},
     {cat:'premium',fr:'/pro leaderboard',en:'/pro leaderboard',frDesc:'Affiche le classement XP du serveur.',enDesc:'Shows the server XP leaderboard.',access:'everyone'},
     {cat:'premium',fr:'/pro tempvoice',en:'/pro tempvoice',frDesc:'Configure les salons vocaux temporaires.',enDesc:'Configures temporary voice channels.',access:'managers'},
     {cat:'premium',fr:'/pro giveaway',en:'/pro giveaway',frDesc:'Lance un giveaway Premium.',enDesc:'Launches a Premium giveaway.',access:'managers'},
-    {cat:'premium',fr:'/pro custom_ajouter',en:'/pro custom_add',frDesc:'Ajoute une commande personnalisée.',enDesc:'Adds a custom command.',access:'managers'},
-    {cat:'premium',fr:'/pro custom_retirer',en:'/pro custom_remove',frDesc:'Supprime une commande personnalisée.',enDesc:'Removes a custom command.',access:'managers'},
+    {cat:'premium',fr:'/pro custom_ajouter',en:'/pro custom_ajouter',frDesc:'Ajoute une commande personnalisée.',enDesc:'Adds a custom command.',access:'managers'},
+    {cat:'premium',fr:'/pro custom_retirer',en:'/pro custom_retirer',frDesc:'Supprime une commande personnalisée.',enDesc:'Removes a custom command.',access:'managers'},
     {cat:'premium',fr:'/pro custom',en:'/pro custom',frDesc:'Exécute une commande personnalisée du serveur.',enDesc:'Runs a server custom command.',access:'everyone'},
-    {cat:'premium',fr:'/pro automation_ajouter',en:'/pro automation_add',frDesc:'Planifie un message récurrent.',enDesc:'Schedules a recurring message.',access:'managers'},
-    {cat:'premium',fr:'/pro automation_liste',en:'/pro automation_list',frDesc:'Liste les automatisations planifiées.',enDesc:'Lists scheduled automations.',access:'managers'},
-    {cat:'premium',fr:'/pro automation_retirer',en:'/pro automation_remove',frDesc:'Supprime une automatisation.',enDesc:'Removes an automation.',access:'managers'},
+    {cat:'premium',fr:'/pro automation_ajouter',en:'/pro automation_ajouter',frDesc:'Planifie un message récurrent.',enDesc:'Schedules a recurring message.',access:'managers'},
+    {cat:'premium',fr:'/pro automation_liste',en:'/pro automation_liste',frDesc:'Liste les automatisations planifiées.',enDesc:'Lists scheduled automations.',access:'managers'},
+    {cat:'premium',fr:'/pro automation_retirer',en:'/pro automation_retirer',frDesc:'Supprime une automatisation.',enDesc:'Removes an automation.',access:'managers'},
 
     {cat:'interserver',fr:'/interserver code',en:'/interserver code',frDesc:'Génère un code temporaire de synchronisation.',enDesc:'Generates a temporary synchronization code.',access:'discordAdmin'},
     {cat:'interserver',fr:'/interserver link',en:'/interserver link',frDesc:'Relie un salon avec un code de synchronisation.',enDesc:'Links a channel using a synchronization code.',access:'discordAdmin'},
@@ -77,11 +78,11 @@
   if(!grid||!filters)return;
   let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr',active='all',query='';
 
-  function applyStatic(){const t=text[lang];document.documentElement.lang=lang;localStorage.setItem('phoenix-lang',lang);document.title=lang==='fr'?'Commandes Synapse — Phoenix Inc | Development':'Synapse Commands — Phoenix Inc | Development';document.querySelectorAll('[data-cmd-nav]').forEach(el=>{el.textContent=t.nav[el.dataset.cmdNav]||el.textContent;});document.querySelectorAll('[data-cmd-text]').forEach(el=>{const key=el.dataset.cmdText;if(t[key]!=null)el.textContent=t[key];});document.querySelectorAll('[data-cmd-html]').forEach(el=>{const key=el.dataset.cmdHtml;if(t[key]!=null)el.innerHTML=t[key];});const quote=document.querySelector('[data-cmd-quote]');if(quote)quote.textContent=t.quote;const footerCopy=document.querySelector('[data-cmd-footer-copy]');if(footerCopy)footerCopy.textContent=t.footerCopy;const footerNote=document.querySelector('[data-cmd-footer-note]');if(footerNote)footerNote.textContent=t.footerNote;if(search)search.placeholder=t.placeholder;toggle?.classList.toggle('en',lang==='en');}
+  function applyStatic(){const t=text[lang];document.documentElement.lang=lang;localStorage.setItem('phoenix-lang',lang);document.title=lang==='fr'?'Commandes Synapse — Phoenix Inc | Development':'Synapse Commands — Phoenix Inc | Development';document.querySelectorAll('[data-cmd-nav]').forEach(el=>{el.textContent=t.nav[el.dataset.cmdNav]||el.textContent;});document.querySelectorAll('[data-cmd-text]').forEach(el=>{const key=el.dataset.cmdText;if(t[key]!=null)el.textContent=t[key];});document.querySelectorAll('[data-cmd-html]').forEach(el=>{const key=el.dataset.cmdHtml;if(t[key]!=null)el.innerHTML=t[key];});const quote=document.querySelector('[data-cmd-quote]');if(quote)quote.textContent=t.quote;if(search)search.placeholder=t.placeholder;toggle?.classList.toggle('en',lang==='en');}
   const categories=['all',...new Set(data.map(x=>x.cat))];
   function renderFilters(){const t=text[lang];filters.innerHTML=categories.map(cat=>`<button class="${cat===active?'active':''}" data-cat="${cat}">${cat==='all'?t.all:t.cats[cat]}</button>`).join('');filters.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{active=btn.dataset.cat||'all';renderFilters();render();}));}
-  function render(){const t=text[lang];const list=data.filter(item=>(active==='all'||item.cat===active)&&(!query||`${item[lang]} ${lang==='fr'?item.frDesc:item.enDesc} ${t.cats[item.cat]} ${t.access[item.access]}`.toLowerCase().includes(query)));grid.innerHTML=list.length?list.map(item=>`<article class="cmd-card"><div class="cmd-card-top"><span>${t.cats[item.cat]}</span></div><code>${item[lang]}</code><p>${lang==='fr'?item.frDesc:item.enDesc}</p><footer><span>${t.access[item.access]}</span><button type="button" data-copy="${item[lang].replace(/&/g,'&amp;').replace(/"/g,'&quot;')}">${t.copy}</button></footer></article>`).join(''):`<div class="cmd-empty">${t.empty}</div>`;grid.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.copy||'');btn.textContent=t.copied;setTimeout(()=>btn.textContent=t.copy,1000);}catch{}}));}
-  function refresh(){applyStatic();renderFilters();render();window.dispatchEvent(new CustomEvent('phoenix:langchange',{detail:{lang}}));}
+  function render(){const t=text[lang];const list=data.filter(item=>(active==='all'||item.cat===active)&&(!query||`${item[lang]} ${lang==='fr'?item.frDesc:item.enDesc} ${t.cats[item.cat]} ${t.access[item.access]}`.toLowerCase().includes(query)));grid.innerHTML=list.length?list.map(item=>`<article class="cmd-card"><div class="cmd-card-top"><span>${t.cats[item.cat]}</span></div><code>${item[lang]}</code><p>${lang==='fr'?item.frDesc:item.enDesc}</p><footer><span>${t.access[item.access]}</span><button type="button" data-copy="${item[lang].replace(/&/g,'&amp;').replace(/\"/g,'&quot;')}">${t.copy}</button></footer></article>`).join(''):`<div class="cmd-empty">${t.empty}</div>`;grid.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(btn.dataset.copy||'');btn.textContent=t.copied;setTimeout(()=>btn.textContent=t.copy,1000);}catch{}}));}
+  function refresh(){applyStatic();renderFilters();render();}
   toggle?.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';refresh();});
   search?.addEventListener('input',()=>{query=search.value.trim().toLowerCase();render();});
   document.querySelector('[data-menu-toggle]')?.addEventListener('click',()=>header?.classList.toggle('open'));
