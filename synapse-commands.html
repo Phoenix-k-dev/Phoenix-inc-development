@@ -5,53 +5,73 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Commandes Synapse — Phoenix Inc | Development</title>
   <meta name="description" content="Liste des commandes du bot Discord Synapse : Builder adaptatif, tickets, Interserver, communauté et administration.">
-  <link rel="stylesheet" href="catalog.css">
-  <link rel="stylesheet" href="synapse-commands.css?v=20260816-1108">
+  <link rel="icon" href="./assets/favicon.ico" sizes="any">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="catalog.css?v=20260816-1220">
+  <link rel="stylesheet" href="synapse-commands.css?v=20260816-1220">
 </head>
 <body class="v2-command-page">
-  <header class="v2-header">
-    <a class="v2-brand" href="index.html"><img src="assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
-    <nav class="v2-nav">
-      <a href="index.html" data-cmd-nav="home">Accueil</a>
+<header class="v2-header" data-site-header>
+  <a class="v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
+  <nav class="v2-nav" aria-label="Navigation principale">
+    <a href="index.html" data-cmd-nav="home">Accueil</a>
+    <a href="scripts.html" data-cmd-nav="scripts">Scripts</a>
+    <a href="bots.html" data-cmd-nav="bots">Bots</a>
+    <a href="synapse-commands.html" class="active" data-cmd-nav="commands">Commandes</a>
+    <a href="services.html" data-cmd-nav="services">Web · Apps · Autres</a>
+  </nav>
+  <div class="v2-header-actions">
+    <a class="v2-icon-link" data-config-link="discordUrl" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a>
+    <button class="v2-lang" type="button" data-lang-toggle-v2 data-command-lang aria-label="Changer de langue"><span>FR</span><i></i><span>EN</span></button>
+    <a class="v2-btn v2-btn-small v2-btn-primary" href="index.html#quote"><span data-cmd-quote>Faire un devis</span> ↗</a>
+    <button class="v2-menu" type="button" data-menu-toggle aria-label="Menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="cmd-shell">
+  <section class="cmd-hero">
+    <div>
+      <span class="v2-kicker" data-cmd-text="kicker">SYNAPSE / COMMANDES</span>
+      <h1 data-cmd-html="title">Tout Synapse,<br><span>directement dans Discord.</span></h1>
+      <p data-cmd-text="lead">Retrouvez les commandes disponibles pour analyser un serveur, construire ou remplacer des modules, gérer les tickets, relier plusieurs Discord et administrer Synapse.</p>
+    </div>
+    <aside><b data-cmd-text="helpCommand">/commandes</b><span data-cmd-text="helpText">Affiche toutes les commandes directement dans Discord.</span><a href="synapse-bot.html" data-cmd-text="back">Voir la fiche Synapse →</a></aside>
+  </section>
+
+  <section class="cmd-toolbar">
+    <input type="search" placeholder="Rechercher une commande…" data-command-search>
+    <div class="cmd-filters" data-command-filters></div>
+  </section>
+
+  <section class="cmd-grid" data-command-grid></section>
+
+  <section class="cmd-future">
+    <div><span class="v2-kicker" data-cmd-text="futureKicker">MISE À JOUR FUTURE</span><h2 data-cmd-text="futureTitle">Dashboard Web Synapse</h2><p data-cmd-text="futureCopy">Un Dashboard Web complet est en développement pour les futures versions de Synapse. Il viendra compléter le pilotage depuis Discord avec une interface visuelle centralisée.</p></div>
+    <div class="cmd-future-track"><article><small>BUILDER</small><b data-cmd-text="futureBuilder">Structure & adaptation</b></article><article><small>TICKETS</small><b>Ticket Studio</b></article><article><small data-cmd-text="security">SÉCURITÉ</small><b data-cmd-text="futureSecurity">AutoMod & protections</b></article><article><small data-cmd-text="multi">MULTI-SERVEURS</small><b data-cmd-text="futureMulti">Gestion centralisée</b></article></div>
+  </section>
+</main>
+
+<footer class="v2-footer">
+  <div class="v2-footer-main">
+    <a class="v2-brand" href="index.html" aria-label="Phoenix Inc | Development"><img src="./assets/logo-phoenix-ph.png" alt=""><span><b>Phoenix Inc |</b><small>Development</small></span></a>
+    <p data-cmd-footer-copy>Scripts FiveM, bots Discord, web, applications et développement sur mesure.</p>
+    <div class="v2-footer-links">
       <a href="scripts.html" data-cmd-nav="scripts">Scripts</a>
       <a href="bots.html" data-cmd-nav="bots">Bots</a>
-      <a href="synapse-commands.html" class="active" data-cmd-nav="commands">Commandes</a>
       <a href="services.html" data-cmd-nav="services">Web · Apps · Autres</a>
-    </nav>
-    <div class="v2-header-actions">
-      <button class="cmd-lang-toggle" type="button" data-command-lang aria-label="Switch language"><span>FR</span><i></i><span>EN</span></button>
-      <a class="v2-btn v2-btn-ghost" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord ↗</a>
-      <button class="v2-menu" type="button">☰</button>
+      <a data-config-link="discordUrl" href="https://discord.gg/xfWVss2KCv" target="_blank" rel="noopener">Discord</a>
+      <a data-config-link="githubUrl" href="https://github.com/Phoenix-k-dev" target="_blank" rel="noopener">GitHub</a>
     </div>
-  </header>
+  </div>
+  <div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span data-cmd-footer-note>Conçu pour évoluer avec les projets.</span></div>
+</footer>
 
-  <main class="cmd-shell">
-    <section class="cmd-hero">
-      <div>
-        <span class="v2-kicker" data-cmd-text="kicker">SYNAPSE / COMMANDES</span>
-        <h1 data-cmd-html="title">Tout Synapse,<br><span>directement dans Discord.</span></h1>
-        <p data-cmd-text="lead">Retrouvez les commandes disponibles pour analyser un serveur, construire ou remplacer des modules, gérer les tickets, relier plusieurs Discord et administrer Synapse.</p>
-      </div>
-      <aside><b data-cmd-text="helpCommand">/commandes</b><span data-cmd-text="helpText">Affiche toutes les commandes directement dans Discord.</span><a href="synapse-bot.html" data-cmd-text="back">Voir la fiche Synapse →</a></aside>
-    </section>
-
-    <section class="cmd-toolbar">
-      <input type="search" placeholder="Rechercher une commande…" data-command-search>
-      <div class="cmd-filters" data-command-filters></div>
-    </section>
-
-    <section class="cmd-grid" data-command-grid></section>
-
-    <section class="cmd-future">
-      <div><span class="v2-kicker" data-cmd-text="futureKicker">MISE À JOUR FUTURE</span><h2 data-cmd-text="futureTitle">Dashboard Web Synapse</h2><p data-cmd-text="futureCopy">Un Dashboard Web complet est en développement pour les futures versions de Synapse. Il viendra compléter le pilotage depuis Discord avec une interface visuelle centralisée.</p></div>
-      <div class="cmd-future-track"><article><small>BUILDER</small><b data-cmd-text="futureBuilder">Structure & adaptation</b></article><article><small>TICKETS</small><b>Ticket Studio</b></article><article><small data-cmd-text="security">SÉCURITÉ</small><b data-cmd-text="futureSecurity">AutoMod & protections</b></article><article><small data-cmd-text="multi">MULTI-SERVEURS</small><b data-cmd-text="futureMulti">Gestion centralisée</b></article></div>
-    </section>
-  </main>
-
-  <footer class="v2-footer"><div class="v2-footer-bottom"><span>© 2026 Phoenix Inc | Development</span><span>Synapse · Discord-first</span></div></footer>
-
-  <script src="config.js"></script>
-  <script src="synapse-commands.js?v=20260816-1108"></script>
-  <script src="synapse-commands-cleanup.js?v=20260816-1108"></script>
+<script src="config.js?v=20260816-1220"></script>
+<script src="synapse-commands.js?v=20260816-1220"></script>
+<script src="synapse-commands-cleanup.js?v=20260816-1220"></script>
+<script src="legal-links.js?v=20260816-1220"></script>
 </body>
 </html>
