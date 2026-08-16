@@ -14,26 +14,17 @@
   };
 
   let lang=localStorage.getItem('phoenix-lang')==='en'?'en':'fr';
+  const setText=(el,value)=>{if(el&&el.textContent!==value)el.textContent=value;};
 
-  function setText(el,value){
-    if(el&&el.textContent!==value)el.textContent=value;
-  }
-
-  function apply(){
+  function apply(emit=true){
     const t=labels[lang];
     if(document.documentElement.lang!==lang)document.documentElement.lang=lang;
-
     const nav=document.querySelector('.syn-v2-nav');
     if(nav){
       const links=[...nav.querySelectorAll('a')];
-      const find=(end)=>links.find(a=>(a.getAttribute('href')||'').endsWith(end));
-      setText(find('index.html'),t.home);
-      setText(find('scripts.html'),t.scripts);
-      setText(find('bots.html'),t.bots);
-      setText(find('synapse-commands.html'),t.commands);
-      setText(find('services.html'),t.services);
+      const find=end=>links.find(a=>(a.getAttribute('href')||'').endsWith(end));
+      setText(find('index.html'),t.home);setText(find('scripts.html'),t.scripts);setText(find('bots.html'),t.bots);setText(find('synapse-commands.html'),t.commands);setText(find('services.html'),t.services);
     }
-
     document.querySelectorAll('a[href="synapse-commands.html"]').forEach(a=>{
       const txt=(a.textContent||'').trim().toLowerCase();
       if(txt.includes('explorer')||txt.includes('explore'))setText(a,t.explore);
@@ -41,28 +32,14 @@
       else if(txt.includes('voir les commandes')||txt.includes('view commands'))setText(a,t.view);
       else if(a.closest('.syn-v2-nav'))setText(a,t.commands);
     });
-
     const actions=document.querySelector('.syn-v2-actions');
     if(actions&&!actions.querySelector('[data-syn-product-lang]')){
-      const button=document.createElement('button');
-      button.type='button';
-      button.setAttribute('data-syn-product-lang','');
-      button.className='cmd-lang-toggle';
-      button.setAttribute('aria-label','Switch language');
-      button.innerHTML='<span>FR</span><i></i><span>EN</span>';
-      button.addEventListener('click',()=>{
-        lang=lang==='fr'?'en':'fr';
-        localStorage.setItem('phoenix-lang',lang);
-        apply();
-      });
-      actions.prepend(button);
+      const button=document.createElement('button');button.type='button';button.setAttribute('data-syn-product-lang','');button.className='cmd-lang-toggle';button.setAttribute('aria-label','Switch language');button.innerHTML='<span>FR</span><i></i><span>EN</span>';
+      button.addEventListener('click',()=>{lang=lang==='fr'?'en':'fr';localStorage.setItem('phoenix-lang',lang);apply(true);});actions.prepend(button);
     }
     actions?.querySelector('[data-syn-product-lang]')?.classList.toggle('en',lang==='en');
+    if(emit)window.dispatchEvent(new CustomEvent('phoenix:langchange',{detail:{lang}}));
   }
 
-  // Important: no subtree MutationObserver here. The old observer reacted to
-  // the text changes made by apply() itself and could create an endless render loop.
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});
-  else apply();
-  setTimeout(apply,100);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>apply(true),{once:true});else apply(true);
 })();
