@@ -1,14 +1,22 @@
 (() => {
   const render = () => {
     const en = localStorage.getItem('phoenix-lang') === 'en' || document.documentElement.lang === 'en';
+    const violet = document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff';
 
     document.querySelectorAll('.v2-footer, .syn-v2-footer, body > footer').forEach(footer => {
       if (footer.closest('.cmd-card')) return;
 
-      footer.style.setProperty('color', document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff', 'important');
-
       const bottom = footer.querySelector('.v2-footer-bottom') || footer;
-      bottom.style.setProperty('color', document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff', 'important');
+      bottom.style.setProperty('color', violet, 'important');
+
+      // Keep the Phoenix brand identical to the header.
+      const brand = footer.querySelector('.v2-brand, .syn-v2-brand');
+      if (brand) {
+        const strong = brand.querySelector('b');
+        const small = brand.querySelector('small');
+        if (strong) strong.style.removeProperty('color');
+        if (small) small.style.setProperty('color', '#ff6b2c', 'important');
+      }
 
       let wrap = footer.querySelector(':scope > [data-legal-links], :scope .v2-footer-bottom > [data-legal-links]');
       if (!wrap) {
@@ -24,8 +32,8 @@
         'flex-wrap:wrap',
         'align-items:center',
         'font-size:11px',
-        'margin-top:10px',
-        `color:${document.documentElement.dataset.theme === 'light' ? '#795df5' : '#9d8aff'}`
+        'margin:0',
+        `color:${violet}`
       ].join(';');
 
       const links = [
