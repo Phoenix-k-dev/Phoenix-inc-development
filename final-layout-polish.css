@@ -32,17 +32,35 @@
 
 /* Command center: cleaner proportions after removing the duplicate tip. */
 .v2-command-page .cmd-control-center{
+  grid-template-columns:minmax(350px,380px) 220px minmax(0,1fr)!important;
   min-height:620px;
   align-items:stretch;
 }
 .v2-command-page .cmd-control-intro{
+  min-width:0!important;
   min-height:620px!important;
   justify-content:flex-start!important;
   padding:42px 34px 34px!important;
+  overflow:hidden!important;
+}
+.v2-command-page .cmd-control-intro-copy{
+  min-width:0!important;
 }
 .v2-command-page .cmd-control-intro-copy h1{
-  max-width:270px!important;
+  width:100%!important;
+  max-width:100%!important;
   margin-bottom:24px!important;
+  font-size:clamp(44px,3.5vw,60px)!important;
+  line-height:.98!important;
+  overflow-wrap:break-word!important;
+  word-break:normal!important;
+  hyphens:none!important;
+}
+.v2-command-page .cmd-control-intro-copy h1 span{
+  display:inline!important;
+}
+.v2-command-page .cmd-control-intro-copy p{
+  max-width:100%!important;
 }
 .v2-command-page .cmd-control-sidebar{
   min-height:620px!important;
@@ -58,10 +76,16 @@
   margin-top:18px!important;
 }
 
+@media(max-width:1250px){
+  .v2-command-page .cmd-control-center{grid-template-columns:minmax(310px,340px) 200px minmax(0,1fr)!important}
+  .v2-command-page .cmd-control-intro-copy h1{font-size:clamp(40px,3.8vw,54px)!important}
+}
+
 @media(max-width:900px){
+  .v2-command-page .cmd-control-center{grid-template-columns:1fr!important}
   .v2-command-page .cmd-control-center,
   .v2-command-page .cmd-control-intro,
   .v2-command-page .cmd-control-sidebar,
   .v2-command-page .cmd-control-main{min-height:0!important}
-  .v2-command-page .cmd-control-intro-copy h1{max-width:none!important}
+  .v2-command-page .cmd-control-intro-copy h1{max-width:none!important;font-size:clamp(42px,10vw,64px)!important}
 }
